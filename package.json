@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "deploy": "next build && wrangler deploy",
-    "preview": "next build && wrangler dev"
+    "preview": "next build && wrangler dev",
+    "postinstall": "node scripts/ci-build.mjs"
   },
   "dependencies": {
     "next": "16.3.3",

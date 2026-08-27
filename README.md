@@ -96,8 +96,15 @@ Cloudflare Workers Builds a partir deste repositório:
 - **Build command:** `npm run build`
 - **Output directory:** `out`
 
-**Importante:** o `wrangler deploy` só publica o que estiver em `out/`, e `out/` é
-gerado pelo build. Se o *Build command* estiver vazio no painel, o deploy falha com
-`assets.directory ... does not exist`.
+**Por que existe um `postinstall`:** o Workers Builds executa o *deploy command*
+mesmo com o *build command* vazio no painel — e aí o `wrangler deploy` falha com
+`assets.directory ... does not exist`, porque `out/` nunca foi gerado. O
+`scripts/ci-build.mjs` roda no `postinstall` e gera `out/` quando detecta CI
+(`WORKERS_CI`, `CF_PAGES`, `CI` ou `GITHUB_ACTIONS`), tornando o deploy
+independente da configuração do painel. Fora de CI ele não faz nada, então
+`npm install` local continua instantâneo.
 
-Localmente: `npm run deploy` (roda o build e publica em seguida).
+Se preferir o caminho convencional, basta preencher **Build command: `npm run build`**
+no painel — o `postinstall` detecta que `out/` já existe e pula.
+
+Localmente: `npm run deploy` (build + publicação).
