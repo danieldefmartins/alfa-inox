@@ -3,6 +3,7 @@ import { SERVICOS } from '@/lib/servicos'
 import { AREAS } from '@/lib/areas'
 import { SITE, waLink, WA_DEFAULT } from '@/lib/site'
 import { WhatsAppIcon, Phone, Pin, Clock, Mail } from './Icons'
+import { LogoEscuro } from './Logo'
 
 export default function Footer() {
   const ano = new Date().getFullYear()
@@ -10,9 +11,8 @@ export default function Footer() {
     <footer className="ftr">
       <div className="wrap ftr-grid">
         <div>
-          <div className="logo" style={{ marginBottom: 16 }}>
-            <span style={{ color: '#fff' }}>ALFA</span>
-            <span className="metal-text">INOX</span>
+          <div style={{ marginBottom: 18 }}>
+            <LogoEscuro height={52} />
           </div>
           <p style={{ maxWidth: 320, lineHeight: 1.6 }}>
             Há {SITE.yearsInBusiness} anos fabricando e instalando corrimão, guarda-corpo e

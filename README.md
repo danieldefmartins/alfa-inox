@@ -46,6 +46,39 @@ Categorias válidas: `corrimao-inox`, `guarda-corpo-inox`, `guarda-corpo-vidro`,
 Acrescente um objeto em `POSTS` (`lib/blog.ts`). O `sitemap.xml`, o schema
 `BlogPosting` e os links "continue lendo" se atualizam sozinhos.
 
+## Marca e compartilhamento
+
+Arte original em `Logo/`. Assets derivados (versionados) em `public/marca/`:
+
+| Arquivo | Uso |
+|---|---|
+| `alfa-inox-horizontal.webp` | Cabeçalho (fundo claro) |
+| `alfa-inox-icone.png` | Monograma com alpha — favicon, rodapé, cartões sociais |
+| `alfa-inox-vertical.webp` | Reserva para peças verticais |
+
+**Atenção:** o wordmark original é azul-marinho e **some em fundo escuro**. Por isso o
+rodapé e os cartões sociais usam `LogoEscuro` — monograma + wordmark em texto vivo.
+
+Ícones (`app/icon.png`, `app/apple-icon.png`, `app/favicon.ico`) são o monograma sobre
+um ladrilho grafite, para ler bem na aba do navegador em tema claro e escuro.
+
+### Cartões de compartilhamento (WhatsApp, Facebook, LinkedIn)
+
+31 cartões 1200×630 em `public/og/` — um por página. Regerar:
+
+```bash
+# baixe Archivo (700/800) e Inter (400/600) em .woff2 para uma pasta
+OG_FONTS=/caminho/para/fonts node --experimental-strip-types scripts/build-og.mjs
+```
+
+O script lê `lib/servicos.ts`, `lib/areas.ts` e `lib/blog.ts`, monta todos os cartões
+numa única página HTML, tira **um** screenshot com o Chrome e fatia o resultado — por
+isso rodar leva ~1 min mesmo gerando 31 imagens. Média de 82 KB por cartão, bem abaixo
+do limite de pré-visualização do WhatsApp.
+
+Ao adicionar um serviço, cidade ou artigo, rode o script de novo: o nome do cartão
+segue o padrão `servico-<slug>`, `area-<slug>`, `post-<slug>`.
+
 ## SEO — o que já está pronto
 
 - `sitemap.xml` e `robots.txt` gerados no build
@@ -53,6 +86,7 @@ Acrescente um objeto em `POSTS` (`lib/blog.ts`). O `sitemap.xml`, o schema
 - JSON-LD: `HomeAndConstructionBusiness` (NAP + horário + área atendida),
   `Service`, `FAQPage`, `BlogPosting`, `BreadcrumbList`, `ImageGallery`
 - Nomes de arquivo de imagem e `alt` descritivos em português (SEO de imagens)
+- Open Graph + Twitter Card com imagem própria por página, e `manifest.webmanifest`
 - Páginas locais por cidade em `/areas-atendidas/<cidade>/`
 
 ## Deploy
@@ -62,4 +96,8 @@ Cloudflare Workers Builds a partir deste repositório:
 - **Build command:** `npm run build`
 - **Output directory:** `out`
 
-Ou manualmente: `npx wrangler deploy`
+**Importante:** o `wrangler deploy` só publica o que estiver em `out/`, e `out/` é
+gerado pelo build. Se o *Build command* estiver vazio no painel, o deploy falha com
+`assets.directory ... does not exist`.
+
+Localmente: `npm run deploy` (roda o build e publica em seguida).

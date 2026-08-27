@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { AREAS } from '@/lib/areas'
 import { SERVICOS } from '@/lib/servicos'
-import { SITE } from '@/lib/site'
+import { SITE, socialMeta } from '@/lib/site'
 import Crumbs from '@/components/Crumbs'
 import CTA from '@/components/CTA'
 import Jsonld from '@/components/Jsonld'
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description:
     'A Alfa Inox atende Belo Horizonte, Nova Lima, Contagem, Betim, Sabará, Santa Luzia, Lagoa Santa e toda a região metropolitana. Medição no local sem custo.',
   alternates: { canonical: '/areas-atendidas/' },
+  ...socialMeta({ card: 'areas-atendidas', titulo: 'Onde Atendemos | Corrimão e Guarda-Corpo em Inox na Grande BH', descricao: 'A Alfa Inox atende Belo Horizonte, Nova Lima, Contagem, Betim, Sabará, Santa Luzia, Lagoa Santa e toda a região metropolitana. Medição no local sem custo.', url: '/areas-atendidas/' }),
 }
 
 export default function AreasPage() {

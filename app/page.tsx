@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { SERVICOS } from '@/lib/servicos'
 import { AREAS } from '@/lib/areas'
 import { PHOTOS, findPhoto, src } from '@/lib/photos'
-import { SITE, waLink, WA_DEFAULT } from '@/lib/site'
+import { SITE, waLink, WA_DEFAULT, socialMeta } from '@/lib/site'
 import { Img } from '@/components/Photo'
 import { ServiceIcon, Arrow, Check, WhatsAppIcon } from '@/components/Icons'
 import Gallery from '@/components/Gallery'
@@ -16,6 +16,13 @@ export const metadata: Metadata = {
   description:
     'Há 15 anos fabricando e instalando corrimão, guarda-corpo e acessibilidade em aço inox em Belo Horizonte e região. Medição no local sem custo e orçamento sem compromisso.',
   alternates: { canonical: '/' },
+  ...socialMeta({
+    card: 'default',
+    titulo: 'Corrimão e Guarda-Corpo em Aço Inox em BH | Alfa Inox',
+    descricao:
+      'Há 15 anos fabricando e instalando corrimão, guarda-corpo e acessibilidade em aço inox em Belo Horizonte e região. Medição no local sem custo.',
+    url: '/',
+  }),
 }
 
 const hero = findPhoto('guarda-corpo-inox-mezanino-vao-interno')!

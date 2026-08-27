@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { AREAS, findArea } from '@/lib/areas'
 import { SERVICOS } from '@/lib/servicos'
 import { PHOTOS, src } from '@/lib/photos'
-import { SITE, waLink } from '@/lib/site'
+import { SITE, waLink, socialMeta } from '@/lib/site'
 import Gallery from '@/components/Gallery'
 import Crumbs from '@/components/Crumbs'
 import CTA from '@/components/CTA'
@@ -27,7 +27,13 @@ export async function generateMetadata({ params }: { params: Promise<{ cidade: s
     title,
     description,
     alternates: { canonical: `/areas-atendidas/${a.slug}/` },
-    openGraph: { title, description, url: `${SITE.url}/areas-atendidas/${a.slug}/`, type: 'article' },
+    ...socialMeta({
+      card: `area-${a.slug}`,
+      titulo: title,
+      descricao: description,
+      url: `/areas-atendidas/${a.slug}/`,
+      tipo: 'article',
+    }),
   }
 }
 

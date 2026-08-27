@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { postsOrdenados } from '@/lib/blog'
 import { findPhoto, src } from '@/lib/photos'
-import { SITE } from '@/lib/site'
+import { SITE, socialMeta } from '@/lib/site'
 import Crumbs from '@/components/Crumbs'
 import CTA from '@/components/CTA'
 import Jsonld from '@/components/Jsonld'
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description:
     'Guias práticos sobre corrimão e guarda-corpo em aço inox: preços, inox 304 x 316, altura pela NBR 14718, acessibilidade NBR 9050 e manutenção. Por quem fabrica em BH.',
   alternates: { canonical: '/blog/' },
+  ...socialMeta({ card: 'blog', titulo: 'Blog | Aço Inox, Corrimão, Guarda-Corpo e Normas', descricao: 'Guias práticos sobre corrimão e guarda-corpo em aço inox: preços, inox 304 x 316, altura pela NBR 14718, acessibilidade NBR 9050 e manutenção. Por quem fabrica em BH.', url: '/blog/' }),
 }
 
 const dataBR = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { PHOTOS, CATEGORIAS, src } from '@/lib/photos'
-import { SITE } from '@/lib/site'
+import { SITE, socialMeta } from '@/lib/site'
 import Gallery from '@/components/Gallery'
 import Crumbs from '@/components/Crumbs'
 import CTA from '@/components/CTA'
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Fotos reais de corrimão, guarda-corpo, guarda-corpo de vidro e acessibilidade em aço inox executados pela Alfa Inox em Belo Horizonte e região metropolitana.',
   alternates: { canonical: '/galeria/' },
-  openGraph: { images: [{ url: src(PHOTOS[0].slug, 1600), alt: PHOTOS[0].alt }] },
+  ...socialMeta({ card: 'galeria', titulo: 'Galeria de Projetos em Aço Inox', descricao: 'Fotos reais de corrimão, guarda-corpo, guarda-corpo de vidro e acessibilidade em aço inox executados pela Alfa Inox em Belo Horizonte e região metropolitana.', url: '/galeria/' }),
 }
 
 export default function GaleriaPage() {

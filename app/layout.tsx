@@ -5,7 +5,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
 import Jsonld from '@/components/Jsonld'
-import { SITE } from '@/lib/site'
+import { SITE, socialMeta } from '@/lib/site'
 
 const display = Archivo({ subsets: ['latin'], weight: ['600', '700', '800'], variable: '--font-display', display: 'swap' })
 const body = Inter({ subsets: ['latin'], variable: '--font-body', display: 'swap' })
@@ -23,17 +23,13 @@ export const metadata: Metadata = {
   creator: SITE.name,
   publisher: SITE.name,
   alternates: { canonical: '/' },
-  openGraph: {
-    type: 'website',
-    locale: 'pt_BR',
-    url: SITE.url,
-    siteName: SITE.name,
-    title: 'Corrimão e Guarda-Corpo em Aço Inox em BH | Alfa Inox',
-    description:
+  ...socialMeta({
+    card: 'default',
+    titulo: 'Corrimão e Guarda-Corpo em Aço Inox em BH | Alfa Inox',
+    descricao:
       'Fabricação própria e instalação de corrimão, guarda-corpo e acessibilidade em aço inox em Belo Horizonte e região metropolitana.',
-    images: [{ url: '/fotos/guarda-corpo-inox-mezanino-vao-interno-1600.webp', width: 1600, height: 900, alt: 'Guarda-corpo de aço inox instalado pela Alfa Inox' }],
-  },
-  twitter: { card: 'summary_large_image' },
+    url: '/',
+  }),
   robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } as Metadata['robots'],
   category: 'Construção civil',
 }
@@ -55,7 +51,8 @@ const localBusiness = {
   url: SITE.url,
   telephone: SITE.phone,
   email: SITE.email,
-  image: `${SITE.url}/fotos/guarda-corpo-inox-mezanino-vao-interno-1600.webp`,
+  image: `${SITE.url}/og/default.jpg`,
+  logo: `${SITE.url}/marca/icone-512.png`,
   foundingDate: String(SITE.foundedYear),
   priceRange: '$$',
   currenciesAccepted: 'BRL',

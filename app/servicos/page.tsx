@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SERVICOS } from '@/lib/servicos'
 import { byCategory, src } from '@/lib/photos'
-import { SITE } from '@/lib/site'
+import { SITE, socialMeta } from '@/lib/site'
 import Crumbs from '@/components/Crumbs'
 import CTA from '@/components/CTA'
 import Jsonld from '@/components/Jsonld'
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description:
     'Corrimão, guarda-corpo, guarda-corpo de vidro, acessibilidade NBR 9050, portões e gradis em aço inox. Fabricação própria e instalação em BH e região metropolitana.',
   alternates: { canonical: '/servicos/' },
+  ...socialMeta({ card: 'servicos', titulo: 'Serviços em Aço Inox em Belo Horizonte', descricao: 'Corrimão, guarda-corpo, guarda-corpo de vidro, acessibilidade NBR 9050, portões e gradis em aço inox. Fabricação própria e instalação em BH e região metropolitana.', url: '/servicos/' }),
 }
 
 export default function ServicosPage() {

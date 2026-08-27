@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { SITE, waLink, WA_DEFAULT, fullAddress } from '@/lib/site'
+import { SITE, waLink, WA_DEFAULT, fullAddress, socialMeta } from '@/lib/site'
 import { AREAS } from '@/lib/areas'
 import Crumbs from '@/components/Crumbs'
 import Jsonld from '@/components/Jsonld'
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description:
     'Fale com a Alfa Inox: WhatsApp (31) 97237-9813, vendas@alfainoxbh.com.br. Av. Américo Vespúcio, 105 — Aparecida, Belo Horizonte/MG. Segunda a sábado, 8h às 17h.',
   alternates: { canonical: '/contato/' },
+  ...socialMeta({ card: 'contato', titulo: 'Contato — Corrimão e Guarda-Corpo em Inox em BH', descricao: 'Fale com a Alfa Inox: WhatsApp (31) 97237-9813, vendas@alfainoxbh.com.br. Av. Américo Vespúcio, 105 — Aparecida, Belo Horizonte/MG. Segunda a sábado, 8h às 17h.', url: '/contato/' }),
 }
 
 const mapa = `https://www.google.com/maps?q=${encodeURIComponent(`${SITE.address.street}, ${SITE.address.district}, ${SITE.address.city} - ${SITE.address.state}`)}&output=embed`

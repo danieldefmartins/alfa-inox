@@ -107,7 +107,7 @@ p { margin: 0 0 1.15em; text-wrap: pretty; }
   background: rgba(255,255,255,.92); backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid var(--line);
 }
-.hdr-in { display: flex; align-items: center; gap: 28px; height: 72px; }
+.hdr-in { display: flex; align-items: center; gap: 28px; height: 84px; }
 .logo { display: flex; align-items: baseline; gap: 8px; font-family: var(--font-display), sans-serif; font-weight: 800; font-size: 1.35rem; letter-spacing: -.03em; flex: none; }
 .logo span:first-child { color: var(--ink); }
 .logo span:last-child {

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { SERVICOS, findServico } from '@/lib/servicos'
 import { byCategory, src } from '@/lib/photos'
-import { SITE, waLink } from '@/lib/site'
+import { SITE, waLink, socialMeta } from '@/lib/site'
 import { AREAS } from '@/lib/areas'
 import Gallery from '@/components/Gallery'
 import FAQ from '@/components/FAQ'
@@ -21,18 +21,17 @@ export async function generateMetadata({ params }: { params: Promise<{ servico: 
   const { servico } = await params
   const s = findServico(servico)
   if (!s) return {}
-  const foto = byCategory(s.categoriaFotos)[0]
   return {
     title: s.title,
     description: s.description,
     alternates: { canonical: `/servicos/${s.slug}/` },
-    openGraph: {
-      title: s.title,
-      description: s.description,
-      url: `${SITE.url}/servicos/${s.slug}/`,
-      type: 'article',
-      images: foto ? [{ url: src(foto.slug, 1600), alt: foto.alt }] : undefined,
-    },
+    ...socialMeta({
+      card: `servico-${s.slug}`,
+      titulo: s.title,
+      descricao: s.description,
+      url: `/servicos/${s.slug}/`,
+      tipo: 'article',
+    }),
   }
 }
 

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { POSTS, findPost, postsOrdenados } from '@/lib/blog'
 import { findPhoto, src } from '@/lib/photos'
-import { SITE } from '@/lib/site'
+import { SITE, socialMeta } from '@/lib/site'
 import Crumbs from '@/components/Crumbs'
 import CTA from '@/components/CTA'
 import FAQ from '@/components/FAQ'
@@ -19,19 +19,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const p = findPost(slug)
   if (!p) return {}
-  const foto = findPhoto(p.foto)
+  const social = socialMeta({
+    card: `post-${p.slug}`,
+    titulo: p.title,
+    descricao: p.description,
+    url: `/blog/${p.slug}/`,
+    tipo: 'article',
+  })
   return {
     title: p.title,
     description: p.description,
     alternates: { canonical: `/blog/${p.slug}/` },
+    ...social,
     openGraph: {
-      title: p.title,
-      description: p.description,
-      url: `${SITE.url}/blog/${p.slug}/`,
-      type: 'article',
+      ...social.openGraph,
       publishedTime: p.date,
       modifiedTime: p.updated ?? p.date,
-      images: foto ? [{ url: src(foto.slug, 1600), alt: foto.alt }] : undefined,
+      authors: [SITE.name],
     },
   }
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { SITE, fullAddress } from '@/lib/site'
+import { SITE, fullAddress, socialMeta } from '@/lib/site'
 import { PHOTOS, findPhoto, src } from '@/lib/photos'
 import { SERVICOS } from '@/lib/servicos'
 import { AREAS } from '@/lib/areas'
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   description:
     'Conheça a Alfa Inox: 15 anos fabricando corrimão, guarda-corpo e acessibilidade em aço inox em Belo Horizonte. Oficina própria, equipe própria e centenas de obras entregues.',
   alternates: { canonical: '/sobre/' },
+  ...socialMeta({ card: 'sobre', titulo: 'A Empresa | 15 Anos de Aço Inox em Belo Horizonte', descricao: 'Conheça a Alfa Inox: 15 anos fabricando corrimão, guarda-corpo e acessibilidade em aço inox em Belo Horizonte. Oficina própria, equipe própria e centenas de obras entregues.', url: '/sobre/' }),
 }
 
 const VALORES = [

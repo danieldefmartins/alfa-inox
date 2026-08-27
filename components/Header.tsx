@@ -4,14 +4,15 @@ import { useState } from 'react'
 import { SERVICOS } from '@/lib/servicos'
 import { SITE, waLink, WA_DEFAULT } from '@/lib/site'
 import { WhatsAppIcon } from './Icons'
+import { LogoHorizontal } from './Logo'
 
 export default function Header() {
   const [open, setOpen] = useState(false)
   return (
     <header className="hdr">
       <div className="wrap hdr-in">
-        <Link href="/" className="logo" aria-label="Alfa Inox — página inicial">
-          <span>ALFA</span><span>INOX</span>
+        <Link href="/" aria-label="Alfa Inox — página inicial" style={{ flex: 'none', display: 'flex' }}>
+          <LogoHorizontal height={54} />
         </Link>
 
         <nav className="nav" aria-label="Menu principal">

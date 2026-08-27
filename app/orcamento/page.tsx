@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { SITE, waLink, WA_DEFAULT, fullAddress } from '@/lib/site'
+import { SITE, waLink, WA_DEFAULT, fullAddress, socialMeta } from '@/lib/site'
 import OrcamentoForm from '@/components/OrcamentoForm'
 import Crumbs from '@/components/Crumbs'
 import Jsonld from '@/components/Jsonld'
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   description:
     'Peça seu orçamento de corrimão, guarda-corpo ou acessibilidade em aço inox em Belo Horizonte e região. Resposta rápida no WhatsApp e medição no local sem custo.',
   alternates: { canonical: '/orcamento/' },
+  ...socialMeta({ card: 'orcamento', titulo: 'Pedir Orçamento de Corrimão e Guarda-Corpo em Inox', descricao: 'Peça seu orçamento de corrimão, guarda-corpo ou acessibilidade em aço inox em Belo Horizonte e região. Resposta rápida no WhatsApp e medição no local sem custo.', url: '/orcamento/' }),
 }
 
 const PASSOS = [
@@ -47,7 +48,7 @@ export default function OrcamentoPage() {
             <OrcamentoForm />
           </div>
 
-          <aside style={{ position: 'sticky', top: 96, display: 'grid', gap: 22 }}>
+          <aside style={{ position: 'sticky', top: 108, display: 'grid', gap: 22 }}>
             <div style={{ padding: 26, background: 'var(--paper-2)', borderRadius: 'var(--r-lg)' }}>
               <h3 style={{ fontSize: '1.05rem', marginBottom: 16 }}>Prefere falar direto?</h3>
               <div style={{ display: 'grid', gap: 10 }}>

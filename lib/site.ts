@@ -37,3 +37,27 @@ export const WA_DEFAULT =
   'Olá! Vim pelo site da Alfa Inox e gostaria de um orçamento de corrimão / guarda-corpo em aço inox.'
 
 export const fullAddress = `${SITE.address.street} — ${SITE.address.district}, ${SITE.address.city}/${SITE.address.state}`
+
+/**
+ * Cartão de compartilhamento (WhatsApp, Facebook, LinkedIn, X).
+ * Os arquivos são gerados por `node --experimental-strip-types scripts/build-og.mjs`.
+ */
+export const ogCard = (name: string) => `${SITE.url}/og/${name}.jpg`
+
+export function socialMeta({
+  card = 'default', titulo, descricao, url, tipo = 'website',
+}: { card?: string; titulo: string; descricao: string; url: string; tipo?: 'website' | 'article' }) {
+  const images = [{ url: ogCard(card), width: 1200, height: 630, alt: `${titulo} — ${SITE.name}`, type: 'image/jpeg' }]
+  return {
+    openGraph: {
+      type: tipo,
+      locale: 'pt_BR',
+      siteName: SITE.name,
+      title: titulo,
+      description: descricao,
+      url: `${SITE.url}${url}`,
+      images,
+    },
+    twitter: { card: 'summary_large_image' as const, title: titulo, description: descricao, images: [ogCard(card)] },
+  }
+}
