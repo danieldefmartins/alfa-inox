@@ -8,7 +8,7 @@ em Belo Horizonte/MG. Construído para crescimento orgânico (SEO local + conte�
 - **Next.js 16** (App Router) com `output: 'export'` → HTML 100% estático
 - **Sem framework de CSS** — design system próprio em `app/globals.css`
 - **Fontes self-hosted** via `next/font` (Archivo + Inter), zero requisição externa
-- Deploy: **Cloudflare Workers** (assets estáticos), domínio `alfainoxbh.com.br`
+- Deploy: **Cloudflare Workers** (assets estáticos), domínio `alfainoxbh.com.br` (apex, **sem** www)
 
 ## Rodar localmente
 
@@ -88,6 +88,22 @@ segue o padrão `servico-<slug>`, `area-<slug>`, `post-<slug>`.
 - Nomes de arquivo de imagem e `alt` descritivos em português (SEO de imagens)
 - Open Graph + Twitter Card com imagem própria por página, e `manifest.webmanifest`
 - Páginas locais por cidade em `/areas-atendidas/<cidade>/`
+
+## Domínio
+
+O host canônico é o **apex** (`alfainoxbh.com.br`), definido em `lib/site.ts` → `SITE.url`.
+É dele que saem canonical, `sitemap.xml`, `robots.txt` e as URLs absolutas de `og:image`.
+
+Se um dia o site passar a usar `www`, mude **só** essa linha e rode o build — mas só
+depois que o `www` existir no DNS, senão as prévias de link param de carregar (o
+WhatsApp e o Facebook buscam o `og:image` pela URL absoluta anunciada na página).
+
+Dois ajustes ficam no painel da Cloudflare, não no repositório:
+
+- **SSL/TLS → Edge Certificates → Always Use HTTPS: On** — sem isso o `http://`
+  é servido em texto puro e o Chrome marca "Não seguro".
+- **DNS: `www` → apex** (CNAME proxiado ou Redirect Rule), para quem digitar o
+  endereço com `www` não bater em erro de conexão.
 
 ## Deploy
 

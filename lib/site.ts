@@ -1,7 +1,7 @@
 export const SITE = {
   name: 'Alfa Inox',
   legalName: 'Alfa Inox — Corrimão e Guarda-Corpo em Aço Inox',
-  url: 'https://www.alfainoxbh.com.br',
+  url: 'https://alfainoxbh.com.br',
   tagline: 'Corrimão e guarda-corpo em aço inox em Belo Horizonte',
   foundedYear: 2010,
   yearsInBusiness: 15,
