@@ -1,0 +1,9 @@
+# Redirecionamentos do site WordPress antigo (Bluehost) para a nova estrutura
+/galeria-de-fotos          /galeria/            301
+/galeria-de-fotos/*        /galeria/            301
+/contato                   /contato/            301
+/home                      /                    301
+/index.php                 /                    301
+/servicos                  /servicos/           301
+/corrimao                  /servicos/corrimao-inox/       301
+/guarda-corpo              /servicos/guarda-corpo-inox/   301

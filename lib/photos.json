@@ -1,0 +1,758 @@
+[
+  {
+    "slug": "guarda-corpo-inox-mezanino-vao-interno",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de aço inox instalado em mezanino interno",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "mezanino",
+      "destaque"
+    ],
+    "width": 1600,
+    "height": 900,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQBACdASoUAAsAPwFsrU8rJiQiMAgBYCAJZwDKABk4/T5d9ChXrUdQAAD+iPHctzHoHdrfgZoqE4tSwv9w6439mDzSrFSvhT15Xi1fZjggAA=="
+  },
+  {
+    "slug": "corrimao-inox-curvo-area-externa-condominio",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de aço inox curvo em área externa de condomínio em Belo Horizonte",
+    "ambiente": "comercial",
+    "tags": [
+      "externo",
+      "condominio",
+      "acessibilidade"
+    ],
+    "width": 1600,
+    "height": 900,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAwCdASoUAAsAPwFqrU8rJiQiMAgBYCAJZQAAW4cN9IS8KuAlgAAA8qdQ9E2l0TbpgnWAqvqQ0PiRJDuZXwfdqdEmwOeBTCB4JrRdU9C9SAAA"
+  },
+  {
+    "slug": "guarda-corpo-inox-travessas-horizontais-area-externa",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox com travessas horizontais em área externa comercial",
+    "ambiente": "comercial",
+    "tags": [
+      "externo"
+    ],
+    "width": 1032,
+    "height": 774,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAABwAwCdASoUAA8APwFqrU6rJiQiMAgBYCAJZwDE2BAI15MizaAA/XOib1SLH2U2cw2N8CxnDQunq2Fa54N6bqYMlHWjNek4gMhsfSEWvBuSNSpuIAA="
+  },
+  {
+    "slug": "guarda-corpo-inox-varanda-comercial",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de aço inox em varanda de edifício comercial",
+    "ambiente": "comercial",
+    "tags": [
+      "externo"
+    ],
+    "width": 1032,
+    "height": 774,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAABwAwCdASoUAA8APwFqrE8rJiQiMAgBYCAJZwDImCCP1hGu2yAA+6TWHsdTmOvJo2h6uiidlIM62xFEdgwVO9rFNIt1+evtm6rNJBjFep0gAA=="
+  },
+  {
+    "slug": "corrimao-inox-rampa-acessibilidade-duplo",
+    "category": "acessibilidade",
+    "alt": "Corrimão duplo de inox em rampa de acessibilidade conforme NBR 9050",
+    "ambiente": "comercial",
+    "tags": [
+      "externo",
+      "rampa",
+      "nbr9050"
+    ],
+    "width": 1152,
+    "height": 864,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADQAwCdASoUAA8APwFqrE8rJaQiMAgBYCAJZQAD5hliXRswQs+sg7AA23uvElL+l5yTbOlt9D3nQgBC6DOSwvyyxQiw6PzBE2FG3UHaS/J2e24IaCNYHqZ9BgCwo8moEPpKgttpQFfB7ijp8GUGmMfQfqiUcAAA"
+  },
+  {
+    "slug": "corrimao-inox-rampa-acesso-predio",
+    "category": "acessibilidade",
+    "alt": "Corrimão de inox em rampa de acesso a prédio residencial",
+    "ambiente": "comercial",
+    "tags": [
+      "externo",
+      "rampa",
+      "nbr9050"
+    ],
+    "width": 1152,
+    "height": 864,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABwAwCdASoUAA8APwFqrU8rJiQiMAgBYCAJZwAAUST5a0niMQAA/umn7kaU5APTO0lYVdxRaRAqpfBO6tFopc4GFtcK9ut3rOOqHlQsOGcxPLAWQpY/1V2IAAA="
+  },
+  {
+    "slug": "corrimao-inox-curvo-jardim",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de aço inox curvo em caminho de jardim",
+    "ambiente": "comercial",
+    "tags": [
+      "externo",
+      "condominio"
+    ],
+    "width": 1152,
+    "height": 864,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAwBACdASoUAA8APwForE6rJaQiMAgBYCAJZQC/OCPdSuDXvS/2YZSmVAAA8olV0zCIpLtAAW1oxJv+WjRRUMqMKqNgl6jEK55JcWcaVhW4Rc3tI+0pnXv1YAazD/qlaivaalDdEysxrkvNNXjmWAAA"
+  },
+  {
+    "slug": "corrimao-inox-escada-externa-jardim",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de inox em escada externa de área ajardinada",
+    "ambiente": "comercial",
+    "tags": [
+      "externo",
+      "condominio"
+    ],
+    "width": 1152,
+    "height": 864,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQBACdASoUAA8APwFqrE6rJiQiMAgBYCAJYwC7ABuMTL/aL0FNF2wAAAD+6NV0sywH0rK5A0cyEhtJpI+la1QucVZ6uaadprR/N001xZqlQxBn0AA="
+  },
+  {
+    "slug": "guarda-corpo-vidro-inox-area-externa",
+    "category": "guarda-corpo-vidro",
+    "alt": "Guarda-corpo de vidro temperado com estrutura de inox em área externa",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "vidro"
+    ],
+    "width": 1040,
+    "height": 780,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQBACdASoUAA8APwFqrU8rJiQiMAgBYCAJYwC/OBtxwiMW13h/qXL86ADiTuFV2BTe4KNpoVyIWlMXAY3lbq/I8BTM1g9cu/6yjXw1ujdVQ9+pkjtajPqrnruKe84AbjYkxagA"
+  },
+  {
+    "slug": "guarda-corpo-vidro-escada-interna",
+    "category": "guarda-corpo-vidro",
+    "alt": "Guarda-corpo de vidro com inox em escada interna residencial",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "vidro",
+      "escada"
+    ],
+    "width": 1040,
+    "height": 780,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAwCdASoUAA8APwForE6rJaQiMAgBYCAJZQDG9CFFliA69X3t5YVAAPy8NQCt7odJYhElfChdr0drOv2F3XLcwf/Ew/dpIrphJ76oLOvr0SrFg9yReArraNxiR9iwAAA="
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-granito",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada interna com degraus de granito",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 960,
+    "height": 1280,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAwCdASoPABQAPwFqrE6rJiQiMAgBYCAJaQDLLBt8Bwxe0SBs42gAAP6L/VuHKuINHygCho6kEJSXNr6/pmDm2d182fL1K0Tfo6zsUcx6idcqfUvQAA=="
+  },
+  {
+    "slug": "guarda-corpo-vidro-cobertura-piscina-deck",
+    "category": "guarda-corpo-vidro",
+    "alt": "Guarda-corpo de vidro em cobertura com piscina e deck de madeira",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "vidro",
+      "piscina",
+      "destaque"
+    ],
+    "width": 1280,
+    "height": 960,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADwAwCdASoUAA8APwForE6rJiQiMAgBYCAJYgCdAB6HJeC8QJRljDOUAPfcCBD4yb/HiPLLWR5uJQQ0iG8Z+0YhElL2RpOBbZuw09tVfdjPziy8G4pQ3mDWBN2Tl5jc2+fYU0X5jh0StpcLi3gsLdTBOU1QAAAA"
+  },
+  {
+    "slug": "barra-apoio-inox-banheiro-curva",
+    "category": "acessibilidade",
+    "alt": "Barra de apoio curva em aço inox instalada em banheiro",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "nbr9050",
+      "banheiro"
+    ],
+    "width": 1160,
+    "height": 872,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAABwAwCdASoUAA8APwFsrU8rJiQiMAgBYCAJaQAAeleCMma7UwAA/t2mNh8khiJcA6XhBkJ4wyZ/PQtV3MgAAA=="
+  },
+  {
+    "slug": "guarda-corpo-vidro-verde-interno",
+    "category": "guarda-corpo-vidro",
+    "alt": "Guarda-corpo de vidro verde com prumos de inox em ambiente interno",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "vidro"
+    ],
+    "width": 1040,
+    "height": 780,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQBACdASoUAA8APwFsrU8rJiQiMAgBYCAJYwC06CfXBO8wjuaLdcPgoADIV2XGWPOGuOOvQyT0j53vnWWfwxct/IzJFI11oenI5ImxtRtA/ZK4LgoFGODus5dfXOsOqAAAAA=="
+  },
+  {
+    "slug": "guarda-corpo-vidro-corredor-interno",
+    "category": "guarda-corpo-vidro",
+    "alt": "Guarda-corpo de vidro com inox em corredor interno",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "vidro"
+    ],
+    "width": 520,
+    "height": 1040,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAwCdASoKABQAPwFqrU8rJaQiMAgBYCAJaQAAXxzXzWhujGhSAAD+jOZNkXdvWxNJbcfLxTctTl2GXsa2mRo8Zuc+6xwA"
+  },
+  {
+    "slug": "barras-apoio-inox-banheiro-acessivel-nbr9050",
+    "category": "acessibilidade",
+    "alt": "Barras de apoio de inox em banheiro acessível conforme NBR 9050",
+    "ambiente": "comercial",
+    "tags": [
+      "interno",
+      "nbr9050",
+      "banheiro"
+    ],
+    "width": 872,
+    "height": 1160,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABQAwCdASoPABQAPwForE6rJaQiMAgBYCAJZwAAHrCe8PihwAD2DxKd+3oV8dFw305SYBDrzydRE2AVfv7C2gKH0TguXSwfyAirRUTN/7iCMAAA"
+  },
+  {
+    "slug": "corrimao-inox-escada-externa-area-gourmet",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de inox em escada externa de área gourmet",
+    "ambiente": "residencial",
+    "tags": [
+      "externo"
+    ],
+    "width": 720,
+    "height": 1280,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAwCdASoLABQAPwForE6rJaQiMAgBYCAJZwAAW9mEexBoQkPY1gAA/u/Da/o6jLJx/6zFFXYW5XAteaCi00MouGqADZoD0wTo0048lPYlvxY9gVn8wDdiDQXZ+6vZLpb1cPAA"
+  },
+  {
+    "slug": "gradil-inox-fechamento-parede",
+    "category": "portoes-gradis",
+    "alt": "Gradil de aço inox para fechamento e proteção de vão",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "gradil"
+    ],
+    "width": 720,
+    "height": 1280,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACQAwCdASoLABQAPwFqrU8rJiQiMAgBYCAJZwAASpZcjgFaOnNwAMo5iYkQ9gIEAQFn8fcxsi4grj+Atx4XRKWoMKwAAA=="
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-portao-seguranca",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada interna com portão de segurança",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada",
+      "portao"
+    ],
+    "width": 720,
+    "height": 1280,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAwCdASoLABQAPwFqrU6rJiQiMAgBYCAJZwAASqPFe4mxdXtzbnA4AP4V2L3pItW5czqDYmpswzTvDbLvdMPPM9EbIC/3xgrVPbz7AwUxhkEXOEgAAA=="
+  },
+  {
+    "slug": "guarda-corpo-inox-fachada-comercial",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de aço inox em fachada de loja comercial",
+    "ambiente": "comercial",
+    "tags": [
+      "externo"
+    ],
+    "width": 720,
+    "height": 1280,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAwCdASoLABQAPwFqrE8rJiQiMAgBYCAJZQC7ACKe8TeTJhHF60YAAP67Ugf5BZGGpQOmz6MxtWS150kzlTp8GuIbaNEQLhxjiH69pvLz2Rh/LSmGP6N+vWpCkaYY0AA="
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-interna-residencial",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada interna de residência",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 1158,
+    "height": 869,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBACdASoUAA8APwForE6rJiQiMAgBYCAJYwCo9BwgcFmP1BrZ3YV2AAD1wjYgwtZv1kLXnoHJl+gviXpoy+ZrJgLKlgqfXJfYsyV5tPfJYf57FF0XJnpftfmoCrpYWXw5ey6VsUOri4zWub+boxxgssMtdMgA"
+  },
+  {
+    "slug": "gradil-inox-externo-jardim",
+    "category": "portoes-gradis",
+    "alt": "Gradil de inox em fechamento externo de jardim",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "gradil"
+    ],
+    "width": 439,
+    "height": 432,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADwBACdASoUABQAPwF2slOrJySiqAgBYCAJYwC/7App7MFRUEGUwwAaKyUK4G9BAAAAzZ5T1vOqMf/ig3zV4e1j9gRWr79W37c+5n/ebs2EkXm/lk+dYwDsn2UJUKBm/Bmj8S+rwhWWjNUYLUsI1Oj8zT8ZEAV07MoCMylwIwzWEEzGKguPVLTuMtLf1waQAAA="
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-moderna",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada interna de design moderno",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada",
+      "destaque"
+    ],
+    "width": 768,
+    "height": 1024,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACQAwCdASoPABQAPwFqrU8rJaQiMAgBYCAJaQAAXlvKlQO3KwPAAP5WymsYmgeuATwRHp+stcycZm1o/LqOR+8XAAA="
+  },
+  {
+    "slug": "corrimao-inox-escada-piscina",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de aço inox em escada de acesso à piscina",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "piscina"
+    ],
+    "width": 780,
+    "height": 1040,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABwAwCdASoPABQAPwFqrE8rJiQiMAgBYCAJZQCw7B585QVSaWAAze9P7hnYHDNsXho0+dfnQNOLpS3QqkddpaXgAAA="
+  },
+  {
+    "slug": "corrimao-inox-escada-entrada-externa",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de inox em escada de entrada externa",
+    "ambiente": "residencial",
+    "tags": [
+      "externo"
+    ],
+    "width": 720,
+    "height": 1280,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAABwAwCdASoLABQAPwFqrE8rJiQiMAgBYCAJaQAASnqwr/TYRAAA/QKqtxoC0iU2mzu377qreqyu0KP5hsZJETA3nfGyHt4OD6xrhDBqAgD54QAA"
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-vao-interno",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox protegendo vão de escada interna",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 720,
+    "height": 1280,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACwAwCdASoLABQAPwFqrE6rJiQiMAgBYCAJZwDCgBRepRb8UwWlNADKpZMbQQGrfKk6MPUW6noW0RLA17OcgFyHBEs7PsG5JW/PursJnB5z3BEBBumgZ+AA"
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-degraus-claros",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada interna com degraus claros",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 720,
+    "height": 1280,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAwCdASoLABQAPwFqrE8rJiQiMAgBYCAJaAC2yA8o28pmyKg3gAD7mQ+Uq81Z4338aCkg3PdV87lC+ZaLHS5LDb1PPW5vxjQn/8XK4QZ/NLs6f1N4RmRxqi5wAA=="
+  },
+  {
+    "slug": "corrimao-inox-escada-interna-parede",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de inox fixado na parede em escada interna",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada",
+      "parede"
+    ],
+    "width": 720,
+    "height": 1280,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADQAwCdASoLABQAPwFqrU8rJiQiMAgBYCAJZwAARduxYrAVotL4twAA/dkW5ZPikBhX7M9stsKATZ9CDi7NiyrDuwGPaCO9ZjFbWAAA"
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-lance-reto",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em lance reto de escada",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 720,
+    "height": 1280,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAwCdASoLABQAPwFqrE6rJiQiMAgBYCAJZwDE2BumUzE+kNEPXAAA9r4SS8ONQBBU9oWW9Xfqd7O3mp49tHgFYCwpE3ebv3Fu/flu327F/tJ29s7m2dMhHIkZJgAA"
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-externa-lateral",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada externa lateral",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "escada"
+    ],
+    "width": 900,
+    "height": 1600,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAwCdASoLABQAPwFqrU6rJiQiMAgBYCAJYwCdAB4+CoISc/tBUmAA/c9mXfxyrF7VL36I30PXDIw5hq6hyKvw3vLaPhSnRUOkIAqPeAAAAA=="
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-interna-vidro",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox combinado com vidro em escada interna",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada",
+      "vidro"
+    ],
+    "width": 514,
+    "height": 826,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADwAwCdASoMABQAPwForE6rJaQiMAgBYCAJZwDG9CHe6kE4ZUKUG5bQAPk1jbY2uMDrYVMtLwJ3g++c/SDgr+DPmqExNVYD34x9uNvD3CJCCng3WyAX1634d8E72pAo1NKffvH8qGpSZWZkT8WPi/uAmFayEUAA"
+  },
+  {
+    "slug": "corrimao-inox-escada-granito-interna",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de inox em escada interna com degraus de granito",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 900,
+    "height": 1600,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAwCdASoLABQAPwForE6rJaQiMAgBYCAJZwDA3CP7OuqvB4spAAD+a7WX5DBnlS78kWgNgbaG7U2pv1OqbkpUmP9khtNla7C4AA=="
+  },
+  {
+    "slug": "guarda-corpo-vidro-inox-escada",
+    "category": "guarda-corpo-vidro",
+    "alt": "Guarda-corpo de vidro temperado com inox em escada",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "vidro",
+      "escada"
+    ],
+    "width": 900,
+    "height": 1600,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABQAwCdASoLABQAPwFqrE6rJiQiMAgBYCAJZwAAUqla5V2mAAD0MMdBCsAb5VO71HMCpFqZjBHd97z9GPdV3KVAAAA="
+  },
+  {
+    "slug": "corrimao-inox-parede-escada-predial",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de parede em inox em escada de prédio residencial",
+    "ambiente": "comercial",
+    "tags": [
+      "interno",
+      "parede",
+      "escada"
+    ],
+    "width": 900,
+    "height": 1600,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACQAwCdASoLABQAPwFqrE6rJiQiMAgBYCAJZwAAPv8i8IxwbwEQAP61YqMYrOOep3XTK2mUx10ibdNik0nIHu/v35/ab1F9dSBGa6gFApz1FAAA"
+  },
+  {
+    "slug": "guarda-corpo-inox-corredor-mezanino",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em corredor de mezanino",
+    "ambiente": "comercial",
+    "tags": [
+      "interno",
+      "mezanino",
+      "destaque"
+    ],
+    "width": 1600,
+    "height": 900,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACwAwCdASoUAAsAPwFsrU8rJiQiMAgBYCAJYwC7ABVXAYdtkAItcAD98/rVUaIgMtE9sNTmb4E9gEqQI+53rtrnRRC+QQrThBBybLMRol5fu33DO2JFFyMUtwmAHIKHCBqAAA=="
+  },
+  {
+    "slug": "corrimao-inox-corredor-interno",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de aço inox em corredor interno",
+    "ambiente": "comercial",
+    "tags": [
+      "interno",
+      "parede"
+    ],
+    "width": 1600,
+    "height": 900,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAwCdASoUAAsAPwFqrE6rJiQiMAgBYCAJZQC06Bu0N9NeZ/ttK4AA/sP4gaXvIN42vloLpB/ClJJbF/kD3mQZ9OQP9Bz4uAA="
+  },
+  {
+    "slug": "corrimao-inox-escada-entrada-residencia",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de inox em escada de entrada de residência",
+    "ambiente": "residencial",
+    "tags": [
+      "externo"
+    ],
+    "width": 899,
+    "height": 1599,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwAwCdASoLABQAPwForE6rJiQiMAgBYCAJQBibA/C48iWaW+5q1I1AAPsdH2R9oFLwls1NRBlCKyaO/WIDOzuyNva9LZd3BUSG9ajvnVb2WRWSvTe7izzf0VG5cX7666BJgoJKUChhJRn7EewAAA=="
+  },
+  {
+    "slug": "corrimao-inox-escada-externa-residencial",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de aço inox em escada externa residencial",
+    "ambiente": "residencial",
+    "tags": [
+      "externo"
+    ],
+    "width": 899,
+    "height": 1599,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACwAwCdASoLABQAPwFqrE8rJiQiMAgBYCAJYwCw7CBYFqr9naBYAAD2u7BSOMwyChsvn4Sj194eh7HTbp+rZBvnNptz3gQU5dqR5cKKGfMDM8MgYEev3j+GTSUMQAAA"
+  },
+  {
+    "slug": "gradil-inox-varanda-comercial-coberta",
+    "category": "portoes-gradis",
+    "alt": "Gradil de inox em varanda coberta de imóvel comercial",
+    "ambiente": "comercial",
+    "tags": [
+      "externo",
+      "gradil"
+    ],
+    "width": 1600,
+    "height": 900,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACwAwCdASoUAAsAPwFqrE6rJiQiMAgBYCAJQBOmUAAx/MvXCpeqwAD9TAfAJ8f6icPJgpfig6DLxGOtX+eJbFQxnle3L0cw8Z1fxuihJtiQdugKqkSLl7/cSVenrRQ/l3S4PWaAAAA="
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-externa-acesso",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada externa de acesso",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "escada"
+    ],
+    "width": 900,
+    "height": 1600,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQAwCdASoLABQAPwForE6rJaQiMAgBYCAJZwC3uBut82gVYcEojsAA9l6Acczn0THDW06xHYZFfz+VvbTuiwO8OMJkvkcd2UYAmcIDq6MAfqbFQve6h2vhJjGh/FQkLeupCXB2QAA="
+  },
+  {
+    "slug": "corrimao-inox-escada-interna-clara",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de inox em escada interna de residência",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 899,
+    "height": 1599,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAwCdASoLABQAPwFqrU6rJiQiMAgBYCAJZwC7ABtyKTNQf3x4AAD3HwsuESrWzAnCfn28LBZ4a9c2+jKVck9J09KTNYG9Fgse/79NQ6j90fe8sdENWa4r0a4AAA=="
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-externa-lateral-casa",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada externa lateral de casa",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "escada"
+    ],
+    "width": 527,
+    "height": 855,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAwBACdASoMABQAPwFqrE6rJiQiMAgBYCAJaACdOUAAuGATdzHvxmdfkAAA8UcsXt2v6584ciYL598uLH7u2OVsV/Ov8jbjtStav8NUJ5UIfK71TxiKG/3j1cyDT5zgAAA="
+  },
+  {
+    "slug": "corrimao-parede-inox-escada-condominio",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de parede em inox em escada de condomínio",
+    "ambiente": "comercial",
+    "tags": [
+      "interno",
+      "parede",
+      "escada"
+    ],
+    "width": 1600,
+    "height": 1200,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADwAwCdASoUAA8APwFqrE8rJiQiMAgBYCAJaQDGfCHhkPo09n61RuQAAP6vPQtZa+6W6JM7QnSNqTu34Ikdju6AAAA="
+  },
+  {
+    "slug": "corrimao-parede-inox-lance-escada",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de parede em inox acompanhando lance de escada",
+    "ambiente": "comercial",
+    "tags": [
+      "interno",
+      "parede",
+      "escada"
+    ],
+    "width": 1600,
+    "height": 1200,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAwCdASoUAA8APwFqrE8rJiQiMAgBYCAJZwDE2BUGFZkbSzCMlioAAOFYRWB0cfLYuTuzHtVL3v9X19LXBpAA3Oxgv/CcD0OeoW1x7vvN9hBBQS9bvIAA"
+  },
+  {
+    "slug": "corrimao-parede-inox-escada-interna",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de parede em aço inox em escada interna",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "parede",
+      "escada"
+    ],
+    "width": 720,
+    "height": 1280,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAwCdASoLABQAPwFsrU8rJiQiMAgBYCAJZwAAPvLKRdP36IE/gAD+tZvA05mFyWM2Rg6+ITPwWjif3zsVX1BAb4Kfztj3Tpg8BsgA"
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-piso-colorido",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada com revestimento colorido",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 720,
+    "height": 1280,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACQAwCdASoLABQAPwFqrE6rJiQiMAgBYCAJYwAAQZm638bg+gmgAP5kSXUyMjySS9wKXUeyaNCm7s81aguQOJ4hDNmqUcD69evbNyzeDPXQGukx7eicDwzAAAA="
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-interna-sala",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada interna de sala de estar",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 1200,
+    "height": 1600,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAwCdASoPABQAPwFqrE8rJiQiMAgBYCAJZwDG9CLHdQIjGJQ0GcWAAMs3ydcGeMi9MBUFc8g8Etj4WBOyQY3426ruJqyCVEPYormTa4p6V7FNzEHEOldVVnEWdEAA"
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-granito-interna",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada interna com granito",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 1200,
+    "height": 1600,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABwAwCdASoPABQAPwFqrE6rJiQiMAgBYCAJZwAAI7kdgHP54rYA98QAl1ScArbmo1JTTcYip35CXNokfNcr8DEcwh+Ijz1sVLQ4nXphNxujz/d/9LMAAA=="
+  },
+  {
+    "slug": "corrimao-inox-escada-interna-madeira",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de inox em escada interna com acabamento em madeira",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 1200,
+    "height": 1600,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAwBACdASoPABQAPwFqrE8rJiQiMAgBYCAJZgCdMoADP5zOiSkybJGAuAAA/nwjI7YJPtZ5EMX8JyfJKnPmv6E5A7x1GF0qeYpKPuoEFxMMpgxeMdfhlifmHJL2JZRgR09A/Lzhnp26b9r0skMYxBqQGYg/TvkAAAA="
+  },
+  {
+    "slug": "corrimao-parede-inox-escada-caracol",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de parede em inox acompanhando escada em curva",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "parede",
+      "escada"
+    ],
+    "width": 1600,
+    "height": 1200,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAwCdASoUAA8APwForE6rJaQiMAgBYCAJZQAAWhuKjYkZxdU1pgAA/hAFIHtszotRF7jLDtEbHe9oO2AI9wwa0QEghXJUFUDUb8y7ev834KMP/wLUYAAA"
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-parede-vermelha",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada com parede vermelha",
+    "ambiente": "comercial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 502,
+    "height": 1032,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQBACdASoKABQAPwFqrE8rJiQiMAgBYCAJZgCdEf/gMXFLnTsxJC1mpAD+cXqMmMjgnc6ShcDab6cKrerDrkOkSITx8TbseN0lAcCkpwsRJ33vN3+pnJsocswD3Vv2pV6DrrWquSV+CnUMizaQdSJXQAA="
+  },
+  {
+    "slug": "guarda-corpo-inox-academia-comercial",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de aço inox instalado em academia",
+    "ambiente": "comercial",
+    "tags": [
+      "interno",
+      "destaque"
+    ],
+    "width": 1040,
+    "height": 780,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABQBACdASoUAA8APwFqrE8rJiQiMAgBYCAJbACdMoAC70jSuHkF0GuXqUAAAPZ0IbKuwNf5Jd/Rrk9/nPbs2gPvKW7n3ZjqMMFaQp61TOyG4EcReM6Q/111UEkr12Zd+GNK1Eho0kbQW49a/uoA6XuYqyzdQAAA"
+  },
+  {
+    "slug": "corrimao-parede-inox-escada-residencia",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de parede em inox em escada de residência",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "parede",
+      "escada"
+    ],
+    "width": 1200,
+    "height": 1600,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAwCdASoPABQAPwFqrE8rJiQiMAgBYCAJZwAASnlAm4wEvCcWOQAA/tWN/8x2Mll1OSrZ8lbs+6hQSufjCeC9II9IltnoUcqZzzqrIzqN2ddgDm/Mo04PRLCRIIU9CgAAAA=="
+  }
+]
