@@ -1,11 +1,15 @@
-export function LogoHorizontal({ height = 42 }: { height?: number }) {
+/**
+ * Logo horizontal (fundo claro). A altura vem do CSS (`.logo-hdr`) para poder
+ * crescer no mobile, onde só dividimos a barra com o botão do menu.
+ */
+export function LogoHorizontal({ className = 'logo-hdr' }: { className?: string }) {
   return (
     <img
       src="/marca/alfa-inox-horizontal.webp"
       alt="Alfa Inox — especialistas em guarda-corpo em aço inox"
       width={1051}
       height={400}
-      style={{ height, width: 'auto' }}
+      className={className}
       fetchPriority="high"
     />
   )

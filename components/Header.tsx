@@ -12,7 +12,7 @@ export default function Header() {
     <header className="hdr">
       <div className="wrap hdr-in">
         <Link href="/" aria-label="Alfa Inox — página inicial" style={{ flex: 'none', display: 'flex' }}>
-          <LogoHorizontal height={54} />
+          <LogoHorizontal />
         </Link>
 
         <nav className="nav" aria-label="Menu principal">

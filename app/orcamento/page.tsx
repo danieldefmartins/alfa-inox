@@ -48,7 +48,7 @@ export default function OrcamentoPage() {
             <OrcamentoForm />
           </div>
 
-          <aside style={{ position: 'sticky', top: 108, display: 'grid', gap: 22 }}>
+          <aside style={{ position: 'sticky', top: 120, display: 'grid', gap: 22 }}>
             <div style={{ padding: 26, background: 'var(--paper-2)', borderRadius: 'var(--r-lg)' }}>
               <h3 style={{ fontSize: '1.05rem', marginBottom: 16 }}>Prefere falar direto?</h3>
               <div style={{ display: 'grid', gap: 10 }}>

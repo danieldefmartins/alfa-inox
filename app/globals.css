@@ -107,7 +107,8 @@ p { margin: 0 0 1.15em; text-wrap: pretty; }
   background: rgba(255,255,255,.92); backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid var(--line);
 }
-.hdr-in { display: flex; align-items: center; gap: 28px; height: 84px; }
+.hdr-in { display: flex; align-items: center; gap: 28px; height: 104px; }
+.logo-hdr { height: 76px; width: auto; flex: none; }
 .logo { display: flex; align-items: baseline; gap: 8px; font-family: var(--font-display), sans-serif; font-weight: 800; font-size: 1.35rem; letter-spacing: -.03em; flex: none; }
 .logo span:first-child { color: var(--ink); }
 .logo span:last-child {
@@ -140,6 +141,14 @@ p { margin: 0 0 1.15em; text-wrap: pretty; }
 @media (max-width: 1000px) {
   .nav { display: none; }
   .burger { display: inline-flex; }
+  /* sem menu na barra, o logo pode ocupar o espaço livre */
+  .hdr-in { height: 96px; gap: 16px; }
+  .logo-hdr { height: 78px; }
+}
+
+@media (max-width: 420px) {
+  .hdr-in { height: 86px; }
+  .logo-hdr { height: 66px; }
 }
 
 .mobile-nav { border-top: 1px solid var(--line); background: #fff; padding: 12px var(--pad) 24px; }
