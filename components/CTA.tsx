@@ -15,7 +15,7 @@ export default function CTA({
         <p className="lede" style={{ marginTop: 18 }}>{texto}</p>
         <div style={{ display: 'flex', gap: 13, justifyContent: 'center', flexWrap: 'wrap', marginTop: 32 }}>
           <a className="btn btn-wa btn-lg" href={waLink(msg)} target="_blank" rel="noopener">
-            <WhatsAppIcon size={20} /> WhatsApp {SITE.phoneDisplay}
+            <WhatsAppIcon size={20} /> WhatsApp {SITE.whatsappDisplay}
           </a>
           <Link className="btn btn-ghost btn-lg" href="/orcamento/">Preencher formulário</Link>
         </div>

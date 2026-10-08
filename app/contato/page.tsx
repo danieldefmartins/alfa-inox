@@ -9,9 +9,9 @@ import { WhatsAppIcon, Phone, Pin, Clock, Mail, Arrow } from '@/components/Icons
 export const metadata: Metadata = {
   title: 'Contato — Corrimão e Guarda-Corpo em Inox em BH',
   description:
-    'Fale com a Alfa Inox: WhatsApp (31) 97237-9813, vendas@alfainoxbh.com.br. Av. Américo Vespúcio, 105 — Aparecida, Belo Horizonte/MG. Segunda a sábado, 8h às 17h.',
+    'Fale com a Alfa Inox: telefone (31) 2298-1234, WhatsApp (31) 97237-9813, vendas@alfainoxbh.com.br. Av. Américo Vespúcio, 105 — Aparecida, Belo Horizonte/MG. Segunda a sábado, 8h às 17h.',
   alternates: { canonical: '/contato/' },
-  ...socialMeta({ card: 'contato', titulo: 'Contato — Corrimão e Guarda-Corpo em Inox em BH', descricao: 'Fale com a Alfa Inox: WhatsApp (31) 97237-9813, vendas@alfainoxbh.com.br. Av. Américo Vespúcio, 105 — Aparecida, Belo Horizonte/MG. Segunda a sábado, 8h às 17h.', url: '/contato/' }),
+  ...socialMeta({ card: 'contato', titulo: 'Contato — Corrimão e Guarda-Corpo em Inox em BH', descricao: 'Fale com a Alfa Inox: telefone (31) 2298-1234, WhatsApp (31) 97237-9813, vendas@alfainoxbh.com.br. Av. Américo Vespúcio, 105 — Aparecida, Belo Horizonte/MG. Segunda a sábado, 8h às 17h.', url: '/contato/' }),
 }
 
 const mapa = `https://www.google.com/maps?q=${encodeURIComponent(`${SITE.address.street}, ${SITE.address.district}, ${SITE.address.city} - ${SITE.address.state}`)}&output=embed`
@@ -35,7 +35,7 @@ export default function ContatoPage() {
       <section className="section">
         <div className="wrap" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: 'clamp(28px, 4vw, 48px)' }}>
           {[
-            { icone: <WhatsAppIcon size={26} />, t: 'WhatsApp', v: SITE.phoneDisplay, d: 'Resposta no mesmo dia útil. Mande fotos do lance.', href: waLink(WA_DEFAULT), cta: 'Abrir conversa', ext: true },
+            { icone: <WhatsAppIcon size={26} />, t: 'WhatsApp', v: SITE.whatsappDisplay, d: 'Resposta no mesmo dia útil. Mande fotos do lance.', href: waLink(WA_DEFAULT), cta: 'Abrir conversa', ext: true },
             { icone: <Phone size={26} />, t: 'Telefone', v: SITE.phoneDisplay, d: SITE.hours, href: `tel:${SITE.phoneRaw}`, cta: 'Ligar agora' },
             { icone: <Mail size={26} />, t: 'E-mail', v: SITE.email, d: 'Para propostas formais, condomínios e construtoras.', href: `mailto:${SITE.email}`, cta: 'Enviar e-mail' },
           ].map((c) => (
