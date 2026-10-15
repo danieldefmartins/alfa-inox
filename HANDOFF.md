@@ -13,6 +13,8 @@
 - `og:image`/`twitter:image` usam `OG_ORIGIN` no build: `npm run preview:deploy` aponta para o workers.dev (para o dono ver os cartões novos); o build de produção usa https://alfainoxbh.com.br. Canonicals sempre no domínio.
 - Paleta: petróleo `#0B7A94` só em CTAs; carvão `#2E3A40` como tinta e faixas escuras. Tokens em `docs/DESIGN.md`.
 
+**Hero (escolha do dono):** foto do corrimão duplo de inox na área de lazer de um condomínio (`corrimao-inox-rampa-acessibilidade-duplo`, AVIF/WebP), recorte ajustado por tela; linha de apoio: projetos residenciais e comerciais com o design moderno dos projetos de alto padrão. Nova seção "Para a sua casa e para o seu negócio" (residencial x comercial, com fotos reais) + "Design moderno, como nos projetos de alto padrão" (inox com vidro, linhas retas, escovado/espelhado, fixação discreta — só o que as fotos e os modelos fabricados mostram). Meta description da home e `llms.txt` atualizados; cartão OG padrão com a mesma foto.
+
 **Serviços na home** — grade editorial com fotos grandes (2 destaques ~480 px + 4 de 380 px no desktop; carrossel com rolagem lateral e cartões 4:5 no celular), uma foto real por serviço sem repetir o hero nem a 1ª linha de obras; as 6 imagens verificadas com rolagem real.
 
 **Design** — mundo próprio (não parece Prime/EDX): título Archivo semi-expandido (eco do letreiro do logo), corpo na fonte do sistema, hero com foto real em tela cheia e véu carvão suave (título grande à esquerda, linha + CTAs numa coluna à direita alinhada à base) — a versão com painel diagonal foi descartada pelo dono, índice de serviços em linhas (não cartões), passos em degraus, trilho de aço na margem que "é polido" com a rolagem.
@@ -42,7 +44,7 @@
 | Modo | Página | Perf | A11y | BP | SEO | LCP |
 |---|---|---|---|---|---|---|
 | mobile | / | 91 | 100 | 100 | 100 | 3,5 s |
-| desktop | / | 100 | 100 | 100 | 100 | 0,7 s |
+| desktop | / | 100 | 100 | 100 | 100 | 0,8 s |
 | mobile | serviço (vidro) | 96 | 100 | 100 | 100 | 2,9 s |
 | mobile | cidade (Nova Lima) | 92 | 100 | 100 | 100 | 3,3 s |
 | mobile | galeria | 91 | 100 | 100 | 100 | 3,5 s |

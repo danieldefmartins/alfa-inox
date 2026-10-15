@@ -15,7 +15,7 @@ const display = Archivo({ subsets: ['latin'], axes: ['wdth'], variable: '--f-dis
 // Texto corrido na fonte do sistema (SF no iPhone/Mac, Roboto no Android): zero download, leitura nativa.
 
 const TITLE = 'Corrimão e Guarda-Corpo em Inox em BH | Alfa Inox'
-const DESC = 'Corrimão, guarda-corpo de inox e de vidro e acessibilidade NBR 9050 em BH. Oficina própria desde 2010: medimos, fabricamos e instalamos. Peça no WhatsApp.'
+const DESC = 'Corrimão e guarda-corpo de inox e vidro em BH para casas, condomínios, lojas e empresas, com design moderno de alto padrão. Oficina própria desde 2010.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),

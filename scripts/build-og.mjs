@@ -20,7 +20,7 @@ const pic = (slug) => `data:image/webp;base64,${b64(path.join(ROOT, 'public', 'f
 const logo = `data:image/svg+xml;base64,${b64(path.join(ROOT, 'public/brand/logo-on-dark.svg'))}`
 
 const cards = [
-  { name: 'default', titulo: 'Corrimão e guarda-corpo em inox em Belo Horizonte', sub: 'Medimos, fabricamos na nossa oficina e instalamos. Desde 2010.', foto: 'guarda-corpo-vidro-cobertura-piscina-deck' },
+  { name: 'default', titulo: 'Corrimão e guarda-corpo em inox em Belo Horizonte', sub: 'Projetos residenciais e comerciais, com o design moderno dos projetos de alto padrão.', foto: 'corrimao-inox-rampa-acessibilidade-duplo' },
   { name: 'galeria', titulo: 'Obras de corrimão e guarda-corpo em inox', sub: `${PHOTOS.length} fotos reais de obras na Grande BH`, foto: 'guarda-corpo-inox-escada-interna-sala' },
   { name: 'sobre', titulo: 'Uma oficina de inox em BH desde 2010', sub: 'Fábrica, não revenda: quem fabrica instala', foto: 'guarda-corpo-inox-escada-moderna' },
   { name: 'contato', titulo: 'Fale com a Alfa Inox', sub: 'WhatsApp (31) 97237-9813 · (31) 2298-1234', foto: 'corrimao-parede-inox-escada-caracol' },

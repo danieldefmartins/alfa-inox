@@ -14,7 +14,7 @@ import { PADRAO } from '@/components/configurador/modelo'
 import { FAQ_GERAL } from '@/lib/faq'
 
 const TITLE = 'Corrimão e Guarda-Corpo em Inox em BH | Alfa Inox'
-const DESC = 'Corrimão, guarda-corpo de inox e de vidro e acessibilidade NBR 9050 em BH. Oficina própria desde 2010: medimos, fabricamos e instalamos. Peça no WhatsApp.'
+const DESC = 'Corrimão e guarda-corpo de inox e vidro em BH para casas, condomínios, lojas e empresas, com design moderno de alto padrão. Oficina própria desde 2010.'
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -23,19 +23,19 @@ export const metadata: Metadata = {
   ...socialMeta({ card: 'default', titulo: TITLE, descricao: DESC, url: '/' }),
 }
 
-const HERO = findPhoto('guarda-corpo-vidro-cobertura-piscina-deck')!
+const HERO = findPhoto('corrimao-inox-rampa-acessibilidade-duplo')!
 // Foto de cada serviço na home (diferentes do hero e da 1ª linha de obras)
 const FOTO_SERVICO: Record<string, string> = {
   'corrimao-inox': 'corrimao-parede-inox-escada-residencia',
   'guarda-corpo-inox': 'guarda-corpo-inox-escada-moderna',
   'guarda-corpo-de-vidro': 'guarda-corpo-vidro-inox-escada',
-  'acessibilidade-nbr-9050': 'corrimao-inox-rampa-acessibilidade-duplo',
+  'acessibilidade-nbr-9050': 'corrimao-inox-rampa-acesso-predio',
   'portoes-e-gradis-inox': 'gradil-inox-varanda-comercial-coberta',
   'condominios-e-empresas': 'guarda-corpo-inox-fachada-comercial',
 }
 const OBRAS = [ // paisagem: no celular (2 colunas) cada uma usa o arquivo de 400 px
   'corrimao-parede-inox-escada-caracol', 'guarda-corpo-vidro-escada-interna', 'corrimao-inox-curvo-area-externa-condominio',
-  'guarda-corpo-inox-academia-comercial', 'corrimao-inox-rampa-acessibilidade-duplo', 'guarda-corpo-inox-escada-interna-residencial',
+  'guarda-corpo-inox-corredor-mezanino', 'guarda-corpo-inox-travessas-horizontais-area-externa', 'guarda-corpo-inox-escada-interna-residencial',
   'guarda-corpo-inox-mezanino-vao-interno', 'guarda-corpo-vidro-inox-area-externa', 'corrimao-parede-inox-escada-condominio',
 ]
 
@@ -52,12 +52,12 @@ export default function Home() {
           <img src={`/fotos/${HERO.slug}-1600.webp`} sizes="100vw"
             srcSet={`/fotos/${HERO.slug}-800.webp 800w, /fotos/${HERO.slug}-1600.webp ${HERO.width}w`}
             width={HERO.width} height={HERO.height} fetchPriority="high" loading="eager" decoding="async"
-            alt="Guarda-corpo de vidro com estrutura de inox em cobertura com piscina, com vista para os morros de BH" />
+            alt="Corrimão duplo de inox na escada da área de lazer de um condomínio em BH, com piscina e prédios ao fundo" />
         </picture>
         <div className="wrap hero3-in">
           <h1>Corrimão e guarda-corpo em inox em <CityName fallback="Belo Horizonte" />.</h1>
           <div className="hero3-side">
-            <p>Medimos no local, fabricamos na nossa oficina e instalamos com equipe própria. Em inox 304 ou 316, na altura que a norma pede.</p>
+            <p>Projetos residenciais e comerciais — casas, condomínios, lojas e empresas — com o design moderno dos projetos de alto padrão. Medimos, fabricamos e instalamos.</p>
             <div className="hero-ctas">
               <a className="btn btn-cta btn-lg" href={waLink(WA_DEFAULT)} target="_blank" rel="noopener"><WhatsAppIcon size={20} /> Orçamento no WhatsApp</a>
               <Link className="btn btn-glass btn-lg" href="/galeria/">Ver obras</Link>
@@ -95,6 +95,39 @@ export default function Home() {
               )
             })}
           </ul>
+        </div>
+      </section>
+
+      {/* RESIDENCIAL E COMERCIAL + DESIGN MODERNO */}
+      <section className="section white">
+        <div className="wrap">
+          <div className="head">
+            <h2>Para a sua casa e para o seu negócio</h2>
+            <p className="lede">Fazemos obras residenciais e comerciais com o mesmo cuidado de fábrica — e o acabamento que você vê nos projetos de alto padrão.</p>
+          </div>
+          <div className="segs">
+            <Link href="/galeria/?tipo=escadas" className="seg-card">
+              <div className="seg-img"><Img photo={findPhoto('guarda-corpo-vidro-cobertura-piscina-deck')!} sizes="(min-width: 900px) 600px, 100vw" /></div>
+              <h3>Residencial</h3>
+              <p>Escadas internas e externas, sacadas, varandas, mezaninos e áreas de piscina de casas, sobrados e apartamentos.</p>
+              <span className="svc-go">Ver obras residenciais <Arrow /></span>
+            </Link>
+            <Link href="/servicos/condominios-e-empresas/" className="seg-card">
+              <div className="seg-img"><Img photo={findPhoto('guarda-corpo-inox-academia-comercial')!} sizes="(min-width: 900px) 600px, 100vw" /></div>
+              <h3>Comercial e condomínios</h3>
+              <p>Áreas comuns de condomínios, lojas, academias, clínicas e empresas — com rampas e banheiros adequados à NBR 9050.</p>
+              <span className="svc-go">Condomínios e empresas <Arrow /></span>
+            </Link>
+          </div>
+          <div className="moderno">
+            <h3>Design moderno, como nos projetos de alto padrão</h3>
+            <ul className="moderno-list">
+              <li><strong>Inox com vidro</strong>Painéis de vidro presos por pinças ou botões de inox: a vista e a luz continuam livres.</li>
+              <li><strong>Linhas retas</strong>Travessas horizontais e prumos alinhados, sem ornamento — o desenho limpo da arquitetura contemporânea.</li>
+              <li><strong>Escovado ou espelhado</strong>Inox escovado discreto ou polido espelhado, com solda TIG e emendas lixadas até sumirem.</li>
+              <li><strong>Fixação discreta</strong>Corrimão de parede com suportes mínimos, sapatas flangeadas e, no vidro, perfil embutido no piso.</li>
+            </ul>
+          </div>
         </div>
       </section>
 
