@@ -60,8 +60,8 @@ export const SITE = {
    */
   crm: {
     apiBase: 'https://api.get360crm.com',
-    formSlug: '' as string,
-    workspaceId: '' as string,
+    formSlug: 'alfa-inox-orcamento' as string,
+    workspaceId: '2f3b34b0-eca1-4794-8830-eea24bd7b94a' as string,
     fields: {
       firstName: 'first_name',
       lastName: 'last_name',

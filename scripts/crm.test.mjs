@@ -1,7 +1,6 @@
 // Testes de contrato do cliente 360 CRM (lib/crm.ts). fetch é simulado: nenhum lead real é enviado.
-// A definição do formulário abaixo é SINTÉTICA, no formato do formulário público do 360 (mesmo formato do
-// fixture do site Prime). Quando a Alfa Inox publicar o formulário dela, troque FORM pelo JSON real
-// (GET https://api.get360crm.com/public/website/forms/<slug>, sem enviar nada) e rode `npm test`.
+// A definição do formulário abaixo espelha o formulário publicado no 360 (slug alfa-inox-orcamento,
+// conferido em 15/10/2026 via GET https://api.get360crm.com/public/website/forms/alfa-inox-orcamento).
 import { test, afterEach } from 'node:test'
 import assert from 'node:assert/strict'
 import { loadForm, freshForm, sendLead, buildAnswers, normalizePhone, photoFields, photoType, newAttempt, directUploadsLive, resetDirectUploadsProbe } from '../lib/crm.ts'
@@ -20,7 +19,7 @@ const FORM_CONFIG = {
     { id: 'phone', type: 'phone', required: true },
     { id: 'email', type: 'email' },
     { id: 'address', type: 'text' },
-    { id: 'service', type: 'text', required: true },
+    { id: 'service', type: 'select', required: true },
     { id: 'message', type: 'textarea' },
     { id: 'source_page', type: 'text' },
     { id: 'photo_1', type: 'file' }, { id: 'photo_2', type: 'file' }, { id: 'photo_3', type: 'file' },
