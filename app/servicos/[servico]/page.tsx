@@ -2,15 +2,17 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { SERVICOS, findServico } from '@/lib/servicos'
-import { byCategory, src } from '@/lib/photos'
+import { byCategory, findPhoto, PHOTOS } from '@/lib/photos'
 import { SITE, waLink, socialMeta } from '@/lib/site'
 import { AREAS } from '@/lib/areas'
-import Gallery from '@/components/Gallery'
+import { POSTS } from '@/lib/blog'
+import Portfolio from '@/components/portfolio/Portfolio'
 import FAQ from '@/components/FAQ'
-import CTA from '@/components/CTA'
 import Crumbs from '@/components/Crumbs'
 import Jsonld from '@/components/Jsonld'
-import { ServiceIcon, Arrow, Check, WhatsAppIcon } from '@/components/Icons'
+import OrcamentoForm from '@/components/OrcamentoForm'
+import { Img, CloseCTA, ComoFunciona, Estoque, Depoimentos } from '@/components/Sections'
+import { Arrow, Check, WhatsAppIcon } from '@/components/Icons'
 
 export const dynamicParams = false
 export function generateStaticParams() {
@@ -18,160 +20,162 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ servico: string }> }): Promise<Metadata> {
-  const { servico } = await params
-  const s = findServico(servico)
+  const s = findServico((await params).servico)
   if (!s) return {}
   return {
     title: s.title,
     description: s.description,
     alternates: { canonical: `/servicos/${s.slug}/` },
-    ...socialMeta({
-      card: `servico-${s.slug}`,
-      titulo: s.title,
-      descricao: s.description,
-      url: `/servicos/${s.slug}/`,
-      tipo: 'article',
-    }),
+    ...socialMeta({ card: `servico-${s.slug}`, titulo: s.title, descricao: s.description, url: `/servicos/${s.slug}/`, tipo: 'article' }),
   }
 }
 
-export default async function ServicoPage({ params }: { params: Promise<{ servico: string }> }) {
-  const { servico } = await params
-  const s = findServico(servico)
-  if (!s) notFound()
+const RELACIONADOS: Record<string, string[]> = {
+  'corrimao-inox': ['quanto-custa-corrimao-de-inox', 'inox-304-ou-316', 'como-limpar-corrimao-de-inox'],
+  'guarda-corpo-inox': ['altura-guarda-corpo-nbr-14718', 'guarda-corpo-vidro-ou-inox', 'inox-304-ou-316'],
+  'guarda-corpo-de-vidro': ['guarda-corpo-vidro-ou-inox', 'altura-guarda-corpo-nbr-14718'],
+  'acessibilidade-nbr-9050': ['corrimao-nbr-9050-acessibilidade', 'altura-guarda-corpo-nbr-14718'],
+  'portoes-e-gradis-inox': ['inox-304-ou-316', 'como-limpar-corrimao-de-inox'],
+  'condominios-e-empresas': ['corrimao-nbr-9050-acessibilidade', 'altura-guarda-corpo-nbr-14718'],
+}
 
-  const fotos = byCategory(s.categoriaFotos)
+export default async function ServicoPage({ params }: { params: Promise<{ servico: string }> }) {
+  const s = findServico((await params).servico)
+  if (!s) notFound()
+  const capa = findPhoto(s.capa) ?? PHOTOS[0]
+  const fotos = byCategory(s.categoriaFotos).filter((p) => s.capaEstoque || p.slug !== capa.slug)
   const outros = SERVICOS.filter((x) => x.slug !== s.slug)
+  const posts = (RELACIONADOS[s.slug] ?? []).map((slug) => POSTS.find((p) => p.slug === slug)).filter(Boolean)
+  const msg = `Olá! Gostaria de um orçamento de ${s.nome.toLowerCase()}.`
 
   return (
     <>
-      <section style={{ background: 'var(--ink)', color: '#fff' }}>
+      <section className="phead">
         <div className="wrap">
-          <Crumbs itens={[{ nome: 'Serviços', href: '/servicos/' }, { nome: s.nome }]} dark />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(32px, 5vw, 64px)', alignItems: 'center', paddingBlock: 'clamp(36px, 6vw, 64px) clamp(48px, 7vw, 84px)' }}>
+          <Crumbs itens={[{ nome: 'Serviços', href: '/servicos/' }, { nome: s.nome }]} />
+          <div className="split">
             <div>
-              <div style={{ color: 'var(--steel-2)', marginBottom: 18 }}><ServiceIcon name={s.icone} size={42} /></div>
               <h1>{s.h1}</h1>
-              {s.intro.map((p, i) => (
-                <p key={i} className="lede" style={{ marginTop: i === 0 ? 22 : 14 }}>{p}</p>
-              ))}
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 32 }}>
-                <a className="btn btn-wa" href={waLink(`Olá! Gostaria de um orçamento de ${s.nome.toLowerCase()} em Belo Horizonte.`)} target="_blank" rel="noopener">
-                  <WhatsAppIcon size={18} /> Pedir orçamento
-                </a>
-                <Link className="btn btn-ghost" href="/galeria/">Ver projetos</Link>
+              {s.intro.map((p, i) => <p key={i} className="lede" style={{ marginTop: i ? 14 : 24 }}>{p}</p>)}
+              <div className="phead-ctas">
+                <a className="btn btn-cta btn-lg" href={waLink(msg)} target="_blank" rel="noopener"><WhatsAppIcon size={20} /> Pedir orçamento</a>
+                <a className="btn btn-line btn-lg" href="#obras">Ver obras</a>
               </div>
             </div>
-            {fotos[0] && (
-              <img src={src(fotos[0].slug, 1600)} alt={fotos[0].alt} width={fotos[0].width} height={fotos[0].height}
-                fetchPriority="high"
-                style={{ borderRadius: 'var(--r-lg)', width: '100%', aspectRatio: '4/3', objectFit: 'cover', boxShadow: 'var(--shadow-lg)' }} />
-            )}
+            <div className="split-photo">
+              {s.capaEstoque
+                ? <Estoque nome={s.capaEstoque} priority sizes="(min-width: 960px) 46vw, 100vw" />
+                : <Img photo={capa} priority sizes="(min-width: 960px) 46vw, 100vw" />}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* MODELOS */}
+      <section className="section white">
+        <div className="wrap two" style={{ alignItems: 'start' }}>
+          <div className="head" style={{ marginBottom: 0 }}>
+            <h2>Para quem é</h2>
+          </div>
+          <div className="prose">{s.paraQuem.map((p, i) => <p key={i}>{p}</p>)}</div>
+        </div>
+      </section>
+
       <section className="section">
         <div className="wrap">
-          <div style={{ maxWidth: 660, marginBottom: 44 }}>
-            <p className="eyebrow">Modelos</p>
-            <h2>Opções que executamos</h2>
+          <div className="head"><h2>Modelos que fabricamos</h2></div>
+          <div className="models">
+            {s.modelos.map((m) => <div key={m.nome}><h3>{m.nome}</h3><p>{m.texto}</p></div>)}
           </div>
-          <div className="grid g2">
-            {s.modelos.map((m) => (
-              <div key={m.nome} className="card" style={{ padding: 26 }}>
-                <h3 style={{ fontSize: '1.12rem', marginBottom: 10 }}>{m.nome}</h3>
-                <p style={{ margin: 0, color: '#4a5566', fontSize: '.96rem' }}>{m.texto}</p>
+        </div>
+      </section>
+
+      <section className="section white">
+        <div className="wrap two wide-left" style={{ alignItems: 'start' }}>
+          <div className="prose">
+            {s.blocos.map((b) => (
+              <div key={b.h}>
+                <h2>{b.h}</h2>
+                <p className="answer">{b.resposta}</p>
+                {b.p?.map((x, i) => <p key={i}>{x}</p>)}
               </div>
             ))}
+            <h2>O que muda o preço</h2>
+            <ul>{s.precoFatores.map((x) => <li key={x}>{x}</li>)}</ul>
+            <p>Para receber uma estimativa, mande fotos e a medida aproximada pelo <a href={waLink(msg)} target="_blank" rel="noopener">WhatsApp</a>. O valor fechado sai depois da medição.</p>
           </div>
+          <aside>
+            <h2 style={{ fontSize: '1.4rem', marginBottom: 12 }}>Ficha técnica</h2>
+            <table className="spec"><tbody>{s.especificacoes.map((e) => <tr key={e.label}><th scope="row">{e.label}</th><td>{e.valor}</td></tr>)}</tbody></table>
+            <h2 style={{ fontSize: '1.4rem', margin: '36px 0 14px' }}>Onde usamos</h2>
+            <ul className="checks">{s.aplicacoes.map((a) => <li key={a}><Check size={16} />{a}</li>)}</ul>
+          </aside>
         </div>
       </section>
 
-      {/* APLICAÇÕES + ESPECIFICAÇÕES */}
-      <section className="section tinted">
-        <div className="wrap" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))', gap: 'clamp(32px, 5vw, 64px)' }}>
-          <div>
-            <p className="eyebrow">Aplicações</p>
-            <h2 style={{ marginBottom: 26 }}>Onde usamos</h2>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 13 }}>
-              {s.aplicacoes.map((a) => (
-                <li key={a} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-                  <span style={{ color: 'var(--accent)', flex: 'none', marginTop: 2 }}><Check size={17} /></span>
-                  <span>{a}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="eyebrow">Ficha técnica</p>
-            <h2 style={{ marginBottom: 26 }}>Especificações</h2>
-            <table className="spec">
-              <tbody>
-                {s.especificacoes.map((e) => (
-                  <tr key={e.label}><th scope="row">{e.label}</th><td>{e.valor}</td></tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* GALERIA */}
       {fotos.length > 0 && (
-        <section className="section">
+        <section className="section" id="obras">
           <div className="wrap">
-            <div style={{ maxWidth: 640, marginBottom: 38 }}>
-              <p className="eyebrow">Galeria</p>
-              <h2>{s.nome} que instalamos em BH</h2>
+            <div className="head-row">
+              <div className="head"><h2>{s.nome}: obras que entregamos</h2></div>
+              <Link className="link-arrow" href="/galeria/">Ver a galeria completa <Arrow /></Link>
             </div>
-            <Gallery fotos={fotos} filtros={false} />
+            <Portfolio fotos={fotos} filtros={false} limite={9} compact />
           </div>
         </section>
       )}
 
-      <FAQ itens={s.faq} titulo={`Dúvidas sobre ${s.nome.toLowerCase()}`} />
+      {s.depoimento && <Depoimentos nomes={[s.depoimento]} titulo="Quem contratou" />}
 
-      {/* OUTROS SERVIÇOS */}
+      <ComoFunciona white />
+
+      <section className="section" id="orcamento">
+        <div className="wrap two" style={{ alignItems: 'start' }}>
+          <div className="head">
+            <h2>Peça o orçamento de {s.navNome.toLowerCase()}</h2>
+            <p className="lede">Preencha em um minuto ou chame direto no WhatsApp com fotos do local.</p>
+            <p className="muted">Atendemos {AREAS.map((a) => a.nome).slice(0, -1).join(', ')} e {AREAS[AREAS.length - 1].nome}.</p>
+          </div>
+          <OrcamentoForm servicoInicial={s.navNome} />
+        </div>
+      </section>
+
+      <FAQ itens={s.faq} titulo={`Dúvidas sobre ${s.navNome.toLowerCase()}`} white />
+
       <section className="section">
         <div className="wrap">
-          <p className="eyebrow">Também fazemos</p>
-          <h2 style={{ marginBottom: 34 }}>Outros serviços</h2>
-          <div className="grid g3">
-            {outros.map((o) => (
-              <Link key={o.slug} href={`/servicos/${o.slug}/`} className="card">
-                <div className="card-body">
-                  <div style={{ color: 'var(--accent)', marginBottom: 14 }}><ServiceIcon name={o.icone} size={30} /></div>
-                  <h3 style={{ fontSize: '1.08rem' }}>{o.nome}</h3>
-                  <p>{o.resumo}</p>
-                  <span className="card-link">Ver mais <Arrow size={15} /></span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ÁREAS */}
-      <section className="section-tight tinted">
-        <div className="wrap">
-          <h2 style={{ fontSize: '1.3rem', marginBottom: 16 }}>{s.nome} nas cidades que atendemos</h2>
-          <div className="tags">
+          <div className="head"><h2>{s.navNome} nas cidades que atendemos</h2></div>
+          <div className="chips">
             {AREAS.map((a) => <Link key={a.slug} href={`/areas-atendidas/${a.slug}/`}>{s.navNome} em {a.nome}</Link>)}
           </div>
+          {posts.length > 0 && (
+            <>
+              <h2 style={{ fontSize: '1.4rem', margin: '48px 0 8px' }}>Leia antes de contratar</h2>
+              <div className="post-list">
+                {posts.map((p) => p && (
+                  <Link key={p.slug} href={`/blog/${p.slug}/`}>
+                    <Img photo={findPhoto(p.foto) ?? PHOTOS[0]} sizes="(min-width: 760px) 240px, 100vw" />
+                    <div><h3>{p.h1}</h3><p>{p.resumo}</p></div>
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
+          <h2 style={{ fontSize: '1.4rem', margin: '48px 0 16px' }}>Outros serviços</h2>
+          <div className="chips">{outros.map((o) => <Link key={o.slug} href={`/servicos/${o.slug}/`}>{o.nome}</Link>)}</div>
         </div>
       </section>
 
-      <CTA msg={`Olá! Gostaria de um orçamento de ${s.nome.toLowerCase()}.`} />
+      <CloseCTA msg={msg} />
 
       <Jsonld data={{
         '@context': 'https://schema.org',
         '@type': 'Service',
+        '@id': `${SITE.url}/servicos/${s.slug}/#service`,
         name: s.nome,
-        serviceType: s.nome,
-        description: s.description,
+        serviceType: s.keyword,
+        description: s.intro[0],
         url: `${SITE.url}/servicos/${s.slug}/`,
+        image: `${SITE.url}/fotos/${capa.slug}-1600.webp`,
         provider: { '@id': `${SITE.url}/#business` },
         areaServed: AREAS.map((a) => ({ '@type': 'City', name: a.nome })),
         hasOfferCatalog: {
@@ -179,11 +183,6 @@ export default async function ServicoPage({ params }: { params: Promise<{ servic
           name: `Modelos de ${s.nome}`,
           itemListElement: s.modelos.map((m) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: m.nome, description: m.texto } })),
         },
-      }} />
-      <Jsonld data={{
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: s.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
       }} />
     </>
   )

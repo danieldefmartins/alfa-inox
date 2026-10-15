@@ -7,8 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "next build && wrangler deploy",
-    "preview": "next build && wrangler dev",
+    "preview": "next build && wrangler dev --config wrangler.preview.jsonc --port 8788",
+    "preview:deploy": "OG_ORIGIN=https://preview-alfa-inox.danieldefmartins.workers.dev next build && wrangler deploy --config wrangler.preview.jsonc",
+    "audit": "node ~/.claude/skills/premium-website/scripts/audit-site.mjs out --json docs/seo-audit.json",
+    "screens": "node scripts/screens.mjs http://127.0.0.1:8788 docs/screens",
+    "og": "node --experimental-strip-types scripts/build-og.mjs",
+    "test": "node --test --experimental-strip-types scripts/crm.test.mjs",
+    "typecheck": "tsc --noEmit",
     "postinstall": "node scripts/ci-build.mjs"
   },
   "dependencies": {
@@ -17,11 +22,13 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.3",
+    "playwright": "^1.64.0",
     "typescript": "^5",
     "wrangler": "^4.127.0"
   }

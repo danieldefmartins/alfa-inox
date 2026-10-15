@@ -1,76 +1,59 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { AREAS } from '@/lib/areas'
-import { SERVICOS } from '@/lib/servicos'
+import { findPhoto, PHOTOS } from '@/lib/photos'
 import { SITE, socialMeta } from '@/lib/site'
 import Crumbs from '@/components/Crumbs'
-import CTA from '@/components/CTA'
 import Jsonld from '@/components/Jsonld'
-import { Arrow, Pin } from '@/components/Icons'
+import { Img, CloseCTA } from '@/components/Sections'
+import { Arrow } from '@/components/Icons'
+
+const TITLE = 'Onde Atendemos: Corrimão de Inox na Grande BH'
+const DESC = 'A Alfa Inox atende Belo Horizonte, Nova Lima, Contagem, Betim, Sabará, Santa Luzia, Lagoa Santa e mais cidades da Grande BH. Medição no local e instalação.'
 
 export const metadata: Metadata = {
-  title: 'Onde Atendemos | Corrimão e Guarda-Corpo em Inox na Grande BH',
-  description:
-    'A Alfa Inox atende Belo Horizonte, Nova Lima, Contagem, Betim, Sabará, Santa Luzia, Lagoa Santa e toda a região metropolitana. Medição no local sem custo.',
+  title: TITLE,
+  description: DESC,
   alternates: { canonical: '/areas-atendidas/' },
-  ...socialMeta({ card: 'areas-atendidas', titulo: 'Onde Atendemos | Corrimão e Guarda-Corpo em Inox na Grande BH', descricao: 'A Alfa Inox atende Belo Horizonte, Nova Lima, Contagem, Betim, Sabará, Santa Luzia, Lagoa Santa e toda a região metropolitana. Medição no local sem custo.', url: '/areas-atendidas/' }),
+  ...socialMeta({ card: 'areas-atendidas', titulo: TITLE, descricao: DESC, url: '/areas-atendidas/' }),
 }
 
 export default function AreasPage() {
   return (
     <>
-      <section style={{ background: 'var(--ink)', color: '#fff' }}>
-        <div className="wrap" style={{ paddingBottom: 'clamp(44px, 6vw, 68px)' }}>
-          <Crumbs itens={[{ nome: 'Onde atendemos' }]} dark />
-          <div style={{ maxWidth: 720, paddingTop: 'clamp(28px, 4vw, 44px)' }}>
-            <h1>Onde a Alfa Inox atende</h1>
-            <p className="lede" style={{ marginTop: 20 }}>
-              Nossa oficina fica na Avenida Américo Vespúcio, no bairro Aparecida, em Belo
-              Horizonte. A partir dela atendemos a capital e {AREAS.length - 1} cidades da região
-              metropolitana — com medição no local sem custo em todas elas.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="wrap grid g3">
-          {AREAS.map((a) => (
-            <Link key={a.slug} href={`/areas-atendidas/${a.slug}/`} className="card">
-              <div className="card-body">
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--accent)', marginBottom: 10 }}>
-                  <Pin size={16} />
-                  <span style={{ fontSize: '.78rem', fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase' }}>
-                    {a.tipo === 'capital' ? 'Capital' : a.distancia}
-                  </span>
-                </div>
-                <h2 style={{ fontSize: '1.25rem', marginBottom: 10 }}>{a.nome}</h2>
-                <p>{a.descricao}</p>
-                <span className="card-link">Ver atendimento em {a.nome} <Arrow size={15} /></span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="section-tight tinted">
+      <section className="phead">
         <div className="wrap">
-          <h2 style={{ fontSize: '1.3rem', marginBottom: 16 }}>Serviços disponíveis em toda a área de cobertura</h2>
-          <div className="tags">
-            {SERVICOS.map((s) => <Link key={s.slug} href={`/servicos/${s.slug}/`}>{s.nome}</Link>)}
+          <Crumbs itens={[{ nome: 'Onde atendemos' }]} />
+          <h1>Onde atendemos na Grande BH</h1>
+          <p className="lede">
+            A oficina fica na Rua Cantagalo, no bairro Aparecida, em Belo Horizonte. Daqui saímos para medir e
+            instalar na capital e em {AREAS.length - 1} cidades da região metropolitana. Cada cidade tem a sua página, com
+            os pedidos mais comuns por lá e as regiões que cobrimos.
+          </p>
+        </div>
+      </section>
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="rows">
+            {AREAS.map((a) => (
+              <Link key={a.slug} href={`/areas-atendidas/${a.slug}/`} className="row">
+                <Img photo={findPhoto(a.fotos[0]) ?? PHOTOS[0]} sizes="(min-width: 720px) 200px, 96px" />
+                <div>
+                  <h2 style={{ fontSize: 'clamp(1.15rem, 1.05rem + .4vw, 1.35rem)', marginBottom: 4 }}>Corrimão e guarda-corpo em {a.nome}</h2>
+                  <p>{a.distancia ? `${a.distancia}. ` : ''}{a.pedidos.slice(0, 2).join(' · ')}</p>
+                </div>
+                <span className="go" aria-hidden="true"><Arrow /></span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
-
-      <CTA />
-
+      <CloseCTA titulo="Sua cidade não está na lista?" texto="Chame no WhatsApp. Se for perto da Grande BH, a gente avalia e responde na hora." />
       <Jsonld data={{
         '@context': 'https://schema.org',
         '@type': 'ItemList',
         name: 'Cidades atendidas pela Alfa Inox',
-        itemListElement: AREAS.map((a, i) => ({
-          '@type': 'ListItem', position: i + 1, name: a.nome, url: `${SITE.url}/areas-atendidas/${a.slug}/`,
-        })),
+        itemListElement: AREAS.map((a, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE.url}/areas-atendidas/${a.slug}/`, name: a.nome })),
       }} />
     </>
   )

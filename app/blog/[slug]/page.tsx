@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { POSTS, findPost, postsOrdenados } from '@/lib/blog'
-import { findPhoto, src } from '@/lib/photos'
-import { SITE, socialMeta } from '@/lib/site'
+import { findPhoto, src, PHOTOS } from '@/lib/photos'
+import { SITE, socialMeta, waLink } from '@/lib/site'
+import { SERVICOS } from '@/lib/servicos'
 import Crumbs from '@/components/Crumbs'
-import CTA from '@/components/CTA'
 import FAQ from '@/components/FAQ'
 import Jsonld from '@/components/Jsonld'
-import { Arrow } from '@/components/Icons'
+import { Img, CloseCTA } from '@/components/Sections'
+import { WhatsAppIcon } from '@/components/Icons'
 
 export const dynamicParams = false
 export function generateStaticParams() {
@@ -16,106 +17,88 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params
-  const p = findPost(slug)
+  const p = findPost((await params).slug)
   if (!p) return {}
-  const social = socialMeta({
-    card: `post-${p.slug}`,
-    titulo: p.title,
-    descricao: p.description,
-    url: `/blog/${p.slug}/`,
-    tipo: 'article',
-  })
+  const social = socialMeta({ card: `post-${p.slug}`, titulo: p.title, descricao: p.description, url: `/blog/${p.slug}/`, tipo: 'article' })
   return {
     title: p.title,
     description: p.description,
     alternates: { canonical: `/blog/${p.slug}/` },
     ...social,
-    openGraph: {
-      ...social.openGraph,
-      publishedTime: p.date,
-      modifiedTime: p.updated ?? p.date,
-      authors: [SITE.name],
-    },
+    openGraph: { ...social.openGraph, publishedTime: p.date, modifiedTime: p.updated ?? p.date, authors: [SITE.name] },
   }
 }
 
 const dataBR = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })
 
-export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
-  const p = findPost(slug)
-  if (!p) notFound()
+const SERVICO_DO_POST: Record<string, string> = {
+  'quanto-custa-corrimao-de-inox': 'corrimao-inox',
+  'inox-304-ou-316': 'corrimao-inox',
+  'altura-guarda-corpo-nbr-14718': 'guarda-corpo-inox',
+  'corrimao-nbr-9050-acessibilidade': 'acessibilidade-nbr-9050',
+  'como-limpar-corrimao-de-inox': 'corrimao-inox',
+  'guarda-corpo-vidro-ou-inox': 'guarda-corpo-de-vidro',
+}
 
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const p = findPost((await params).slug)
+  if (!p) notFound()
   const foto = findPhoto(p.foto)
   const relacionados = postsOrdenados().filter((x) => x.slug !== p.slug).slice(0, 3)
+  const servico = SERVICOS.find((s) => s.slug === SERVICO_DO_POST[p.slug])
 
   return (
     <>
       <article>
-        <header style={{ background: 'var(--ink)', color: '#fff' }}>
-          <div className="wrap" style={{ paddingBottom: 'clamp(40px, 6vw, 64px)' }}>
-            <Crumbs itens={[{ nome: 'Blog', href: '/blog/' }, { nome: p.categoria }]} dark />
-            <div style={{ maxWidth: 760, paddingTop: 'clamp(24px, 4vw, 40px)' }}>
-              <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 18, flexWrap: 'wrap' }}>
-                <span className="pill">{p.categoria}</span>
-                <time dateTime={p.date} style={{ color: 'var(--steel-2)', fontSize: '.87rem' }}>{dataBR(p.date)}</time>
-                <span style={{ color: 'var(--steel-2)', fontSize: '.87rem' }}>· {p.leitura} de leitura</span>
-              </div>
-              <h1>{p.h1}</h1>
-              <p className="lede" style={{ marginTop: 20 }}>{p.resumo}</p>
-            </div>
+        <header className="phead" style={{ paddingBottom: 32 }}>
+          <div className="wrap narrow">
+            <Crumbs itens={[{ nome: 'Blog', href: '/blog/' }, { nome: p.h1 }]} />
+            <h1 style={{ fontSize: 'clamp(2rem, 1.3rem + 2.8vw, 3.4rem)' }}>{p.h1}</h1>
+            <p className="lede">{p.resumo}</p>
+            <p className="meta-line">
+              <span>Por Alfa Inox · fabricante de corrimão e guarda-corpo em BH desde {SITE.foundedYear}</span>
+              <time dateTime={p.date}>{dataBR(p.date)}</time>
+              <span>{p.leitura} de leitura</span>
+            </p>
           </div>
         </header>
-
         {foto && (
-          <div className="wrap" style={{ marginTop: 'clamp(-40px, -4vw, -28px)', position: 'relative' }}>
-            <img src={src(foto.slug, 1600)} alt={foto.alt} width={foto.width} height={foto.height}
-              fetchPriority="high"
-              style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: 'var(--r-lg)', boxShadow: 'var(--shadow-lg)' }} />
+          <div className="wrap narrow article-hero">
+            <Img photo={foto} priority sizes="(min-width: 840px) 760px, 100vw" />
           </div>
         )}
-
-        <div className="wrap-narrow" style={{ paddingBlock: 'clamp(44px, 6vw, 68px)' }}>
+        <div className="wrap narrow section" style={{ paddingTop: 48 }}>
           <div className="prose" dangerouslySetInnerHTML={{ __html: p.html }} />
-
-          <aside style={{ marginTop: 48, padding: 28, background: 'var(--paper-2)', borderRadius: 'var(--r-lg)', borderLeft: '3px solid var(--accent)' }}>
-            <h2 style={{ fontSize: '1.15rem', marginBottom: 10 }}>Precisa de um orçamento em Belo Horizonte?</h2>
-            <p style={{ margin: '0 0 18px', color: '#4a5566', fontSize: '.96rem' }}>
-              A Alfa Inox fabrica e instala corrimão, guarda-corpo e acessibilidade em aço inox há
-              {' '}{SITE.yearsInBusiness} anos na Grande BH. Medição no local sem custo.
-            </p>
-            <Link className="btn btn-primary" href="/orcamento/">Pedir orçamento <Arrow size={15} /></Link>
-          </aside>
+          {servico && (
+            <aside className="form-card" style={{ marginTop: 48 }}>
+              <h2 style={{ fontSize: '1.3rem', marginBottom: 8 }}>Precisa disso em BH?</h2>
+              <p className="muted">
+                Fabricamos e instalamos {servico.nome.toLowerCase()} em Belo Horizonte e região. Veja{' '}
+                <Link href={`/servicos/${servico.slug}/`}>{servico.keyword}</Link> ou mande fotos do local.
+              </p>
+              <a className="btn btn-cta" href={waLink(`Olá! Li o artigo "${p.h1}" e gostaria de um orçamento.`)} target="_blank" rel="noopener"><WhatsAppIcon size={18} /> Orçamento no WhatsApp</a>
+            </aside>
+          )}
         </div>
       </article>
 
-      {p.faq && <FAQ itens={p.faq} titulo="Perguntas frequentes sobre o tema" />}
+      {p.faq && <FAQ itens={p.faq} titulo="Perguntas sobre o tema" white />}
 
       <section className="section">
         <div className="wrap">
-          <p className="eyebrow">Continue lendo</p>
-          <h2 style={{ marginBottom: 34 }}>Outros artigos</h2>
-          <div className="grid g3">
-            {relacionados.map((r) => {
-              const rf = findPhoto(r.foto)
-              return (
-                <Link key={r.slug} href={`/blog/${r.slug}/`} className="card">
-                  {rf && <img className="card-img" src={src(rf.slug, 800)} alt={rf.alt} width={rf.width} height={rf.height} loading="lazy" style={{ backgroundImage: `url(${rf.lqip})`, backgroundSize: 'cover' }} />}
-                  <div className="card-body">
-                    <span className="pill" style={{ alignSelf: 'flex-start', marginBottom: 12 }}>{r.categoria}</span>
-                    <h3 style={{ fontSize: '1.05rem' }}>{r.h1}</h3>
-                    <p>{r.resumo}</p>
-                    <span className="card-link">Ler <Arrow size={15} /></span>
-                  </div>
-                </Link>
-              )
-            })}
+          <div className="head"><h2>Continue lendo</h2></div>
+          <div className="post-list">
+            {relacionados.map((r) => (
+              <Link key={r.slug} href={`/blog/${r.slug}/`}>
+                <Img photo={findPhoto(r.foto) ?? PHOTOS[0]} sizes="(min-width: 760px) 240px, 100vw" />
+                <div><h3>{r.h1}</h3><p>{r.resumo}</p></div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      <CTA />
+      <CloseCTA />
 
       <Jsonld data={{
         '@context': 'https://schema.org',
@@ -124,22 +107,15 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         alternativeHeadline: p.title,
         description: p.description,
         url: `${SITE.url}/blog/${p.slug}/`,
-        mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE.url}/blog/${p.slug}/` },
+        mainEntityOfPage: `${SITE.url}/blog/${p.slug}/`,
         datePublished: p.date,
         dateModified: p.updated ?? p.date,
         inLanguage: 'pt-BR',
         articleSection: p.categoria,
-        author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+        author: { '@type': 'Organization', name: SITE.name, url: `${SITE.url}/sobre/` },
         publisher: { '@id': `${SITE.url}/#business` },
-        ...(foto ? { image: { '@type': 'ImageObject', url: `${SITE.url}${src(foto.slug, 1600)}`, width: foto.width, height: foto.height } } : {}),
+        ...(foto ? { image: `${SITE.url}${src(foto.slug, 1600)}` } : {}),
       }} />
-      {p.faq && (
-        <Jsonld data={{
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: p.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
-        }} />
-      )}
     </>
   )
 }

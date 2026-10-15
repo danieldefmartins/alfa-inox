@@ -16,10 +16,10 @@ export type Post = {
 export const POSTS: Post[] = [
   {
     slug: 'quanto-custa-corrimao-de-inox',
-    title: 'Quanto Custa um Corrimão de Inox? Preço por Metro em 2026',
+    title: 'Quanto Custa Corrimão de Inox? Preço por Metro',
     h1: 'Quanto custa um corrimão de inox? O que realmente pesa no preço',
     description:
-      'Entenda o que define o preço do metro linear de corrimão de aço inox em 2026: modelo, liga, diâmetro, curvas e instalação. Guia direto de quem fabrica em Belo Horizonte.',
+      'O que define o preço do metro linear de corrimão de inox: modelo, liga, diâmetro, curvas e instalação. Guia direto de quem fabrica em Belo Horizonte.',
     date: '2026-08-10',
     categoria: 'Preços',
     leitura: '7 min',
@@ -32,7 +32,7 @@ export const POSTS: Post[] = [
       { q: 'A instalação está inclusa no preço do metro?', a: 'Na Alfa Inox, sim: o orçamento é fechado e inclui fabricação, material de fixação e instalação em Belo Horizonte e região metropolitana.' },
     ],
     html: `
-<p>É a primeira pergunta de praticamente todo mundo que nos procura — e a resposta honesta é que não existe um preço único por metro. Existe uma faixa, e o que move o seu projeto dentro dela são cinco variáveis. Este texto explica cada uma delas para que você consiga ler um orçamento de corrimão sem depender de fé.</p>
+<p>É a primeira pergunta de quase cada pessoa que nos procura — e a resposta honesta é que não existe um preço único por metro. Existe uma faixa, e o que move o seu projeto dentro dela são cinco variáveis. Este texto explica cada uma delas para que você consiga ler um orçamento de corrimão sem depender de fé.</p>
 
 <h2>1. O modelo é o que mais pesa</h2>
 <p>Um <strong>corrimão de parede</strong> é a configuração mais econômica: um tubo contínuo, suportes a cada 1,2 m e nada mais. Um <strong>corrimão de escada com prumos e travessas</strong> pode custar o dobro ou mais pelo mesmo metro linear, porque cada prumo é uma peça cortada, soldada, polida e chumbada individualmente.</p>
@@ -78,14 +78,14 @@ export const POSTS: Post[] = [
   },
   {
     slug: 'inox-304-ou-316',
-    title: 'Inox 304 ou 316: Qual Escolher para Corrimão e Guarda-Corpo',
+    title: 'Inox 304 ou 316: Qual Usar no Corrimão',
     h1: 'Inox 304 ou 316: qual usar no seu corrimão',
     description:
       'A diferença real entre aço inox AISI 304 e 316 em corrimão e guarda-corpo: composição, resistência à corrosão, custo e em que situações cada um se justifica.',
     date: '2026-07-22',
     categoria: 'Materiais',
     leitura: '5 min',
-    foto: 'guarda-corpo-vidro-cobertura-piscina-deck',
+    foto: 'corrimao-inox-escada-piscina',
     resumo:
       'Molibdênio, cloro e maresia: quando o 316 é obrigatório e quando ele é só custo a mais.',
     faq: [
@@ -93,7 +93,7 @@ export const POSTS: Post[] = [
       { q: 'Inox 430 serve para corrimão?', a: 'Não recomendamos. O 430 é ferrítico, tem menos níquel e corrói com facilidade em área externa e em contato com umidade. Aparece em propostas muito baratas e é a causa mais comum de "corrimão de inox enferrujado".' },
     ],
     html: `
-<p>Todo orçamento de corrimão deveria trazer a liga escrita. Quando não traz, quase sempre é porque o material não é o que o cliente imagina. Entender a diferença entre 304 e 316 leva cinco minutos e evita um problema de dez anos.</p>
+<p>Qualquer orçamento de corrimão deveria trazer a liga escrita. Quando não traz, quase sempre é porque o material não é o que o cliente imagina. Entender a diferença entre 304 e 316 leva cinco minutos e evita um problema de dez anos.</p>
 
 <h2>O que muda na composição</h2>
 <p>Os dois são aços inoxidáveis austeníticos, com cromo e níquel. A diferença decisiva é que o <strong>AISI 316 contém de 2% a 3% de molibdênio</strong>, e o 304 não contém nada.</p>
@@ -135,10 +135,10 @@ export const POSTS: Post[] = [
   },
   {
     slug: 'altura-guarda-corpo-nbr-14718',
-    title: 'Altura Mínima de Guarda-Corpo: o que Diz a NBR 14718',
+    title: 'Altura do Guarda-Corpo pela NBR 14718',
     h1: 'Altura mínima de guarda-corpo: o que a norma exige',
     description:
-      'Alturas exigidas pela NBR 14718 para guarda-corpo de sacada, escada e mezanino, espaçamento entre prumos e por que travessa horizontal é problema onde há crianças.',
+      'Alturas da NBR 14718 para guarda-corpo de sacada, escada e mezanino, espaçamento entre prumos e por que travessa horizontal é risco onde há crianças.',
     date: '2026-07-05',
     categoria: 'Normas',
     leitura: '6 min',
@@ -188,7 +188,7 @@ export const POSTS: Post[] = [
   },
   {
     slug: 'corrimao-nbr-9050-acessibilidade',
-    title: 'Corrimão NBR 9050: Medidas e Exigências de Acessibilidade',
+    title: 'Corrimão NBR 9050: Medidas de Acessibilidade',
     h1: 'Corrimão conforme a NBR 9050: as medidas que a vistoria cobra',
     description:
       'Alturas de 0,92 m e 0,70 m, prolongamento de 30 cm, diâmetro de empunhadura e afastamento da parede: o guia prático da NBR 9050 para corrimão de rampa e escada.',
@@ -216,7 +216,7 @@ export const POSTS: Post[] = [
 
 <h2>Prolongamento de 30 cm — o item mais reprovado</h2>
 <p>O corrimão deve continuar <strong>30 cm horizontalmente além do início e do fim</strong> de cada segmento de rampa ou lance de escada, com a extremidade recurvada — voltada para a parede, para baixo ou fechada em curva.</p>
-<p>É o item que mais reprova adequação em vistoria, porque quase todo corrimão antigo termina exatamente onde a rampa termina. A função é permitir que a pessoa se apoie antes de começar e depois de terminar o percurso, quando o corpo ainda está em desequilíbrio.</p>
+<p>É o item que mais reprova adequação em vistoria, porque quase sempre o corrimão antigo termina exatamente onde a rampa termina. A função é permitir que a pessoa se apoie antes de começar e depois de terminar o percurso, quando o corpo ainda está em desequilíbrio.</p>
 <p>A extremidade recurvada tem motivo próprio: ponta reta engancha alça de bolsa, manga de roupa e mão.</p>
 
 <h2>Empunhadura e afastamento</h2>
@@ -254,7 +254,7 @@ export const POSTS: Post[] = [
   },
   {
     slug: 'como-limpar-corrimao-de-inox',
-    title: 'Como Limpar Corrimão de Aço Inox (e o que Nunca Usar)',
+    title: 'Como Limpar Corrimão de Inox Sem Manchar',
     h1: 'Como limpar e conservar corrimão de aço inox',
     description:
       'A rotina certa de limpeza para corrimão e guarda-corpo de inox, o que fazer com manchas de ferrugem e os cinco produtos que destroem o acabamento.',

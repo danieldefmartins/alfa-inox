@@ -1,11 +1,12 @@
-import { execFileSync, spawn } from 'node:child_process'
+// Cartões de compartilhamento 1200×630 (WhatsApp, Facebook, LinkedIn) com o logo 2026.
+// Uso: npm run og   (Playwright + Chromium local; fontes Archivo/Inter do Google Fonts só nesta ferramenta)
+// Saída: public/og/<nome>.jpg — nomes usados por socialMeta() em lib/site.ts.
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { chromium } from 'playwright'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const TMP = process.env.OG_TMP || path.join(ROOT, '.og-tmp')
-const FONTS = process.env.OG_FONTS
 const OUT = path.join(ROOT, 'public', 'og')
 
 const { SERVICOS } = await import(path.join(ROOT, 'lib/servicos.ts'))
@@ -13,132 +14,58 @@ const { AREAS } = await import(path.join(ROOT, 'lib/areas.ts'))
 const { POSTS } = await import(path.join(ROOT, 'lib/blog.ts'))
 const PHOTOS = JSON.parse(fs.readFileSync(path.join(ROOT, 'lib/photos.json'), 'utf8'))
 
-const byCat = (c) => PHOTOS.filter((p) => p.category === c)
-const corta = (t, n = 132) => (t.length <= n ? t : t.slice(0, t.lastIndexOf(' ', n)).replace(/[,;—-]$/, '') + '…')
-const pic = (slug) => path.join(ROOT, 'public', 'fotos', `${slug}-1600.webp`)
+const corta = (t, n = 110) => (t.length <= n ? t : t.slice(0, t.lastIndexOf(' ', n)).replace(/[,;—-]$/, '') + '…')
+const b64 = (f) => fs.readFileSync(f).toString('base64')
+// 'estoque:<nome>' = foto de banco licenciada (só atmosfera), senão foto real de obra
+const pic = (slug) => slug.startsWith('estoque:')
+  ? `data:image/webp;base64,${b64(path.join(ROOT, 'public', 'estoque', `${slug.slice(8)}-1200.webp`))}`
+  : `data:image/webp;base64,${b64(path.join(ROOT, 'public', 'fotos', `${slug}-1600.webp`))}`
+const logo = `data:image/svg+xml;base64,${b64(path.join(ROOT, 'public/brand/logo-on-dark.svg'))}`
 
-// ---------- cartões ----------
 const cards = [
-  { name: 'default', titulo: 'Corrimão e guarda-corpo em aço inox', sub: 'Fabricação própria e instalação em Belo Horizonte e região · 15 anos', foto: 'guarda-corpo-inox-mezanino-vao-interno' },
-  { name: 'galeria', titulo: 'Projetos executados em aço inox', sub: `${PHOTOS.length} obras reais fotografadas na entrega, em BH e região`, foto: 'guarda-corpo-inox-escada-moderna' },
-  { name: 'sobre', titulo: 'Quinze anos de aço inox em BH', sub: 'Oficina própria, equipe própria e centenas de obras entregues', foto: 'corrimao-inox-curvo-area-externa-condominio' },
-  { name: 'contato', titulo: 'Fale com a Alfa Inox', sub: 'WhatsApp (31) 97237-9813 · Seg a sáb, 8h às 17h', foto: 'guarda-corpo-inox-corredor-mezanino' },
-  { name: 'orcamento', titulo: 'Peça seu orçamento sem compromisso', sub: 'Medição no local sem custo em Belo Horizonte e região metropolitana', foto: 'corrimao-parede-inox-escada-condominio' },
-  { name: 'servicos', titulo: 'Serviços em aço inox sob medida', sub: 'Corrimão, guarda-corpo, vidro, acessibilidade, portões e gradis', foto: 'guarda-corpo-inox-escada-interna-vidro' },
-  { name: 'blog', titulo: 'Blog da Alfa Inox', sub: 'Preços, normas e manutenção — por quem fabrica há 15 anos', foto: 'corrimao-inox-escada-granito-interna' },
-  { name: 'areas-atendidas', titulo: 'Atendemos toda a Grande BH', sub: `Belo Horizonte e mais ${AREAS.length - 1} cidades da região metropolitana`, foto: 'corrimao-inox-rampa-acessibilidade-duplo' },
-
-  ...SERVICOS.map((s) => ({
-    name: `servico-${s.slug}`, titulo: s.h1, sub: corta(s.resumo), foto: (byCat(s.categoriaFotos)[0] ?? PHOTOS[0]).slug,
-  })),
-
-  ...AREAS.map((a, i) => ({
-    name: `area-${a.slug}`,
-    titulo: `Corrimão e guarda-corpo em inox em ${a.nome}`,
-    sub: 'Fabricação própria, medição no local sem custo e instalação',
-    foto: PHOTOS[(i * 5 + 3) % PHOTOS.length].slug,
-  })),
-
+  { name: 'default', titulo: 'Corrimão e guarda-corpo em inox em Belo Horizonte', sub: 'Projetos residenciais e comerciais, com o design moderno dos projetos de alto padrão.', foto: 'estoque:escada-moderna-guarda-corpo-inox-edificio-corporativo' },
+  { name: 'galeria', titulo: 'Obras de corrimão e guarda-corpo em inox', sub: `${PHOTOS.length} fotos reais de obras na Grande BH`, foto: 'guarda-corpo-inox-escada-interna-sala' },
+  { name: 'sobre', titulo: 'Uma oficina de inox em BH desde 2010', sub: 'Fábrica, não revenda: quem fabrica instala', foto: 'guarda-corpo-inox-escada-moderna' },
+  { name: 'contato', titulo: 'Fale com a Alfa Inox', sub: 'WhatsApp (31) 97237-9813 · (31) 2298-1234', foto: 'corrimao-parede-inox-escada-caracol' },
+  { name: 'orcamento', titulo: 'Peça seu orçamento pelo WhatsApp', sub: 'Mande fotos do local e a medida aproximada', foto: 'corrimao-parede-inox-escada-condominio' },
+  { name: 'servicos', titulo: 'Serviços em aço inox, sob medida', sub: 'Corrimão, guarda-corpo, vidro, acessibilidade, portões e gradis', foto: 'guarda-corpo-inox-escada-interna-vidro' },
+  { name: 'blog', titulo: 'Guias de quem fabrica corrimão e guarda-corpo', sub: 'Preço, normas, liga e limpeza do inox', foto: 'corrimao-inox-escada-granito-interna' },
+  { name: 'areas-atendidas', titulo: 'Atendemos Belo Horizonte e região', sub: `Capital e mais ${AREAS.length - 1} cidades da Grande BH`, foto: 'corrimao-inox-rampa-acessibilidade-duplo' },
+  ...SERVICOS.map((s) => ({ name: `servico-${s.slug}`, titulo: s.h1, sub: corta(s.resumo), foto: s.capa })),
+  ...AREAS.map((a) => ({ name: `area-${a.slug}`, titulo: `Corrimão e guarda-corpo de inox em ${a.nome}`, sub: 'Medição no local, fabricação própria e instalação', foto: a.fotos[0] })),
   ...POSTS.map((p) => ({ name: `post-${p.slug}`, titulo: p.h1, sub: corta(p.resumo), foto: p.foto, tag: p.categoria })),
 ]
 
-// ---------- HTML ----------
-const b64 = (f) => fs.readFileSync(f).toString('base64')
-const fontFace = (fam, file, weight) =>
-  `@font-face{font-family:'${fam}';font-weight:${weight};font-display:block;src:url(data:font/woff2;base64,${b64(path.join(FONTS, file))}) format('woff2')}`
-
-const archivo = fs.readdirSync(FONTS).filter((f) => f.startsWith('Archivo')).sort((a, b) => fs.statSync(path.join(FONTS, b)).size - fs.statSync(path.join(FONTS, a)).size)[0]
-const inter = fs.readdirSync(FONTS).filter((f) => f.startsWith('Inter')).sort((a, b) => fs.statSync(path.join(FONTS, b)).size - fs.statSync(path.join(FONTS, a)).size)[0]
-const icone = b64(path.join(ROOT, 'public/marca/alfa-inox-icone.png'))
-
-const card = (c) => {
+const html = (c) => {
   const len = c.titulo.length
-  const size = len > 62 ? 46 : len > 46 ? 54 : len > 32 ? 62 : 70
-  return `<section class="c">
-  <img class="bg" src="data:image/webp;base64,${b64(pic(c.foto))}">
-  <div class="veil"></div>
-  <div class="in">
-    <header>
-      <img class="mark" src="data:image/png;base64,${icone}">
-      <div class="wm"><b>ALFA</b><span>INOX</span></div>
-      ${c.tag ? `<span class="tag">${c.tag}</span>` : ''}
-    </header>
-    <h1 style="font-size:${size}px">${c.titulo}</h1>
-    <p class="sub">${c.sub}</p>
-    <footer>
-      <span class="br"></span>
-      <span class="ft">(31) 97237-9813 &nbsp;·&nbsp; alfainoxbh.com.br &nbsp;·&nbsp; Belo Horizonte / MG</span>
-    </footer>
-  </div>
-</section>`
-}
-
-const html = `<!doctype html><meta charset="utf-8"><style>
-${fontFace('Archivo', archivo, 800)}
-${fontFace('Inter', inter, 400)}
+  const size = len > 62 ? 44 : len > 46 ? 52 : len > 32 ? 58 : 64
+  return `<!doctype html><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700&family=Inter:wght@400;600&display=block" rel="stylesheet">
+<style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000}
-.c{position:relative;width:1200px;height:630px;overflow:hidden;background:#0d1117;font-family:Inter,sans-serif}
-.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.bg{filter:brightness(1.12) contrast(1.04) saturate(1.05)}
-.veil{position:absolute;inset:0;background:
-  linear-gradient(100deg,#0d1117 0%,#0d1117 40%,rgba(13,17,23,.88) 52%,rgba(13,17,23,.3) 74%,rgba(13,17,23,.14) 100%),
-  linear-gradient(0deg,rgba(13,17,23,.5),rgba(13,17,23,0) 42%)}
-.in{position:relative;height:100%;padding:56px 60px;display:flex;flex-direction:column}
-header{display:flex;align-items:center;gap:16px}
-.mark{height:84px;width:auto;filter:brightness(1.18) contrast(1.06) drop-shadow(0 2px 10px rgba(0,0,0,.5))}
-.wm{font-family:Archivo,sans-serif;font-weight:800;font-size:34px;letter-spacing:-.02em;line-height:1;display:flex;gap:9px;align-items:baseline}
-.wm b{color:#fff;font-weight:800}
-.wm span{background:linear-gradient(135deg,#fff,#dfe5ea 26%,#fff 48%,#b9c3ce 74%,#f2f5f8);-webkit-background-clip:text;background-clip:text;color:transparent}
-.tag{margin-left:auto;font-family:Archivo,sans-serif;font-weight:800;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:#0d1117;background:linear-gradient(135deg,#e7ecf1,#9aa5b1);padding:9px 18px;border-radius:100px}
-h1{font-family:Archivo,sans-serif;font-weight:800;color:#fff;line-height:1.08;letter-spacing:-.028em;margin-top:auto;max-width:20ch;text-wrap:balance;text-shadow:0 2px 24px rgba(13,17,23,.85)}
-.sub{margin-top:18px;font-size:24px;line-height:1.42;color:#cdd5dd;max-width:40ch;text-shadow:0 1px 12px rgba(13,17,23,.9)}
-footer{margin-top:34px;display:flex;flex-direction:column;gap:16px}
-.br{display:block;width:280px;height:4px;border-radius:4px;background:linear-gradient(90deg,#009c3b 0%,#009c3b 46%,#ffdf00 54%,#ffdf00 100%)}
-.ft{font-size:20px;color:#a7b1bd;letter-spacing:.01em;text-shadow:0 1px 10px rgba(13,17,23,.9)}
-</style>${cards.map(card).join('')}`
-
-fs.mkdirSync(TMP, { recursive: true })
-const page = path.join(TMP, 'og.html')
-fs.writeFileSync(page, html)
-console.log(`HTML: ${cards.length} cartões, ${(html.length / 1e6).toFixed(1)} MB`)
-
-// ---------- render ----------
-const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-const strip = path.join(TMP, 'strip.png')
-fs.rmSync(strip, { force: true })
-
-// O Chrome headless escreve o PNG e às vezes não encerra sozinho num screenshot
-// desta altura — então esperamos o arquivo estabilizar e matamos o processo.
-const child = spawn(CHROME, [
-  '--headless', '--disable-gpu', '--hide-scrollbars', '--no-sandbox',
-  `--user-data-dir=${path.join(TMP, 'profile')}`,
-  `--window-size=1200,${630 * cards.length}`,
-  `--screenshot=${strip}`, `file://${page}`,
-], { stdio: 'ignore', detached: true })
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
-let last = -1, estavel = 0
-for (let i = 0; i < 120; i++) {
-  await sleep(1000)
-  const size = fs.existsSync(strip) ? fs.statSync(strip).size : -1
-  if (size > 0 && size === last) { if (++estavel >= 3) break } else estavel = 0
-  last = size
+body{width:1200px;height:630px;overflow:hidden;background:#2e3a40;font-family:Inter,sans-serif}
+.photo{position:absolute;inset:0;background:url(${pic(c.foto)}) center 40%/cover}
+.panel{position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,46,51,.72) 0%,rgba(36,46,51,0) 32%),linear-gradient(0deg,rgba(36,46,51,.96) 0%,rgba(36,46,51,.85) 38%,rgba(36,46,51,.35) 68%,rgba(36,46,51,.15) 100%),linear-gradient(90deg,rgba(36,46,51,.7) 0%,rgba(36,46,51,0) 70%)}
+.in{position:absolute;left:64px;top:56px;bottom:56px;width:760px;display:flex;flex-direction:column}
+.logo{height:40px;width:auto;align-self:flex-start}
+.tag{margin-top:28px;align-self:flex-start;font-weight:600;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:#7fcadb}
+h1{font-family:Archivo,sans-serif;font-stretch:112%;font-weight:700;color:#fff;line-height:1.06;letter-spacing:-.025em;margin-top:auto;text-wrap:balance}
+p{margin-top:18px;font-size:23px;line-height:1.4;color:#dbe2e5;max-width:40ch}
+.ft{margin-top:26px;font-size:18px;color:#9fb0b8;font-weight:600}
+</style>
+<div class="photo"></div><div class="panel"></div>
+<div class="in"><img class="logo" src="${logo}">${c.tag ? `<span class="tag">${c.tag}</span>` : ''}
+<h1 style="font-size:${size}px">${c.titulo}</h1><p>${c.sub}</p><span class="ft">alfainoxbh.com.br · WhatsApp (31) 97237-9813</span></div>`
 }
-try { process.kill(-child.pid, 'SIGKILL') } catch {}
-if (!fs.existsSync(strip)) throw new Error('Chrome não gerou o screenshot')
-console.log(`Strip renderizado: ${(fs.statSync(strip).size / 1e6).toFixed(1)} MB`)
 
-// ---------- fatiar ----------
-fs.rmSync(OUT, { recursive: true, force: true })
 fs.mkdirSync(OUT, { recursive: true })
-cards.forEach((c, i) => {
-  execFileSync('magick', [
-    strip, '-crop', `1200x630+0+${i * 630}`, '+repage',
-    '-quality', '86', '-strip', '-interlace', 'Plane',
-    path.join(OUT, `${c.name}.jpg`),
-  ])
-})
-
+const browser = await chromium.launch()
+const page = await browser.newPage({ viewport: { width: 1200, height: 630 } })
+for (const c of cards) {
+  await page.setContent(html(c), { waitUntil: 'networkidle' })
+  await page.evaluate(() => document.fonts.ready)
+  await page.screenshot({ path: path.join(OUT, `${c.name}.jpg`), type: 'jpeg', quality: 84 })
+}
+await browser.close()
 const sizes = cards.map((c) => fs.statSync(path.join(OUT, `${c.name}.jpg`)).size)
-console.log(`${cards.length} cartões gerados · maior ${(Math.max(...sizes) / 1024).toFixed(0)} KB · média ${(sizes.reduce((a, b) => a + b) / sizes.length / 1024).toFixed(0)} KB`)
+console.log(`${cards.length} cartões · maior ${(Math.max(...sizes) / 1024).toFixed(0)} KB · média ${(sizes.reduce((a, b) => a + b) / sizes.length / 1024).toFixed(0)} KB`)

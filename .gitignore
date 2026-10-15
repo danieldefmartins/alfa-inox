@@ -42,3 +42,10 @@ next-env.d.ts
 
 # build output
 /out
+
+# wrangler / tooling
+/.wrangler
+/.og-tmp
+
+# fotos de banco licenciadas (originais, ~100 MB) — só as versões otimizadas vão para o git
+/fotos/estoque-original
