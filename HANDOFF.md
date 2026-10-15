@@ -13,7 +13,15 @@
 - `og:image`/`twitter:image` usam `OG_ORIGIN` no build: `npm run preview:deploy` aponta para o workers.dev (para o dono ver os cartões novos); o build de produção usa https://alfainoxbh.com.br. Canonicals sempre no domínio.
 - Paleta: petróleo `#0B7A94` só em CTAs; carvão `#2E3A40` como tinta e faixas escuras. Tokens em `docs/DESIGN.md`.
 
-**Hero (escolha do dono):** foto do corrimão duplo de inox na área de lazer de um condomínio (`corrimao-inox-rampa-acessibilidade-duplo`, AVIF/WebP), recorte ajustado por tela; linha de apoio: projetos residenciais e comerciais com o design moderno dos projetos de alto padrão. Nova seção "Para a sua casa e para o seu negócio" (residencial x comercial, com fotos reais) + "Design moderno, como nos projetos de alto padrão" (inox com vidro, linhas retas, escovado/espelhado, fixação discreta — só o que as fotos e os modelos fabricados mostram). Meta description da home e `llms.txt` atualizados; cartão OG padrão com a mesma foto.
+**15/10 — fotos, endereço, avaliações:**
+- Hero agora usa foto de banco licenciada (escada moderna em edifício corporativo, `public/estoque/`, AVIF/WebP), recorte por tela. Fotos de banco só em hero e áreas editoriais (faixa "Design moderno", topo de Corrimão, Vidro, Condomínios e Lagoa Santa) — nunca na galeria nem como obra. Regras e pesos em `docs/photo-sources.md`; originais fora do git (`fotos/estoque-original/`).
+- A foto real do corrimão duplo (escolha anterior do dono) foi para a coluna "Comercial e condomínios".
+- +12 fotos de obras confirmadas pelo dono (galeria agora com 65): faixa de catálogo e marca d'água cortadas, metadados removidos, sem ampliar as pequenas. `scripts/build-photos.mjs` ficou incremental (não apaga mais `public/fotos`).
+- Endereço trocado para o do Google: R. Cantagalo, 1449 – Aparecida, CEP 31230-770, geo -19.8878277, -43.9537465; `sameAs` + `hasMap` com o perfil; link "Ver no Google Maps" (sem mapa embutido).
+- Nota Google "5,0 · 14 avaliações" no hero, rodapé e contato; seção "O que dizem no Google" na home (Daniel M., Zélia M., Nathalia M., Carlos M.) e uma avaliação por serviço; texto literal, sem schema de review.
+- Cartão OG padrão com a foto do hero.
+
+**Hero (escolha anterior do dono):** foto do corrimão duplo de inox na área de lazer de um condomínio (`corrimao-inox-rampa-acessibilidade-duplo`, AVIF/WebP), recorte ajustado por tela; linha de apoio: projetos residenciais e comerciais com o design moderno dos projetos de alto padrão. Nova seção "Para a sua casa e para o seu negócio" (residencial x comercial, com fotos reais) + "Design moderno, como nos projetos de alto padrão" (inox com vidro, linhas retas, escovado/espelhado, fixação discreta — só o que as fotos e os modelos fabricados mostram). Meta description da home e `llms.txt` atualizados; cartão OG padrão com a mesma foto.
 
 **Serviços na home** — grade editorial com fotos grandes (2 destaques ~480 px + 4 de 380 px no desktop; carrossel com rolagem lateral e cartões 4:5 no celular), uma foto real por serviço sem repetir o hero nem a 1ª linha de obras; as 6 imagens verificadas com rolagem real.
 

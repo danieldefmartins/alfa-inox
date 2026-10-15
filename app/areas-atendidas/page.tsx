@@ -26,7 +26,7 @@ export default function AreasPage() {
           <Crumbs itens={[{ nome: 'Onde atendemos' }]} />
           <h1>Onde atendemos na Grande BH</h1>
           <p className="lede">
-            A oficina fica na Avenida Américo Vespúcio, no bairro Aparecida, em Belo Horizonte. Daqui saímos para medir e
+            A oficina fica na Rua Cantagalo, no bairro Aparecida, em Belo Horizonte. Daqui saímos para medir e
             instalar na capital e em {AREAS.length - 1} cidades da região metropolitana. Cada cidade tem a sua página, com
             os pedidos mais comuns por lá e as regiões que cobrimos.
           </p>

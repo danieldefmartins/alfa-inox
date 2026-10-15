@@ -4,11 +4,11 @@ import { SITE, waLink, WA_DEFAULT, telHref, socialMeta } from '@/lib/site'
 import { AREAS } from '@/lib/areas'
 import Crumbs from '@/components/Crumbs'
 import Jsonld from '@/components/Jsonld'
-import { ComoFunciona } from '@/components/Sections'
+import { ComoFunciona, GoogleRating } from '@/components/Sections'
 import { WhatsAppIcon, Phone, Pin, Clock, Mail } from '@/components/Icons'
 
 const TITLE = 'Contato: Alfa Inox, Corrimão e Guarda-Corpo em BH'
-const DESC = 'WhatsApp (31) 97237-9813, telefone (31) 2298-1234 e vendas@alfainoxbh.com.br. Av. Américo Vespúcio, 105, Aparecida, BH. Segunda a sábado, 8h às 17h.'
+const DESC = 'WhatsApp (31) 97237-9813, telefone (31) 2298-1234 e vendas@alfainoxbh.com.br. Rua Cantagalo, 1449, Aparecida, BH. Segunda a sábado, 8h às 17h.'
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   ...socialMeta({ card: 'contato', titulo: TITLE, descricao: DESC, url: '/contato/' }),
 }
 
-const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Alfa Inox, ${SITE.address.street}, ${SITE.address.district}, ${SITE.address.city} - ${SITE.address.state}`)}`
+const mapsLink = SITE.google.mapsUrl
 
 export default function ContatoPage() {
   const canais = [
@@ -52,7 +52,8 @@ export default function ContatoPage() {
               <h2 style={{ fontSize: '1.25rem', display: 'flex', gap: 10, alignItems: 'center' }}><Pin size={22} />Oficina</h2>
               <p style={{ fontWeight: 600, margin: 0 }}>{SITE.address.street}<br />{SITE.address.district} — {SITE.address.city}/{SITE.address.state} · CEP {SITE.address.postalCode}</p>
               <p className="muted" style={{ margin: 0, display: 'flex', gap: 8, alignItems: 'center' }}><Clock size={16} /> {SITE.hours}</p>
-              <div><a className="btn btn-line" href={mapsLink} target="_blank" rel="noopener">Abrir no Google Maps</a></div>
+              <div><a className="btn btn-line" href={mapsLink} target="_blank" rel="noopener">Ver no Google Maps</a></div>
+              <GoogleRating />
             </div>
           </div>
         </div>

@@ -14,15 +14,35 @@ export const SITE = {
   whatsappDisplay: '(31) 97237-9813',
   email: 'vendas@alfainoxbh.com.br',
   address: {
-    street: 'Avenida Américo Vespúcio, 105',
+    street: 'Rua Cantagalo, 1449',
     district: 'Aparecida',
     city: 'Belo Horizonte',
     state: 'MG',
     stateName: 'Minas Gerais',
-    postalCode: '31230-580',
+    postalCode: '31230-770',
     country: 'BR',
   },
-  geo: { lat: -19.8869, lng: -43.9483 },
+  geo: { lat: -19.8878277, lng: -43.9537465 },
+  /** Perfil no Google (Google Business Profile, categoria "Metalwork"). Nota conferida em 15/10/2026. */
+  google: {
+    url: 'https://maps.app.goo.gl/PV49gRLGiDH517TU7',
+    mapsUrl: 'https://www.google.com/maps/place/?q=place_id&ftid=0xa691ad5790dd51:0xcc4d4d49f001d5cf',
+    rating: 5.0,
+    count: 14,
+    checked: '2026-10-15',
+    /** Citações LITERAIS de avaliações do Google (nome + inicial do sobrenome, decisão do dono 15/10/2026). Nunca editar o texto. */
+    depoimentos: [
+      { nome: 'Daniel M.', texto: 'Excelente empresa, fiz um projeto comercial grande com eles, acabaram dentro do prazo e com qualidade de primeira. Obrigado Carlos' },
+      { nome: 'Zélia M.', texto: 'Alfa Inox é uma excelente empresa! Produtos de alto nível; bons preços; profissionais competentes e trabalhos de primeira qualidade; entrega rápida. Gostei muito dos trabalhos realizados em minha casa. Parabéns!' },
+      { nome: 'Nathalia M.', texto: 'Experiência fantástica. Equipe profissional e competente. Fizeram toda estrutura de corrimões pra minha empresa. Estará sempre em minhas indicações.' },
+      { nome: 'Carlos M.', texto: 'Excelente preço, entrega muito rápida e qualidade e muita segurança!! Não preciso fazer outros orçamentos, super indico!!' },
+      { nome: 'Yezo D.', texto: 'Excelente trabalho! O serviço foi entregue antes do prazo e feito com muita excelência. Parabéns aos profissionais 👏🏻' },
+      { nome: 'Maria Clara M.', texto: 'Excelente trabalho!! Pode confiar de olhos fechados!!! Indico para todos!' },
+      { nome: 'Bruno L.', texto: 'Entregou o que prometeu no tempo certo. Parabéns !!!' },
+      { nome: 'Andre S.', texto: 'Excelente trabalho feito pelo Carlos' },
+      { nome: 'Simone M.', texto: 'Excelente trabalho!!!' },
+    ],
+  },
   hours: 'Segunda a sábado, das 8h às 17h',
   hoursShort: 'Seg–Sáb, 8h–17h',
   hoursSchema: [

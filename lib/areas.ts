@@ -2,6 +2,8 @@
 // pedidos típicos), não troca-nome. Nenhuma obra, cliente ou avaliação inventada: as fotos mostradas são
 // obras reais da Alfa Inox na Grande BH, sem afirmar que foram feitas naquela cidade.
 // Estas são também as únicas cidades que a saudação do hero (lib/geo.ts) pode mostrar.
+import type { EstoqueNome } from './estoque'
+
 export type Area = {
   slug: string
   nome: string
@@ -12,6 +14,8 @@ export type Area = {
   pedidos: string[]
   bairros: string[]
   fotos: string[]
+  /** Foto de banco licenciada para o topo (atmosfera), opcional. */
+  capaEstoque?: EstoqueNome
   faq: { q: string; a: string }[]
 }
 
@@ -21,7 +25,7 @@ export const AREAS: Area[] = [
     nome: 'Belo Horizonte',
     tipo: 'capital',
     descricao:
-      'Nossa oficina fica na Avenida Américo Vespúcio, no bairro Aparecida, e atendemos a capital inteira — da região Centro-Sul ao Barreiro, da Pampulha a Venda Nova.',
+      'Nossa oficina fica na Rua Cantagalo, no bairro Aparecida, e atendemos a capital inteira — da região Centro-Sul ao Barreiro, da Pampulha a Venda Nova.',
     contexto: [
       'BH é uma cidade de morro: muita casa tem escada externa na entrada, garagem em desnível e sobrado com escada interna em U. É o terreno onde o corrimão sob medida faz diferença, porque quase nenhum lance é igual ao outro.',
       'Nos prédios da Centro-Sul e da Pampulha, os pedidos mais comuns são troca de corrimão de escada de emergência, guarda-corpo de varanda e adequação de rampa à NBR 9050 nas áreas comuns.',
@@ -35,7 +39,7 @@ export const AREAS: Area[] = [
     ],
     fotos: ['corrimao-inox-escada-entrada-externa', 'guarda-corpo-vidro-cobertura-piscina-deck', 'corrimao-parede-inox-escada-condominio', 'guarda-corpo-inox-escada-interna-sala', 'corrimao-inox-curvo-area-externa-condominio', 'guarda-corpo-inox-academia-comercial'],
     faq: [
-      { q: 'Onde fica a oficina da Alfa Inox em BH?', a: 'Na Avenida Américo Vespúcio, 105, bairro Aparecida, região Noroeste de Belo Horizonte. Atendemos de segunda a sábado, das 8h às 17h.' },
+      { q: 'Onde fica a oficina da Alfa Inox em BH?', a: 'Na Rua Cantagalo, 1449, bairro Aparecida, região Noroeste de Belo Horizonte (CEP 31230-770). Atendemos de segunda a sábado, das 8h às 17h.' },
       { q: 'Vocês atendem prédio na região Centro-Sul?', a: 'Sim. Atendemos condomínios e prédios comerciais em toda a capital, com proposta formal por item para a assembleia.' },
     ],
   },
@@ -133,6 +137,7 @@ export const AREAS: Area[] = [
   },
   {
     slug: 'lagoa-santa',
+    capaEstoque: 'corrimao-inox-escada-piscina-pastilha-azul',
     nome: 'Lagoa Santa',
     tipo: 'cidade',
     distancia: '35 km do centro de BH',

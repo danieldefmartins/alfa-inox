@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { SITE, PAGAMENTO, telHref, waLink, WA_DEFAULT } from '@/lib/site'
 import { AREAS } from '@/lib/areas'
+import { estoque, type EstoqueNome } from '@/lib/estoque'
 import { findPhoto, src, srcSetFor, type Photo } from '@/lib/photos'
 import { WhatsAppIcon, Phone, Arrow, Pin, Clock } from './Icons'
 
@@ -121,6 +122,62 @@ export function AreaChips({ prefix = '' }: { prefix?: string }) {
 
 export function OficinaLine() {
   return <span style={{ display: 'inline-flex', gap: 8, alignItems: 'center' }}><Pin size={16} /> Oficina no bairro Aparecida, BH</span>
+}
+
+/** Foto de banco licenciada (lib/estoque.ts): só para hero e áreas editoriais, nunca como obra. */
+export function Estoque({ nome, sizes, priority = false, className, style, alt }: {
+  nome: EstoqueNome; sizes: string; priority?: boolean; className?: string; style?: React.CSSProperties; alt?: string
+}) {
+  const e = estoque(nome)
+  return (
+    <picture className={className}>
+      <source type="image/avif" srcSet={e.avif} sizes={sizes} />
+      <img src={e.src} srcSet={e.webp} sizes={sizes} width={e.width} height={e.height} alt={alt ?? e.alt}
+        loading={priority ? 'eager' : 'lazy'} decoding="async" fetchPriority={priority ? 'high' : undefined}
+        style={{ backgroundColor: '#dfe5e8', ...style }} />
+    </picture>
+  )
+}
+
+/** Avaliações do Google (perfil real). Só a linha de nota com link — sem schema de review (seria autopromoção). */
+export function GoogleRating({ dark = false }: { dark?: boolean }) {
+  const g = SITE.google
+  return (
+    <a href={g.url} target="_blank" rel="noopener" className={dark ? 'g-rating on-dark' : 'g-rating'}>
+      <span aria-hidden="true" className="g-stars">★★★★★</span>
+      <span><strong>{g.rating.toLocaleString('pt-BR', { minimumFractionDigits: 1 })}</strong> no Google · {g.count} avaliações</span>
+    </a>
+  )
+}
+
+/** Depoimentos reais do Google, citados na íntegra (sem estrelas por citação, sem fotos, sem schema). */
+export function Depoimentos({ nomes, titulo = 'O que dizem no Google', white = false }: { nomes?: string[]; titulo?: string; white?: boolean }) {
+  const all = SITE.google.depoimentos
+  const lista = nomes ? nomes.map((n) => all.find((d) => d.nome === n)!).filter(Boolean) : all.slice(0, 4)
+  return (
+    <section className={`section${white ? ' white' : ''}`}>
+      <div className="wrap">
+        <div className="head-row">
+          <div className="head">
+            <h2>{titulo}</h2>
+            <p className="lede">Avaliações publicadas no perfil da Alfa Inox no Google, copiadas como foram escritas.</p>
+          </div>
+          <div style={{ display: 'grid', gap: 4, justifyItems: 'start' }}>
+            <GoogleRating />
+            <a className="link-arrow" href={SITE.google.url} target="_blank" rel="noopener">Ver todas no Google <Arrow /></a>
+          </div>
+        </div>
+        <ul className={lista.length === 1 ? 'quotes one' : 'quotes'} role="list">
+          {lista.map((d) => (
+            <li key={d.nome}>
+              <blockquote>“{d.texto}”</blockquote>
+              <p>{d.nome} · avaliação no Google</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
 }
 
 export { Arrow }

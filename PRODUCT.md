@@ -19,7 +19,7 @@ Site institucional e de geração de orçamentos da Alfa Inox. Sucesso = convers
 
 ## Positioning
 
-Fabricação própria em Belo Horizonte (oficina na Av. Américo Vespúcio, Aparecida): mede no local, fabrica sob medida em inox 304/316 e instala com equipe própria — não revende kit pronto.
+Fabricação própria em Belo Horizonte (oficina na Rua Cantagalo, 1449, Aparecida): mede no local, fabrica sob medida em inox 304/316 e instala com equipe própria — não revende kit pronto.
 
 ## Operating Context
 

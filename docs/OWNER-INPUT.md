@@ -1,6 +1,6 @@
 # O que falta do dono (Alfa Inox)
 
-Respostas já recebidas em 14/10/2026: telefone fixo (31) 2298-1234 é real (está no site); a Alfa Inox tem conta no 360; o sinal pode ser pago em dinheiro, Pix ou cartão (está no site).
+Respostas já recebidas: telefone fixo (31) 2298-1234 é real; a Alfa Inox tem conta no 360; o sinal pode ser pago em dinheiro, Pix ou cartão; **endereço oficial = Google Business Profile: R. Cantagalo, 1449 – Aparecida, BH, CEP 31230-770** (15/10/2026; o site e o schema já usam esse endereço); 12 fotos da web confirmadas como obras da Alfa (15/10/2026).
 
 ## 1. 360 CRM — formulário (só configuração, o código já está pronto)
 Preencher em `lib/site.ts` → `SITE.crm`:
@@ -20,10 +20,8 @@ Depois: trocar o fixture sintético de `scripts/crm.test.mjs` pelo JSON real (GE
 - **ART** sob demanda é verdade? (Tiramos do site.)
 - Faturam para CNPJ com nota fiscal — confirmado? (Mantido, veio do site antigo.)
 
-## 3. Prova social (não publicamos nada sem fonte)
-- Link do **Google Business Profile** e nota/quantidade de avaliações reais — para mostrar avaliações com nome e data.
-- Os 3 depoimentos do site antigo ("Magno Coelho", "Rita de Cássia", "Síndico — Condomínio") foram **removidos**: não há fonte. Se forem avaliações reais do Google, mande o link.
-- "500+ obras" e "centenas de obras" foram removidos. Se houver um número real (ex.: notas emitidas), podemos usar.
+## 3. Prova social — resolvido em 15/10/2026
+Nota do Google (5,0 · 14 avaliações) com link para o perfil; 9 avaliações citadas literalmente, com nome e inicial do sobrenome (decisão do dono). Sem schema de review/AggregateRating. Atualizar `SITE.google` em `lib/site.ts` quando a nota ou a contagem mudarem.
 
 ## 4. Fotos
 - **Cidade de cada obra** (para a legenda "serviço + cidade" na galeria). Hoje só uma foto tem cidade conhecida (BH).

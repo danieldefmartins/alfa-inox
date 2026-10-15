@@ -1,6 +1,8 @@
 // Páginas de serviço. Uma palavra-chave principal por página (campo `keyword`), sem canibalizar a home
 // ("corrimão e guarda-corpo em inox em BH") nem os artigos do blog.
 // ATENÇÃO (auditoria): não use a palavra "todo" em texto visível — o script de auditoria a confunde com "TODO".
+import type { EstoqueNome } from './estoque'
+
 export type FAQ = { q: string; a: string }
 export type Bloco = { h: string; resposta: string; p?: string[]; lista?: string[] }
 
@@ -16,6 +18,10 @@ export type Servico = {
   categoriaFotos: string
   /** Foto principal do topo da página (slug de lib/photos.json). */
   capa: string
+  /** Foto de banco licenciada para o topo (só atmosfera; obras reais seguem na galeria da página). */
+  capaEstoque?: EstoqueNome
+  /** Avaliação do Google que combina com o serviço (nome como em SITE.google.depoimentos). */
+  depoimento?: string
   intro: string[]
   paraQuem: string[]
   modelos: { nome: string; texto: string }[]
@@ -29,6 +35,7 @@ export type Servico = {
 export const SERVICOS: Servico[] = [
   {
     slug: 'corrimao-inox',
+    depoimento: 'Nathalia M.',
     nome: 'Corrimão de Inox',
     navNome: 'Corrimão de Inox',
     keyword: 'corrimão de inox em BH',
@@ -39,6 +46,7 @@ export const SERVICOS: Servico[] = [
     resumo: 'De parede, de escada, curvo ou duplo para rampa, em inox escovado ou polido.',
     categoriaFotos: 'corrimao-inox',
     capa: 'corrimao-inox-escada-interna-madeira',
+    capaEstoque: 'escada-pedra-corrimao-inox-area-externa',
     intro: [
       'Corrimão de inox é o tubo de apoio que acompanha a escada, a rampa ou o corredor para a mão de quem passa. Na Alfa Inox ele é fabricado sob medida em aço inox AISI 304 ou 316, com solda TIG e acabamento escovado ou polido, e instalado pela nossa própria equipe em Belo Horizonte e região.',
       'Cada projeto começa com medição no local, porque degrau irregular, parede fora de esquadro e patamar fora de nível são a regra em escada pronta. É a medição que garante um corrimão que acompanha o lance sem emenda aparente e sem folga na fixação.',
@@ -103,6 +111,7 @@ export const SERVICOS: Servico[] = [
   },
   {
     slug: 'guarda-corpo-inox',
+    depoimento: 'Zélia M.',
     nome: 'Guarda-Corpo de Inox',
     navNome: 'Guarda-Corpo de Inox',
     keyword: 'guarda-corpo de inox',
@@ -177,6 +186,7 @@ export const SERVICOS: Servico[] = [
   },
   {
     slug: 'guarda-corpo-de-vidro',
+    depoimento: 'Carlos M.',
     nome: 'Guarda-Corpo de Vidro com Inox',
     navNome: 'Guarda-Corpo de Vidro',
     keyword: 'guarda-corpo de vidro em BH',
@@ -187,6 +197,7 @@ export const SERVICOS: Servico[] = [
     resumo: 'Vidro laminado ou temperado com prumos, torres ou botões de inox.',
     categoriaFotos: 'guarda-corpo-vidro',
     capa: 'guarda-corpo-vidro-escada-interna',
+    capaEstoque: 'guarda-corpo-vidro-inox-interior-moderno-colunas',
     intro: [
       'Guarda-corpo de vidro é o fechamento de segurança feito com painéis de vidro presos a uma estrutura de inox. Ele protege o desnível sem tapar a vista, a piscina ou a sala de pé-direito duplo: o inox segura o painel e o vidro quase desaparece.',
       'Trabalhamos com vidro temperado e laminado. Para sacada, mezanino, cobertura e beira de piscina recomendamos o laminado: se ele quebrar, os pedaços ficam presos à película e o painel continua barrando a passagem.',
@@ -248,6 +259,7 @@ export const SERVICOS: Servico[] = [
   },
   {
     slug: 'acessibilidade-nbr-9050',
+    depoimento: 'Bruno L.',
     nome: 'Acessibilidade NBR 9050',
     navNome: 'Acessibilidade',
     keyword: 'corrimão NBR 9050 e barra de apoio inox',
@@ -318,6 +330,7 @@ export const SERVICOS: Servico[] = [
   },
   {
     slug: 'portoes-e-gradis-inox',
+    depoimento: 'Yezo D.',
     nome: 'Portões e Gradis de Inox',
     navNome: 'Portões e Gradis',
     keyword: 'portão de inox',
@@ -380,6 +393,7 @@ export const SERVICOS: Servico[] = [
   },
   {
     slug: 'condominios-e-empresas',
+    depoimento: 'Daniel M.',
     nome: 'Condomínios e Empresas',
     navNome: 'Condomínios e Empresas',
     keyword: 'corrimão e guarda-corpo para condomínio',
@@ -390,6 +404,7 @@ export const SERVICOS: Servico[] = [
     resumo: 'Proposta formal por item, nota fiscal e execução programada.',
     categoriaFotos: 'guarda-corpo-inox',
     capa: 'guarda-corpo-inox-varanda-comercial',
+    capaEstoque: 'escadaria-corrimao-inox-duplo-edificio',
     intro: [
       'Obra de condomínio e de empresa tem exigências que a obra de casa não tem: proposta formal para a assembleia, prazo que respeita a rotina do prédio, equipe identificada e execução que não fecha a escada por dias seguidos.',
       'Atendemos síndicos, administradoras, construtoras e empresas com proposta detalhada por item, quantitativo em metro linear, liga e acabamento especificados — o documento que o síndico leva para a assembleia e a construtora anexa à medição.',

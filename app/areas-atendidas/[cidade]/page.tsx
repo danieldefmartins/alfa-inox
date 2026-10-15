@@ -9,7 +9,7 @@ import Crumbs from '@/components/Crumbs'
 import FAQ from '@/components/FAQ'
 import Jsonld from '@/components/Jsonld'
 import Portfolio from '@/components/portfolio/Portfolio'
-import { Img, CloseCTA, ComoFunciona } from '@/components/Sections'
+import { Img, CloseCTA, ComoFunciona, Estoque } from '@/components/Sections'
 import { Arrow, Check, WhatsAppIcon } from '@/components/Icons'
 
 export const dynamicParams = false
@@ -60,7 +60,7 @@ export default async function CidadePage({ params }: { params: Promise<{ cidade:
               </div>
               {a.distancia && <p className="muted small" style={{ marginTop: 20 }}>{a.nome} fica a cerca de {a.distancia} — saímos da nossa oficina no bairro Aparecida.</p>}
             </div>
-            <div className="split-photo"><Img photo={capa} priority sizes="(min-width: 960px) 46vw, 100vw" /></div>
+            <div className="split-photo">{a.capaEstoque ? <Estoque nome={a.capaEstoque} priority sizes="(min-width: 960px) 46vw, 100vw" /> : <Img photo={capa} priority sizes="(min-width: 960px) 46vw, 100vw" />}</div>
           </div>
         </div>
       </section>

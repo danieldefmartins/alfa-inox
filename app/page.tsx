@@ -4,8 +4,9 @@ import { SERVICOS } from '@/lib/servicos'
 import { AREAS } from '@/lib/areas'
 import { PHOTOS, findPhoto } from '@/lib/photos'
 import { SITE, waLink, WA_DEFAULT, socialMeta } from '@/lib/site'
-import { Img, CloseCTA, ComoFunciona, Fatos, AreaChips } from '@/components/Sections'
+import { Img, CloseCTA, ComoFunciona, Fatos, AreaChips, Estoque, GoogleRating, Depoimentos } from '@/components/Sections'
 import { CityName, CityProof } from '@/components/LocalCity'
+import { estoque } from '@/lib/estoque'
 import { WhatsAppIcon, Arrow } from '@/components/Icons'
 import FAQ from '@/components/FAQ'
 import Portfolio from '@/components/portfolio/Portfolio'
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   ...socialMeta({ card: 'default', titulo: TITLE, descricao: DESC, url: '/' }),
 }
 
-const HERO = findPhoto('corrimao-inox-rampa-acessibilidade-duplo')!
+const HERO_D = estoque('escada-moderna-guarda-corpo-inox-edificio-corporativo')
 // Foto de cada serviço na home (diferentes do hero e da 1ª linha de obras)
 const FOTO_SERVICO: Record<string, string> = {
   'corrimao-inox': 'corrimao-parede-inox-escada-residencia',
@@ -36,7 +37,7 @@ const FOTO_SERVICO: Record<string, string> = {
 const OBRAS = [ // paisagem: no celular (2 colunas) cada uma usa o arquivo de 400 px
   'corrimao-parede-inox-escada-caracol', 'guarda-corpo-vidro-escada-interna', 'corrimao-inox-curvo-area-externa-condominio',
   'guarda-corpo-inox-corredor-mezanino', 'guarda-corpo-inox-travessas-horizontais-area-externa', 'guarda-corpo-inox-escada-interna-residencial',
-  'guarda-corpo-inox-mezanino-vao-interno', 'guarda-corpo-vidro-inox-area-externa', 'corrimao-parede-inox-escada-condominio',
+  'guarda-corpo-inox-sacada-travessas', 'guarda-corpo-vidro-torres-inox-mezanino', 'guarda-corpo-inox-escada-vista-superior',
 ]
 
 export default function Home() {
@@ -46,13 +47,12 @@ export default function Home() {
       {/* HERO — foto real em tela cheia, véu carvão suave embaixo/à esquerda; título grande à esquerda,
           linha + CTAs alinhados à base na coluna da direita (desktop). Pôster LCP: AVIF/WebP, prioridade alta. */}
       <section className="hero3">
+        {/* Foto de banco licenciada (lib/estoque.ts), recorte ajustado por tela.
+            Só ilustra o estilo — não é apresentada como obra da Alfa Inox. */}
         <picture className="hero3-photo">
-          <source type="image/avif" sizes="100vw"
-            srcSet={`/fotos/${HERO.slug}-800.avif 800w, /fotos/${HERO.slug}-1600.avif ${HERO.width}w`} />
-          <img src={`/fotos/${HERO.slug}-1600.webp`} sizes="100vw"
-            srcSet={`/fotos/${HERO.slug}-800.webp 800w, /fotos/${HERO.slug}-1600.webp ${HERO.width}w`}
-            width={HERO.width} height={HERO.height} fetchPriority="high" loading="eager" decoding="async"
-            alt="Corrimão duplo de inox na escada da área de lazer de um condomínio em BH, com piscina e prédios ao fundo" />
+          <source type="image/avif" sizes="100vw" srcSet={HERO_D.avif} />
+          <img src={HERO_D.src} srcSet={HERO_D.webp} sizes="100vw" width={HERO_D.width} height={HERO_D.height}
+            fetchPriority="high" loading="eager" decoding="async" alt={HERO_D.alt} />
         </picture>
         <div className="wrap hero3-in">
           <h1>Corrimão e guarda-corpo em inox em <CityName fallback="Belo Horizonte" />.</h1>
@@ -63,6 +63,7 @@ export default function Home() {
               <Link className="btn btn-glass btn-lg" href="/galeria/">Ver obras</Link>
             </div>
             <p className="hero-proof"><CityProof fallback={`Oficina no bairro ${SITE.address.district}, BH · desde ${SITE.foundedYear}`} /></p>
+            <p className="hero-proof" style={{ marginTop: 0 }}><GoogleRating dark /></p>
           </div>
         </div>
       </section>
@@ -113,11 +114,14 @@ export default function Home() {
               <span className="svc-go">Ver obras residenciais <Arrow /></span>
             </Link>
             <Link href="/servicos/condominios-e-empresas/" className="seg-card">
-              <div className="seg-img"><Img photo={findPhoto('guarda-corpo-inox-academia-comercial')!} sizes="(min-width: 900px) 600px, 100vw" /></div>
+              <div className="seg-img"><Img photo={findPhoto('corrimao-inox-rampa-acessibilidade-duplo')!} sizes="(min-width: 900px) 600px, 100vw" /></div>
               <h3>Comercial e condomínios</h3>
               <p>Áreas comuns de condomínios, lojas, academias, clínicas e empresas — com rampas e banheiros adequados à NBR 9050.</p>
               <span className="svc-go">Condomínios e empresas <Arrow /></span>
             </Link>
+          </div>
+          <div className="moderno-hero">
+            <Estoque nome="escada-saguao-guarda-corpo-inox-alto-padrao" sizes="(min-width: 1240px) 1240px, 100vw" />
           </div>
           <div className="moderno">
             <h3>Design moderno, como nos projetos de alto padrão</h3>
@@ -161,6 +165,8 @@ export default function Home() {
         </div>
       </section>
 
+      <Depoimentos nomes={['Daniel M.', 'Zélia M.', 'Nathalia M.', 'Carlos M.']} white />
+
       {/* POR QUE */}
       <section className="section">
         <div className="wrap two" style={{ alignItems: 'start' }}>
@@ -182,7 +188,7 @@ export default function Home() {
         <div className="wrap two" style={{ alignItems: 'end' }}>
           <div className="head" style={{ marginBottom: 0 }}>
             <h2>Atendemos Belo Horizonte e {AREAS.length - 1} cidades da região</h2>
-            <p className="lede">A oficina fica na Av. Américo Vespúcio, no Aparecida. Daqui saímos para medir e instalar em toda a Grande BH.</p>
+            <p className="lede">A oficina fica na Rua Cantagalo, no Aparecida. Daqui saímos para medir e instalar em toda a Grande BH.</p>
           </div>
           <AreaChips />
         </div>

@@ -1,0 +1,74 @@
+{
+  "escada-moderna-guarda-corpo-inox-edificio-corporativo": {
+    "alt": "Escada moderna com guarda-corpo de inox em edif\u00edcio corporativo com fachada de vidro",
+    "width": 6240,
+    "height": 4160,
+    "ratio": 1.5,
+    "files": {
+      "480": "escada-moderna-guarda-corpo-inox-edificio-corporativo-480.webp",
+      "800": "escada-moderna-guarda-corpo-inox-edificio-corporativo-800.webp",
+      "1200": "escada-moderna-guarda-corpo-inox-edificio-corporativo-1200.webp",
+      "1920": "escada-moderna-guarda-corpo-inox-edificio-corporativo-1920.webp"
+    }
+  },
+  "guarda-corpo-vidro-inox-interior-moderno-colunas": {
+    "alt": "Guarda-corpo de vidro com corrim\u00e3o de inox em interior moderno com colunas",
+    "width": 3073,
+    "height": 4750,
+    "ratio": 0.6469,
+    "files": {
+      "480": "guarda-corpo-vidro-inox-interior-moderno-colunas-480.webp",
+      "800": "guarda-corpo-vidro-inox-interior-moderno-colunas-800.webp",
+      "1200": "guarda-corpo-vidro-inox-interior-moderno-colunas-1200.webp",
+      "1920": "guarda-corpo-vidro-inox-interior-moderno-colunas-1920.webp"
+    }
+  },
+  "escada-saguao-guarda-corpo-inox-alto-padrao": {
+    "alt": "Escada dupla com guarda-corpo de inox em sagu\u00e3o de alto padr\u00e3o",
+    "width": 5760,
+    "height": 3840,
+    "ratio": 1.5,
+    "files": {
+      "480": "escada-saguao-guarda-corpo-inox-alto-padrao-480.webp",
+      "800": "escada-saguao-guarda-corpo-inox-alto-padrao-800.webp",
+      "1200": "escada-saguao-guarda-corpo-inox-alto-padrao-1200.webp",
+      "1920": "escada-saguao-guarda-corpo-inox-alto-padrao-1920.webp"
+    }
+  },
+  "escada-pedra-corrimao-inox-area-externa": {
+    "alt": "Escada externa de pedra com corrim\u00e3o de inox ao lado de muro de pedra",
+    "width": 3200,
+    "height": 4800,
+    "ratio": 0.6667,
+    "files": {
+      "480": "escada-pedra-corrimao-inox-area-externa-480.webp",
+      "800": "escada-pedra-corrimao-inox-area-externa-800.webp",
+      "1200": "escada-pedra-corrimao-inox-area-externa-1200.webp",
+      "1920": "escada-pedra-corrimao-inox-area-externa-1920.webp"
+    }
+  },
+  "corrimao-inox-escada-piscina-pastilha-azul": {
+    "alt": "Corrim\u00e3o de inox na entrada de piscina com pastilha azul",
+    "width": 6720,
+    "height": 3776,
+    "ratio": 1.7797,
+    "files": {
+      "480": "corrimao-inox-escada-piscina-pastilha-azul-480.webp",
+      "800": "corrimao-inox-escada-piscina-pastilha-azul-800.webp",
+      "1200": "corrimao-inox-escada-piscina-pastilha-azul-1200.webp",
+      "1920": "corrimao-inox-escada-piscina-pastilha-azul-1920.webp"
+    }
+  },
+  "escadaria-corrimao-inox-duplo-edificio": {
+    "alt": "Escadaria larga com corrim\u00e3os de inox em edif\u00edcio",
+    "width": 5100,
+    "height": 3400,
+    "ratio": 1.5,
+    "files": {
+      "480": "escadaria-corrimao-inox-duplo-edificio-480.webp",
+      "800": "escadaria-corrimao-inox-duplo-edificio-800.webp",
+      "1200": "escadaria-corrimao-inox-duplo-edificio-1200.webp",
+      "1920": "escadaria-corrimao-inox-duplo-edificio-1920.webp"
+    }
+  }
+}

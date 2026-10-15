@@ -11,7 +11,7 @@ import FAQ from '@/components/FAQ'
 import Crumbs from '@/components/Crumbs'
 import Jsonld from '@/components/Jsonld'
 import OrcamentoForm from '@/components/OrcamentoForm'
-import { Img, CloseCTA, ComoFunciona } from '@/components/Sections'
+import { Img, CloseCTA, ComoFunciona, Estoque, Depoimentos } from '@/components/Sections'
 import { Arrow, Check, WhatsAppIcon } from '@/components/Icons'
 
 export const dynamicParams = false
@@ -43,7 +43,7 @@ export default async function ServicoPage({ params }: { params: Promise<{ servic
   const s = findServico((await params).servico)
   if (!s) notFound()
   const capa = findPhoto(s.capa) ?? PHOTOS[0]
-  const fotos = byCategory(s.categoriaFotos).filter((p) => p.slug !== capa.slug)
+  const fotos = byCategory(s.categoriaFotos).filter((p) => s.capaEstoque || p.slug !== capa.slug)
   const outros = SERVICOS.filter((x) => x.slug !== s.slug)
   const posts = (RELACIONADOS[s.slug] ?? []).map((slug) => POSTS.find((p) => p.slug === slug)).filter(Boolean)
   const msg = `Olá! Gostaria de um orçamento de ${s.nome.toLowerCase()}.`
@@ -63,7 +63,9 @@ export default async function ServicoPage({ params }: { params: Promise<{ servic
               </div>
             </div>
             <div className="split-photo">
-              <Img photo={capa} priority sizes="(min-width: 960px) 46vw, 100vw" />
+              {s.capaEstoque
+                ? <Estoque nome={s.capaEstoque} priority sizes="(min-width: 960px) 46vw, 100vw" />
+                : <Img photo={capa} priority sizes="(min-width: 960px) 46vw, 100vw" />}
             </div>
           </div>
         </div>
@@ -121,6 +123,8 @@ export default async function ServicoPage({ params }: { params: Promise<{ servic
           </div>
         </section>
       )}
+
+      {s.depoimento && <Depoimentos nomes={[s.depoimento]} titulo="Quem contratou" />}
 
       <ComoFunciona white />
 

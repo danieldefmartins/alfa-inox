@@ -4,6 +4,7 @@ import { AREAS } from '@/lib/areas'
 import { SITE, telHref, waLink, WA_DEFAULT } from '@/lib/site'
 import { WhatsAppIcon, Phone, Pin, Clock, Mail } from './Icons'
 import Logo from './Logo'
+import { GoogleRating } from './Sections'
 
 export default function Footer() {
   const ano = new Date().getFullYear()
@@ -22,6 +23,8 @@ export default function Footer() {
             <a href={`mailto:${SITE.email}`}><Mail size={16} /> {SITE.email}</a>
             <span><Pin size={16} /> <span>{SITE.address.street}<br />{SITE.address.district} — {SITE.address.city}/{SITE.address.state} · CEP {SITE.address.postalCode}</span></span>
             <span><Clock size={16} /> {SITE.hours}</span>
+            <a href={SITE.google.mapsUrl} target="_blank" rel="noopener"><Pin size={16} /> Ver no Google Maps</a>
+            <GoogleRating dark />
           </div>
         </div>
         <div>

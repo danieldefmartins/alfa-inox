@@ -754,5 +754,177 @@
     "height": 1600,
     "orientation": "portrait",
     "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAwCdASoPABQAPwFqrE8rJiQiMAgBYCAJZwAASnlAm4wEvCcWOQAA/tWN/8x2Mll1OSrZ8lbs+6hQSufjCeC9II9IltnoUcqZzzqrIzqN2ddgDm/Mo04PRLCRIIU9CgAAAA=="
+  },
+  {
+    "slug": "guarda-corpo-inox-polido-sacada-residencia",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox polido com travessas em sacada de residência",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "sacada"
+    ],
+    "width": 600,
+    "height": 814,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwAwCdASoPABQAPwFqrE6rJiQiMAgBYCAJQBdgBD4eL8adtLFvvyhgAP7LS6gJoJqtanfGlW/yZ0WXOgyoVx/2jWiCK3p38TvqYb09En88dZuYEZWnXkbADIgEmYfk/+cK9vsnwcYxqAFb5AAAAA=="
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-externa-piscina",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox com travessas em escada externa ao lado da piscina",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "escada",
+      "piscina"
+    ],
+    "width": 768,
+    "height": 1024,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACQAwCdASoPABQAPwFqrE8rJiQiMAgBYCAJQBWABEDLuM0PJZugAN1XQzDrXqhAm2y1VirIF/7XJ+7yX53T3nladknEBA/DVLDBrGTFqYPsyInslHW58m4QanCB4bfH4AA="
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-degraus-pretos",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox com travessas em escada de degraus pretos",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 926,
+    "height": 1080,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAABwBACdASoRABQAPwFwrFErJiQiqA1RYCAJQBVO3AADg8daMUwOiAPTWL1fAAD+a9yGH7vlCa5NDQHf7D+HEALTtDxtTgsIVPvPh76BpkwKMCo0fD9eFdD3im7QrB2/mn4wG3AhX6uAVv9nvZBFzhTxUY7qXxVzRiOmCH5gci4Ss4Imc08kMw0EfDHFeoKMAAA="
+  },
+  {
+    "slug": "corrimao-parede-inox-escada-granito-preto",
+    "category": "corrimao-inox",
+    "alt": "Corrimão de parede e guarda-corpo de inox em escada de granito preto",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada",
+      "parede"
+    ],
+    "width": 600,
+    "height": 800,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQBACdASoPABQAPwForE8rJaQiMAgBYCAJZwDImCLDUkuRHNhqr8IjcAD8z6CAx0v2uiizyU7P2bPYJsrddG3l56tgWhw91pboVUrZLrNaYPkWAD8JjQt/+xvdvg0dugBBe3FtutZtBNtvbgp0AA=="
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-vista-superior",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada interna, visto de cima",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "escada"
+    ],
+    "width": 900,
+    "height": 675,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQBACdASoUAA8APwFqrU8rJaQiMAgBYCAJZQDG9BnPxLkzkHDln5rVwADz/AcR9hw4tPfVcb3OpXR5p5J7ewljmOjtmxLw4uKq2+bUi1PXcogQjcQZvkDLqu0kjDsImbQAAA=="
+  },
+  {
+    "slug": "guarda-corpo-inox-escada-externa-sacada-casa",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em escada externa e sacada de casa",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "escada",
+      "sacada"
+    ],
+    "width": 720,
+    "height": 500,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADQAwCdASoUAA4APwFqrE8rJiQiMAgBYCAJZQAAPgZ1Jzdt6eGYQgAAzZrxmW0RC7PYL5SPovHSfLOvgHMpWFukrgM+9aB/2CpeA643eESbbdRPrli0o+ix8jBTWL+WKRiGqD2yMmWXEvluXFPzUKhBV2LeQwyrmHeAAA=="
+  },
+  {
+    "slug": "guarda-corpo-vidro-torres-inox-mezanino",
+    "category": "guarda-corpo-vidro",
+    "alt": "Guarda-corpo de vidro com torres de inox em mezanino",
+    "ambiente": "residencial",
+    "tags": [
+      "interno",
+      "vidro",
+      "mezanino"
+    ],
+    "width": 800,
+    "height": 600,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAwCdASoUAA8APwFqrE8rJiQiMAgBYCAJZwAAUTXJMTceUKlJMQAA/fZlXvarZHdehU3VbwFvhdWXYk57Aad0f0hrY7XPEK5C4rcR94xblqBfitEt2yxMRzE/IHPMCB6AAA=="
+  },
+  {
+    "slug": "guarda-corpo-inox-prumos-area-externa",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox com prumos verticais em área externa",
+    "ambiente": "comercial",
+    "tags": [
+      "externo"
+    ],
+    "width": 522,
+    "height": 335,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADwAwCdASoUAA0APwFqrE6rJiQiMAgBYCAJZwDE6f/gO3fdVB1L6sToAP7rJ1yXBpbHDBDTjCjMqm2KlxUu11ZgoukVv3u49j1DaR+J/ZrltyWtq1kbOZfPiveCp2qn9DuN52ho07tLJShbIlk+JxFoXzlmAZQFHICMqRwAAAA="
+  },
+  {
+    "slug": "corrimao-inox-rampa-acessibilidade-area-comum",
+    "category": "acessibilidade",
+    "alt": "Corrimão de inox em rampa de acessibilidade em área comum",
+    "ambiente": "comercial",
+    "tags": [
+      "externo",
+      "rampa",
+      "nbr9050"
+    ],
+    "width": 640,
+    "height": 480,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAwBACdASoUAA8APwFqrE8rJaQiMAgBYCAJZwDDNB4mr+gnHt1fYIrCfAAA996NS1dR8edYA2Rx8Iuc+Fk3OKhyOXVvCgODNua6p2znVFI+Air/amTGg89+FzJ/iZDZWileK7lDEsJ4SVBGtClEdtkDgfM9vDBbcZXbfKzgAAA="
+  },
+  {
+    "slug": "guarda-corpo-inox-deck-piscina",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox em deck de piscina",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "piscina"
+    ],
+    "width": 480,
+    "height": 640,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQAwCdASoPABQAPwForE8rJaQiMAgBYCAJZQAAXpr69lVLEHY8rAAA/rQJYnQWXv8SD1ERU6uSTuQ7KjfNpwKEUgW+gglN6xA21fXOkRKAlEtb8xSldgJv8AA6np4/W8vcfCc+Ec4RUALjfqHerzNxT3HTgWp4mAA="
+  },
+  {
+    "slug": "guarda-corpo-inox-sacada-travessas",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox com travessas horizontais em sacada",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "sacada"
+    ],
+    "width": 799,
+    "height": 612,
+    "orientation": "landscape",
+    "lqip": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADwAwCdASoUAA8APwFqrE8rJaQiMAgBYCAJYgC06BQm3KIn1ymx+ugAAPuellaj852Rtgj4Rh+hiM2+ShyjAQy2jOtxfbTxpJHw+0K5mosbrhuGSsFWTICi9X3td3cK8CnY0noP18+DDECNE7Pooa2jn7ZFz2eGTvEkAAAA"
+  },
+  {
+    "slug": "guarda-corpo-inox-varanda-travessas",
+    "category": "guarda-corpo-inox",
+    "alt": "Guarda-corpo de inox com travessas em varanda",
+    "ambiente": "residencial",
+    "tags": [
+      "externo",
+      "varanda"
+    ],
+    "width": 694,
+    "height": 799,
+    "orientation": "portrait",
+    "lqip": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADQAwCdASoRABQAPwFyrFGrJqQiqA1RYCAJZQCyzArKk49u8HXtM4wA/uNNF1LBz4XRBpXRFoqT9DW0PRsr124vKSa8bSoV1PNhTWfQI/5VUqS5CG7ZPVIZbqNx6EcgBWIpZqViaQQVoG4vWAA="
   }
 ]

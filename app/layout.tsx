@@ -86,7 +86,8 @@ const localBusiness = {
   ],
   areaServed: AREAS.map((a) => ({ '@type': 'City', name: a.nome, containedInPlace: { '@type': 'State', name: 'Minas Gerais' } })),
   knowsLanguage: 'pt-BR',
-  sameAs: [SITE.social.instagram, SITE.social.facebook],
+  sameAs: [SITE.google.url, SITE.social.instagram, SITE.social.facebook],
+  hasMap: SITE.google.mapsUrl,
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Serviços em aço inox',
