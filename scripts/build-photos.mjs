@@ -1,8 +1,9 @@
 import { execFileSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const ROOT = '/Users/danielmartins/Projects/Alfa-Inox'
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const SRC = path.join(ROOT, 'fotos')
 const OUT = path.join(ROOT, 'public', 'fotos')
 const map = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/photos.map.json'), 'utf8'))
@@ -10,7 +11,8 @@ const map = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/photos.map.json'
 fs.rmSync(OUT, { recursive: true, force: true })
 fs.mkdirSync(OUT, { recursive: true })
 
-const SIZES = [1600, 800, 400]
+// 200 = miniaturas (listas de serviços/cidades no celular); lado maior limitado ao tamanho, nunca amplia
+const SIZES = [1600, 800, 400, 200]
 const manifest = []
 
 for (const [id, slug, category, alt, ambiente, tags] of map) {

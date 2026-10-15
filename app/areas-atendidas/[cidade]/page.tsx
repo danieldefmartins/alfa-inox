@@ -19,7 +19,7 @@ export function generateStaticParams() {
 
 const titleOf = (nome: string) => (nome.length > 14 ? `Corrimão e Guarda-Corpo Inox em ${nome}` : `Corrimão e Guarda-Corpo de Inox em ${nome}`)
 const descOf = (nome: string) =>
-  `Corrimão, guarda-corpo de inox e de vidro e acessibilidade em ${nome}/MG. Medição no local, fabricação própria em BH e instalação. Orçamento no WhatsApp.`
+  `Corrimão, guarda-corpo de inox e de vidro e acessibilidade em ${nome}/MG. Medimos no local, fabricamos em BH e instalamos. Peça no WhatsApp.`
 
 export async function generateMetadata({ params }: { params: Promise<{ cidade: string }> }): Promise<Metadata> {
   const a = findArea((await params).cidade)
@@ -84,7 +84,7 @@ export default async function CidadePage({ params }: { params: Promise<{ cidade:
           <div className="rows">
             {SERVICOS.map((s) => (
               <Link key={s.slug} href={`/servicos/${s.slug}/`} className="row">
-                <Img photo={findPhoto(s.capa) ?? PHOTOS[0]} sizes="(min-width: 720px) 200px, 96px" alt="" />
+                <Img photo={findPhoto(s.capa) ?? PHOTOS[0]} sizes="(min-width: 720px) 200px, 96px" />
                 <div><h3>{s.navNome} em {a.nome}</h3><p>{s.resumo}</p></div>
                 <span className="go" aria-hidden="true"><Arrow /></span>
               </Link>
@@ -99,7 +99,7 @@ export default async function CidadePage({ params }: { params: Promise<{ cidade:
             <h2>Algumas obras da Alfa Inox na Grande BH</h2>
             <p className="lede">Fotos reais de obras que fabricamos e instalamos na região metropolitana.</p>
           </div>
-          <Portfolio fotos={fotos} filtros={false} />
+          <Portfolio fotos={fotos} filtros={false} compact />
         </div>
       </section>
 

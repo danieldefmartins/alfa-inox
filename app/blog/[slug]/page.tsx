@@ -90,7 +90,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <div className="post-list">
             {relacionados.map((r) => (
               <Link key={r.slug} href={`/blog/${r.slug}/`}>
-                <Img photo={findPhoto(r.foto) ?? PHOTOS[0]} sizes="(min-width: 760px) 240px, 100vw" alt="" />
+                <Img photo={findPhoto(r.foto) ?? PHOTOS[0]} sizes="(min-width: 760px) 240px, 100vw" />
                 <div><h3>{r.h1}</h3><p>{r.resumo}</p></div>
               </Link>
             ))}

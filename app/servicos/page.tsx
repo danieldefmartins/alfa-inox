@@ -37,7 +37,7 @@ export default function ServicosPage() {
           <div className="rows">
             {SERVICOS.map((s) => (
               <Link key={s.slug} href={`/servicos/${s.slug}/`} className="row">
-                <Img photo={findPhoto(s.capa) ?? PHOTOS[0]} sizes="(min-width: 720px) 200px, 96px" alt="" />
+                <Img photo={findPhoto(s.capa) ?? PHOTOS[0]} sizes="(min-width: 720px) 200px, 96px" />
                 <div>
                   <h2 style={{ fontSize: 'clamp(1.15rem, 1.05rem + .4vw, 1.35rem)', marginBottom: 4 }}>{s.nome}</h2>
                   <p>{s.intro[0].split('. ')[0]}.</p>

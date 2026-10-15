@@ -37,7 +37,7 @@ export default function AreasPage() {
           <div className="rows">
             {AREAS.map((a) => (
               <Link key={a.slug} href={`/areas-atendidas/${a.slug}/`} className="row">
-                <Img photo={findPhoto(a.fotos[0]) ?? PHOTOS[0]} sizes="(min-width: 720px) 200px, 96px" alt="" />
+                <Img photo={findPhoto(a.fotos[0]) ?? PHOTOS[0]} sizes="(min-width: 720px) 200px, 96px" />
                 <div>
                   <h2 style={{ fontSize: 'clamp(1.15rem, 1.05rem + .4vw, 1.35rem)', marginBottom: 4 }}>Corrimão e guarda-corpo em {a.nome}</h2>
                   <p>{a.distancia ? `${a.distancia}. ` : ''}{a.pedidos.slice(0, 2).join(' · ')}</p>

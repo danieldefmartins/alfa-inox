@@ -33,7 +33,7 @@ export const AREAS: Area[] = [
       'Pampulha', 'Ouro Preto', 'Castelo', 'Planalto', 'Serra', 'Cidade Nova',
       'Santa Efigênia', 'Floresta', 'Aparecida', 'Caiçara', 'Barreiro', 'Venda Nova',
     ],
-    fotos: ['guarda-corpo-vidro-cobertura-piscina-deck', 'corrimao-inox-escada-entrada-externa', 'corrimao-parede-inox-escada-condominio', 'guarda-corpo-inox-escada-interna-sala', 'corrimao-inox-curvo-area-externa-condominio', 'guarda-corpo-inox-academia-comercial'],
+    fotos: ['corrimao-inox-escada-entrada-externa', 'guarda-corpo-vidro-cobertura-piscina-deck', 'corrimao-parede-inox-escada-condominio', 'guarda-corpo-inox-escada-interna-sala', 'corrimao-inox-curvo-area-externa-condominio', 'guarda-corpo-inox-academia-comercial'],
     faq: [
       { q: 'Onde fica a oficina da Alfa Inox em BH?', a: 'Na Avenida Américo Vespúcio, 105, bairro Aparecida, região Noroeste de Belo Horizonte. Atendemos de segunda a sábado, das 8h às 17h.' },
       { q: 'Vocês atendem prédio na região Centro-Sul?', a: 'Sim. Atendemos condomínios e prédios comerciais em toda a capital, com proposta formal por item para a assembleia.' },

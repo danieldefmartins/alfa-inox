@@ -35,3 +35,14 @@
 .bar a { font-size: .9rem; gap: 6px; padding: 0 6px; }
 .cfg-teaser .two { grid-template-columns: 1fr; }
 @media (min-width: 900px) { .cfg-teaser .two { grid-template-columns: .9fr 1.25fr; } }
+
+.prose > div:first-child > h2:first-child, .prose > h2:first-child { margin-top: 0; }
+.field { display: block; }
+.field > input, .field > select, .field > textarea { display: block; margin-top: 6px; }
+.field > .field-error { display: block; margin-top: 6px; }
+.hero2 .hero-proof a { min-height: 44px; }
+
+.masonry.compact { columns: 2; column-gap: 10px; }
+.masonry.compact .tile { margin-bottom: 10px; }
+@media (min-width: 1000px) { .masonry.compact { columns: 3; column-gap: 14px; } .masonry.compact .tile { margin-bottom: 14px; } }
+@media (max-width: 599px) { .masonry.compact figcaption { font-size: .8rem; } .masonry.compact figcaption span { display: none; } }

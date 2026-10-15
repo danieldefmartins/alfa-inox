@@ -7,8 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "next build && wrangler deploy",
-    "preview": "next build && wrangler dev",
+    "preview": "next build && wrangler dev --config wrangler.preview.jsonc --port 8788",
+    "preview:deploy": "next build && wrangler deploy --config wrangler.preview.jsonc",
+    "audit": "node ~/.claude/skills/premium-website/scripts/audit-site.mjs out --json docs/seo-audit.json",
+    "screens": "node scripts/screens.mjs http://127.0.0.1:8788 docs/screens",
+    "og": "node --experimental-strip-types scripts/build-og.mjs",
+    "test": "node --test --experimental-strip-types scripts/crm.test.mjs",
+    "typecheck": "tsc --noEmit",
     "postinstall": "node scripts/ci-build.mjs"
   },
   "dependencies": {

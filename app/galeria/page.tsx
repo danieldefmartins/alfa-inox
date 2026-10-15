@@ -32,7 +32,7 @@ export default function GaleriaPage() {
       </section>
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <Portfolio />
+          <Portfolio eager={2} compact />
         </div>
       </section>
       <CloseCTA

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Archivo, Inter } from 'next/font/google'
+import { Archivo } from 'next/font/google'
 import './globals.css'
 import './sections.css'
 import Header from '@/components/Header'
@@ -12,7 +12,7 @@ import { SERVICOS } from '@/lib/servicos'
 
 // Archivo com eixo de largura: títulos semi-expandidos, no espírito do letreiro quadrado do logo.
 const display = Archivo({ subsets: ['latin'], axes: ['wdth'], variable: '--f-display', display: 'swap' })
-const body = Inter({ subsets: ['latin'], variable: '--f-body', display: 'swap' })
+// Texto corrido na fonte do sistema (SF no iPhone/Mac, Roboto no Android): zero download, leitura nativa.
 
 const TITLE = 'Corrimão e Guarda-Corpo em Inox em BH | Alfa Inox'
 const DESC = 'Corrimão, guarda-corpo de inox e de vidro e acessibilidade NBR 9050 em BH. Oficina própria desde 2010: medimos, fabricamos e instalamos. Peça no WhatsApp.'
@@ -96,7 +96,7 @@ const localBusiness = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${display.variable} ${body.variable}`}>
+    <html lang="pt-BR" className={display.variable}>
       <body>
         <Header />
         <main id="conteudo" className="escada">{children}</main>

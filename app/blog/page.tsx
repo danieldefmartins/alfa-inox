@@ -38,7 +38,7 @@ export default function BlogPage() {
           <div className="post-list">
             {posts.map((p, i) => (
               <Link key={p.slug} href={`/blog/${p.slug}/`}>
-                <Img photo={findPhoto(p.foto) ?? PHOTOS[0]} sizes="(min-width: 760px) 240px, 100vw" alt="" priority={i === 0} />
+                <Img photo={findPhoto(p.foto) ?? PHOTOS[0]} sizes="(min-width: 760px) 240px, 100vw" priority={i === 0} />
                 <div>
                   <p className="small muted" style={{ margin: '0 0 6px' }}>{p.categoria} · <time dateTime={p.date}>{dataBR(p.date)}</time> · {p.leitura}</p>
                   <h2>{p.h1}</h2>

@@ -186,7 +186,7 @@ export const SERVICOS: Servico[] = [
       'Guarda-corpo de vidro laminado ou temperado com estrutura de inox em BH, para sacada, escada, piscina e mezanino. Projeto, fabricação e instalação.',
     resumo: 'Vidro laminado ou temperado com prumos, torres ou botões de inox.',
     categoriaFotos: 'guarda-corpo-vidro',
-    capa: 'guarda-corpo-vidro-cobertura-piscina-deck',
+    capa: 'guarda-corpo-vidro-escada-interna',
     intro: [
       'Guarda-corpo de vidro é o fechamento de segurança feito com painéis de vidro presos a uma estrutura de inox. Ele protege o desnível sem tapar a vista, a piscina ou a sala de pé-direito duplo: o inox segura o painel e o vidro quase desaparece.',
       'Trabalhamos com vidro temperado e laminado. Para sacada, mezanino, cobertura e beira de piscina recomendamos o laminado: se ele quebrar, os pedaços ficam presos à película e o painel continua barrando a passagem.',
@@ -324,7 +324,7 @@ export const SERVICOS: Servico[] = [
     h1: 'Portão e gradil de inox sob medida',
     title: 'Portão e Gradil de Inox Sob Medida em BH',
     description:
-      'Portão social, gradil de fechamento, grade de proteção e portãozinho de escada em inox sob medida em BH. Não enferruja e não pede pintura. Orçamento no WhatsApp.',
+      'Portão social, gradil de fechamento, grade de proteção e portão de escada em inox sob medida em BH. Não enferruja e não pede pintura. Peça no WhatsApp.',
     resumo: 'Portões sociais, gradis de fechamento, grades e portão de escada.',
     categoriaFotos: 'portoes-gradis',
     capa: 'gradil-inox-varanda-comercial-coberta',

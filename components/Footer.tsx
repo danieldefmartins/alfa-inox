@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="ftr">
       <div className="wrap ftr-grid">
         <div>
-          <Logo tone="dark" height={30} />
+          <Logo tone="dark" height={30} lazy />
           <p style={{ maxWidth: 340, marginTop: 20 }}>
             Corrimão, guarda-corpo e acessibilidade em aço inox, fabricados na nossa oficina em Belo Horizonte
             desde {SITE.foundedYear}.

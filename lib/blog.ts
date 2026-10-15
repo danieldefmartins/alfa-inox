@@ -19,7 +19,7 @@ export const POSTS: Post[] = [
     title: 'Quanto Custa Corrimão de Inox? Preço por Metro',
     h1: 'Quanto custa um corrimão de inox? O que realmente pesa no preço',
     description:
-      'Entenda o que define o preço do metro linear de corrimão de aço inox em 2026: modelo, liga, diâmetro, curvas e instalação. Guia direto de quem fabrica em Belo Horizonte.',
+      'O que define o preço do metro linear de corrimão de inox: modelo, liga, diâmetro, curvas e instalação. Guia direto de quem fabrica em Belo Horizonte.',
     date: '2026-08-10',
     categoria: 'Preços',
     leitura: '7 min',
@@ -85,7 +85,7 @@ export const POSTS: Post[] = [
     date: '2026-07-22',
     categoria: 'Materiais',
     leitura: '5 min',
-    foto: 'guarda-corpo-vidro-cobertura-piscina-deck',
+    foto: 'corrimao-inox-escada-piscina',
     resumo:
       'Molibdênio, cloro e maresia: quando o 316 é obrigatório e quando ele é só custo a mais.',
     faq: [
@@ -138,7 +138,7 @@ export const POSTS: Post[] = [
     title: 'Altura do Guarda-Corpo pela NBR 14718',
     h1: 'Altura mínima de guarda-corpo: o que a norma exige',
     description:
-      'Alturas exigidas pela NBR 14718 para guarda-corpo de sacada, escada e mezanino, espaçamento entre prumos e por que travessa horizontal é problema onde há crianças.',
+      'Alturas da NBR 14718 para guarda-corpo de sacada, escada e mezanino, espaçamento entre prumos e por que travessa horizontal é risco onde há crianças.',
     date: '2026-07-05',
     categoria: 'Normas',
     leitura: '6 min',

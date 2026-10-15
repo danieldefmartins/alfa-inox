@@ -5,7 +5,7 @@
  */
 import { brandFiles } from '@/lib/brand'
 
-export default function Logo({ tone = 'light', height = 40 }: { tone?: 'light' | 'dark'; height?: number }) {
+export default function Logo({ tone = 'light', height = 40, lazy = false }: { tone?: 'light' | 'dark'; height?: number; lazy?: boolean }) {
   const { logo, logoDark } = brandFiles()
   const file = tone === 'dark' ? logoDark : logo
   if (file) {
@@ -18,6 +18,7 @@ export default function Logo({ tone = 'light', height = 40 }: { tone?: 'light' |
         className="logo-img"
         style={{ height }}
         decoding="async"
+        loading={lazy ? 'lazy' : undefined}
       />
     )
   }

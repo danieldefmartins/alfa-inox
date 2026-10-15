@@ -20,7 +20,8 @@ export function Img({ photo, sizes, priority = false, className, alt, style }: {
       decoding={priority ? 'sync' : 'async'}
       fetchPriority={priority ? 'high' : undefined}
       className={className}
-      style={{ backgroundImage: `url(${photo.lqip})`, backgroundSize: 'cover', backgroundPosition: 'center', ...style }}
+      // LQIP inline só nas fotos prioritárias (acima da dobra): mantém o HTML leve
+      style={priority ? { backgroundImage: `url(${photo.lqip})`, backgroundSize: 'cover', backgroundPosition: 'center', ...style } : { backgroundColor: '#e3e8eb', ...style }}
     />
   )
 }

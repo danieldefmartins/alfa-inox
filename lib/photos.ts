@@ -55,7 +55,7 @@ export const byTag = (tag: string) => PHOTOS.filter((p) => p.tags.includes(tag))
 export const findPhoto = (slug: string) => PHOTOS.find((p) => p.slug === slug)
 export const destaques = () => PHOTOS.filter((p) => p.tags.includes('destaque'))
 
-export type Size = 400 | 800 | 1600
+export type Size = 200 | 400 | 800 | 1600
 export const src = (slug: string, size: Size = 800) => `/fotos/${slug}-${size}.webp`
 export const srcSet = (slug: string) => [400, 800, 1600].map((s) => `/fotos/${slug}-${s}.webp ${s}w`).join(', ')
 
@@ -65,7 +65,7 @@ export const widthAt = (p: Photo, s: Size) => Math.round(p.width * Math.min(1, s
 /** srcset com larguras reais de cada arquivo. */
 export function srcSetFor(p: Photo) {
   const seen = new Set<number>()
-  return ([400, 800, 1600] as Size[])
+  return ([200, 400, 800, 1600] as Size[])
     .map((s) => ({ s, w: widthAt(p, s) }))
     .filter(({ w }) => (seen.has(w) ? false : (seen.add(w), true)))
     .map(({ s, w }) => `/fotos/${p.slug}-${s}.webp ${w}w`)

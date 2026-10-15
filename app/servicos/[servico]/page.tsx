@@ -117,7 +117,7 @@ export default async function ServicoPage({ params }: { params: Promise<{ servic
               <div className="head"><h2>{s.nome}: obras que entregamos</h2></div>
               <Link className="link-arrow" href="/galeria/">Ver a galeria completa <Arrow /></Link>
             </div>
-            <Portfolio fotos={fotos} filtros={false} limite={9} />
+            <Portfolio fotos={fotos} filtros={false} limite={9} compact />
           </div>
         </section>
       )}
@@ -149,7 +149,7 @@ export default async function ServicoPage({ params }: { params: Promise<{ servic
               <div className="post-list">
                 {posts.map((p) => p && (
                   <Link key={p.slug} href={`/blog/${p.slug}/`}>
-                    <Img photo={findPhoto(p.foto) ?? PHOTOS[0]} sizes="(min-width: 760px) 240px, 100vw" alt="" />
+                    <Img photo={findPhoto(p.foto) ?? PHOTOS[0]} sizes="(min-width: 760px) 240px, 100vw" />
                     <div><h3>{p.h1}</h3><p>{p.resumo}</p></div>
                   </Link>
                 ))}

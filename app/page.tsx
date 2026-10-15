@@ -24,10 +24,10 @@ export const metadata: Metadata = {
 }
 
 const HERO = findPhoto('guarda-corpo-vidro-cobertura-piscina-deck')!
-const OBRAS = [
-  'guarda-corpo-inox-escada-interna-sala', 'corrimao-inox-curvo-area-externa-condominio', 'guarda-corpo-vidro-escada-interna',
-  'corrimao-parede-inox-escada-caracol', 'guarda-corpo-inox-academia-comercial', 'corrimao-inox-rampa-acessibilidade-duplo',
-  'guarda-corpo-inox-mezanino-vao-interno', 'corrimao-inox-escada-piscina', 'guarda-corpo-vidro-inox-escada',
+const OBRAS = [ // paisagem: no celular (2 colunas) cada uma usa o arquivo de 400 px
+  'corrimao-parede-inox-escada-caracol', 'guarda-corpo-vidro-escada-interna', 'corrimao-inox-curvo-area-externa-condominio',
+  'guarda-corpo-inox-academia-comercial', 'corrimao-inox-rampa-acessibilidade-duplo', 'guarda-corpo-inox-escada-interna-residencial',
+  'guarda-corpo-inox-mezanino-vao-interno', 'guarda-corpo-vidro-inox-area-externa', 'corrimao-parede-inox-escada-condominio',
 ]
 
 export default function Home() {
@@ -64,27 +64,13 @@ export default function Home() {
               const p = findPhoto(s.capa) ?? PHOTOS[0]
               return (
                 <Link key={s.slug} href={`/servicos/${s.slug}/`} className="row rv">
-                  <Img photo={p} sizes="(min-width: 720px) 200px, 96px" alt="" />
+                  <Img photo={p} sizes="(min-width: 720px) 200px, 96px" />
                   <div><h3>{s.nome}</h3><p>{s.resumo}</p></div>
                   <span className="go" aria-hidden="true"><Arrow /></span>
                 </Link>
               )
             })}
           </div>
-        </div>
-      </section>
-
-      {/* OBRAS */}
-      <section className="section white">
-        <div className="wrap">
-          <div className="head-row">
-            <div className="head">
-              <h2>Obras reais, fotografadas na entrega</h2>
-              <p className="lede">Sem render e sem banco de imagem: são escadas, varandas e rampas que fabricamos e instalamos na Grande BH.</p>
-            </div>
-            <Link className="link-arrow" href="/galeria/">Ver as {PHOTOS.length} fotos <Arrow /></Link>
-          </div>
-          <Portfolio fotos={obras} filtros={false} />
         </div>
       </section>
 
@@ -101,6 +87,20 @@ export default function Home() {
           <Link href="/monte-seu-guarda-corpo/" className="cfg-draw rv" aria-label="Abrir o configurador de guarda-corpo">
             <Desenho c={PADRAO} id="home" title="Exemplo: guarda-corpo de inox com vidro em sacada, 1,10 m de altura" />
           </Link>
+        </div>
+      </section>
+
+      {/* OBRAS */}
+      <section className="section white">
+        <div className="wrap">
+          <div className="head-row">
+            <div className="head">
+              <h2>Obras reais, fotografadas na entrega</h2>
+              <p className="lede">Sem render e sem banco de imagem: são escadas, varandas e rampas que fabricamos e instalamos na Grande BH.</p>
+            </div>
+            <Link className="link-arrow" href="/galeria/">Ver as {PHOTOS.length} fotos <Arrow /></Link>
+          </div>
+          <Portfolio fotos={obras} filtros={false} compact />
         </div>
       </section>
 

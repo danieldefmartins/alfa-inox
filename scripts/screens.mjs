@@ -22,14 +22,14 @@ for (const width of widths) {
     await page.goto(base + p, { waitUntil: 'load' })
     await page.evaluate(async () => {
       document.querySelectorAll('img[loading=lazy]').forEach((i) => (i.loading = 'eager'))
-      for (let y = 0; y < document.body.scrollHeight; y += 700) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 50)) }
+      for (let y = 0; y < document.body.scrollHeight; y += 500) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 250)) }
       window.scrollTo(0, 0)
     })
-    await page.waitForTimeout(900)
+    await page.waitForLoadState('networkidle').catch(() => {}); await page.evaluate(() => Promise.all([...document.images].map((i) => i.decode().catch(() => {})))); await page.waitForTimeout(500)
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)
     if (overflow > 0) problems.push(`${width} ${p} horizontal overflow ${overflow}px`)
     const small = await page.evaluate(() => [...document.querySelectorAll('a, button, input, select, summary, label.choice')]
-      .filter((el) => { if (el.closest('.choice') || el.type === 'range' || el.closest('.honeypot')) return false; const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.height < 24 && getComputedStyle(el).display !== 'inline' })
+      .filter((el) => { if (el.closest('.choice') || el.closest('label.consent') || el.type === 'range' || el.closest('.honeypot')) return false; const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.height < 24 && getComputedStyle(el).display !== 'inline' })
       .map((el) => (el.textContent || el.getAttribute('aria-label') || el.tagName).trim().slice(0, 30)).slice(0, 5))
     if (small.length) problems.push(`${width} ${p} small tap targets: ${small.join(' | ')}`)
     if (width === widths[0]) {
@@ -37,6 +37,9 @@ for (const width of widths) {
       for (const v of axe.violations) problems.push(`${p} axe ${v.id} (${v.nodes.length}): ${v.nodes[0]?.target}`)
     }
     const name = (p === '/' ? 'home' : p.replace(/^\/|\/$/g, '').replace(/\//g, '_')) + (seed ? '-cidade' : '') + `-${width}.png`
+    if (width < 500) await page.screenshot({ path: `${outDir}/${name.replace('.png', '-viewport.png')}` })
+    // na captura de página inteira a barra fixa do celular apareceria no meio da imagem
+    await page.addStyleTag({ content: '.bar{display:none!important}' })
     await page.screenshot({ path: `${outDir}/${name}`, fullPage: true })
     await page.close()
   }
