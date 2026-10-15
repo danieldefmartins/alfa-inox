@@ -7,7 +7,7 @@ em Belo Horizonte/MG. Construído para crescimento orgânico (SEO local + conte�
 
 - **Next.js 16** (App Router) com `output: 'export'` → HTML 100% estático
 - **Sem framework de CSS** — design system próprio em `app/globals.css`
-- **Fontes self-hosted** via `next/font` (Archivo + Inter), zero requisição externa
+- **Fontes:** títulos em Archivo (self-hosted via `next/font`), texto na fonte do sistema
 - Deploy: **Cloudflare Workers** (assets estáticos), domínio `alfainoxbh.com.br` (apex, **sem** www)
 
 ## Rodar localmente
@@ -48,36 +48,23 @@ Acrescente um objeto em `POSTS` (`lib/blog.ts`). O `sitemap.xml`, o schema
 
 ## Marca e compartilhamento
 
-Arte original em `Logo/`. Assets derivados (versionados) em `public/marca/`:
+Logo 2026 (pacote completo em `Logo/2026/`; o logo antigo fica em `Logo/*.PNG` só como histórico).
+Um único componente desenha a marca: `components/Logo.tsx`, que lê `public/brand/` no build (`lib/brand.ts`).
 
 | Arquivo | Uso |
 |---|---|
-| `alfa-inox-horizontal.webp` | Cabeçalho (fundo claro) |
-| `alfa-inox-icone.png` | Monograma com alpha — favicon, rodapé, cartões sociais |
-| `alfa-inox-vertical.webp` | Reserva para peças verticais |
+| `public/brand/logo.svg` | Cabeçalho (horizontal colorido, viewBox recortado) |
+| `public/brand/logo-dark.svg` | Rodapé e fundos escuros (branco) |
+| `public/brand/mark.svg`, `mark-512.png` | Símbolo — schema `logo` |
+| `public/favicon.*`, `apple-touch-icon.png`, `android-chrome-*.png` | Favicons do pacote |
 
-**Atenção:** o wordmark original é azul-marinho e **some em fundo escuro**. Por isso o
-rodapé e os cartões sociais usam `LogoEscuro` — monograma + wordmark em texto vivo.
-
-Ícones (`app/icon.png`, `app/apple-icon.png`, `app/favicon.ico`) são o monograma sobre
-um ladrilho grafite, para ler bem na aba do navegador em tema claro e escuro.
+Para trocar o logo, substitua esses arquivos e rode `npm run build`. Cores: petróleo `#0B7A94` (só CTAs, em
+`--accent` no `app/globals.css`) e carvão `#2E3A40`. Tokens completos em `docs/DESIGN.md`.
 
 ### Cartões de compartilhamento (WhatsApp, Facebook, LinkedIn)
 
-31 cartões 1200×630 em `public/og/` — um por página. Regerar:
-
-```bash
-# baixe Archivo (700/800) e Inter (400/600) em .woff2 para uma pasta
-OG_FONTS=/caminho/para/fonts node --experimental-strip-types scripts/build-og.mjs
-```
-
-O script lê `lib/servicos.ts`, `lib/areas.ts` e `lib/blog.ts`, monta todos os cartões
-numa única página HTML, tira **um** screenshot com o Chrome e fatia o resultado — por
-isso rodar leva ~1 min mesmo gerando 31 imagens. Média de 82 KB por cartão, bem abaixo
-do limite de pré-visualização do WhatsApp.
-
-Ao adicionar um serviço, cidade ou artigo, rode o script de novo: o nome do cartão
-segue o padrão `servico-<slug>`, `area-<slug>`, `post-<slug>`.
+31 cartões 1200×630 em `public/og/` — um por página, com o logo novo. Regerar: `npm run og` (Playwright).
+O nome segue `servico-<slug>`, `area-<slug>`, `post-<slug>`.
 
 ## SEO — o que já está pronto
 
@@ -123,4 +110,4 @@ independente da configuração do painel. Fora de CI ele não faz nada, então
 Se preferir o caminho convencional, basta preencher **Build command: `npm run build`**
 no painel — o `postinstall` detecta que `out/` já existe e pula.
 
-Localmente: `npm run deploy` (build + publicação).
+Preview: `npm run preview:deploy` (worker `preview-alfa-inox`, só workers.dev). Produção só pelo merge na `main`, com OK do dono. Ver `HANDOFF.md`.
