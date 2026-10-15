@@ -1,9 +1,16 @@
 {
+  // PRODUÇÃO (alfainoxbh.com.br) — publicado pelo Workers Builds a partir da branch main.
+  // Não rode `wrangler deploy` com este arquivo sem o OK do dono. Preview: wrangler.preview.jsonc.
+  // worker/site.mjs responde só /api/geo/ (cidade do visitante); o resto são arquivos estáticos de out/.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "alfa-inox",
+  "main": "worker/site.mjs",
   "compatibility_date": "2026-08-01",
   "assets": {
     "directory": "./out",
-    "not_found_handling": "404-page"
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/api/*"]
   }
 }
