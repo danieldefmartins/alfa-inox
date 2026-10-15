@@ -38,7 +38,7 @@ export const SERVICOS: Servico[] = [
       'Corrimão de inox 304 ou 316 em BH: de parede, de escada com prumos, curvo e duplo para rampa. Medimos no local, fabricamos e instalamos. Peça pelo WhatsApp.',
     resumo: 'De parede, de escada, curvo ou duplo para rampa, em inox escovado ou polido.',
     categoriaFotos: 'corrimao-inox',
-    capa: 'corrimao-parede-inox-escada-condominio',
+    capa: 'corrimao-inox-escada-interna-madeira',
     intro: [
       'Corrimão de inox é o tubo de apoio que acompanha a escada, a rampa ou o corredor para a mão de quem passa. Na Alfa Inox ele é fabricado sob medida em aço inox AISI 304 ou 316, com solda TIG e acabamento escovado ou polido, e instalado pela nossa própria equipe em Belo Horizonte e região.',
       'Cada projeto começa com medição no local, porque degrau irregular, parede fora de esquadro e patamar fora de nível são a regra em escada pronta. É a medição que garante um corrimão que acompanha o lance sem emenda aparente e sem folga na fixação.',

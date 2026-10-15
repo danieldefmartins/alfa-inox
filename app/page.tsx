@@ -24,6 +24,15 @@ export const metadata: Metadata = {
 }
 
 const HERO = findPhoto('guarda-corpo-vidro-cobertura-piscina-deck')!
+// Foto de cada serviço na home (diferentes do hero e da 1ª linha de obras)
+const FOTO_SERVICO: Record<string, string> = {
+  'corrimao-inox': 'corrimao-parede-inox-escada-residencia',
+  'guarda-corpo-inox': 'guarda-corpo-inox-escada-moderna',
+  'guarda-corpo-de-vidro': 'guarda-corpo-vidro-inox-escada',
+  'acessibilidade-nbr-9050': 'corrimao-inox-rampa-acessibilidade-duplo',
+  'portoes-e-gradis-inox': 'gradil-inox-varanda-comercial-coberta',
+  'condominios-e-empresas': 'guarda-corpo-inox-fachada-comercial',
+}
 const OBRAS = [ // paisagem: no celular (2 colunas) cada uma usa o arquivo de 400 px
   'corrimao-parede-inox-escada-caracol', 'guarda-corpo-vidro-escada-interna', 'corrimao-inox-curvo-area-externa-condominio',
   'guarda-corpo-inox-academia-comercial', 'corrimao-inox-rampa-acessibilidade-duplo', 'guarda-corpo-inox-escada-interna-residencial',
@@ -34,18 +43,24 @@ export default function Home() {
   const obras = OBRAS.map((s) => findPhoto(s)!).filter(Boolean)
   return (
     <>
-      {/* HERO — painel grafite com o corte diagonal do "A" do logo + foto real */}
-      <section className="hero2">
-        <div className="hero2-photo">
-          <Img photo={HERO} priority sizes="(min-width: 900px) 62vw, 100vw" alt="Guarda-corpo de vidro com estrutura de inox em cobertura com piscina, com vista para os morros de BH" />
-        </div>
-        <div className="wrap hero2-in">
-          <div className="hero2-panel">
-            <h1>Corrimão e guarda-corpo em inox em <CityName fallback="Belo Horizonte" />.</h1>
+      {/* HERO — foto real em tela cheia, véu carvão suave embaixo/à esquerda; título grande à esquerda,
+          linha + CTAs alinhados à base na coluna da direita (desktop). Pôster LCP: AVIF/WebP, prioridade alta. */}
+      <section className="hero3">
+        <picture className="hero3-photo">
+          <source type="image/avif" sizes="100vw"
+            srcSet={`/fotos/${HERO.slug}-800.avif 800w, /fotos/${HERO.slug}-1600.avif ${HERO.width}w`} />
+          <img src={`/fotos/${HERO.slug}-1600.webp`} sizes="100vw"
+            srcSet={`/fotos/${HERO.slug}-800.webp 800w, /fotos/${HERO.slug}-1600.webp ${HERO.width}w`}
+            width={HERO.width} height={HERO.height} fetchPriority="high" loading="eager" decoding="async"
+            alt="Guarda-corpo de vidro com estrutura de inox em cobertura com piscina, com vista para os morros de BH" />
+        </picture>
+        <div className="wrap hero3-in">
+          <h1>Corrimão e guarda-corpo em inox em <CityName fallback="Belo Horizonte" />.</h1>
+          <div className="hero3-side">
             <p>Medimos no local, fabricamos na nossa oficina e instalamos com equipe própria. Em inox 304 ou 316, na altura que a norma pede.</p>
             <div className="hero-ctas">
               <a className="btn btn-cta btn-lg" href={waLink(WA_DEFAULT)} target="_blank" rel="noopener"><WhatsAppIcon size={20} /> Orçamento no WhatsApp</a>
-              <Link className="btn btn-line btn-lg" href="/galeria/">Ver obras</Link>
+              <Link className="btn btn-glass btn-lg" href="/galeria/">Ver obras</Link>
             </div>
             <p className="hero-proof"><CityProof fallback={`Oficina no bairro ${SITE.address.district}, BH · desde ${SITE.foundedYear}`} /></p>
           </div>
@@ -58,19 +73,28 @@ export default function Home() {
           <div className="head">
             <h2>O que sai da nossa oficina</h2>
             <p className="lede">Cada peça é cortada e soldada para o seu vão. Escolha o serviço para ver modelos, normas e obras.</p>
+            <p className="swipe-hint" aria-hidden="true">6 serviços · deslize para o lado →</p>
           </div>
-          <div className="rows">
-            {SERVICOS.map((s) => {
-              const p = findPhoto(s.capa) ?? PHOTOS[0]
+          {/* Grade editorial: 2 destaques grandes + 4 médios no desktop; carrossel de cartões grandes no celular. */}
+          <ul className="svc-grid" role="list">
+            {SERVICOS.map((s, i) => {
+              const p = findPhoto(FOTO_SERVICO[s.slug] ?? s.capa) ?? PHOTOS[0]
               return (
-                <Link key={s.slug} href={`/servicos/${s.slug}/`} className="row rv">
-                  <Img photo={p} sizes="(min-width: 720px) 200px, 96px" />
-                  <div><h3>{s.nome}</h3><p>{s.resumo}</p></div>
-                  <span className="go" aria-hidden="true"><Arrow /></span>
-                </Link>
+                <li key={s.slug} className={i < 2 ? 'svc big' : 'svc'}>
+                  <Link href={`/servicos/${s.slug}/`}>
+                    <div className="svc-img">
+                      <Img photo={p} sizes={i < 2 ? '(min-width: 1000px) 610px, 82vw' : '(min-width: 1000px) 300px, 82vw'} />
+                    </div>
+                    <div className="svc-txt">
+                      <h3>{s.nome}</h3>
+                      <span className="svc-line">{s.resumo}</span>
+                      <span className="svc-go">Ver serviço <Arrow /></span>
+                    </div>
+                  </Link>
+                </li>
               )
             })}
-          </div>
+          </ul>
         </div>
       </section>
 

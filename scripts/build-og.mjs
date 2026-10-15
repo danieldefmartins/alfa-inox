@@ -17,7 +17,7 @@ const PHOTOS = JSON.parse(fs.readFileSync(path.join(ROOT, 'lib/photos.json'), 'u
 const corta = (t, n = 110) => (t.length <= n ? t : t.slice(0, t.lastIndexOf(' ', n)).replace(/[,;—-]$/, '') + '…')
 const b64 = (f) => fs.readFileSync(f).toString('base64')
 const pic = (slug) => `data:image/webp;base64,${b64(path.join(ROOT, 'public', 'fotos', `${slug}-1600.webp`))}`
-const logo = `data:image/svg+xml;base64,${b64(path.join(ROOT, 'public/brand/logo-dark.svg'))}`
+const logo = `data:image/svg+xml;base64,${b64(path.join(ROOT, 'public/brand/logo-on-dark.svg'))}`
 
 const cards = [
   { name: 'default', titulo: 'Corrimão e guarda-corpo em inox em Belo Horizonte', sub: 'Medimos, fabricamos na nossa oficina e instalamos. Desde 2010.', foto: 'guarda-corpo-vidro-cobertura-piscina-deck' },
@@ -41,17 +41,16 @@ const html = (c) => {
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{width:1200px;height:630px;overflow:hidden;background:#2e3a40;font-family:Inter,sans-serif}
-.photo{position:absolute;inset:0 0 0 420px;background:url(${pic(c.foto)}) center/cover}
-.panel{position:absolute;inset:0;width:760px;background:#2e3a40;clip-path:polygon(0 0,100% 0,72% 100%,0 100%)}
-.edge{position:absolute;inset:0;width:760px;background:#0b7a94;clip-path:polygon(calc(100% - 8px) 0,100% 0,72% 100%,calc(72% - 8px) 100%)}
-.in{position:absolute;left:64px;top:56px;bottom:56px;width:500px;display:flex;flex-direction:column}
+.photo{position:absolute;inset:0;background:url(${pic(c.foto)}) center 40%/cover}
+.panel{position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,46,51,.72) 0%,rgba(36,46,51,0) 32%),linear-gradient(0deg,rgba(36,46,51,.96) 0%,rgba(36,46,51,.85) 38%,rgba(36,46,51,.35) 68%,rgba(36,46,51,.15) 100%),linear-gradient(90deg,rgba(36,46,51,.7) 0%,rgba(36,46,51,0) 70%)}
+.in{position:absolute;left:64px;top:56px;bottom:56px;width:760px;display:flex;flex-direction:column}
 .logo{height:40px;width:auto;align-self:flex-start}
 .tag{margin-top:28px;align-self:flex-start;font-weight:600;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:#7fcadb}
 h1{font-family:Archivo,sans-serif;font-stretch:112%;font-weight:700;color:#fff;line-height:1.06;letter-spacing:-.025em;margin-top:auto;text-wrap:balance}
-p{margin-top:18px;font-size:23px;line-height:1.4;color:#c3cdd2;max-width:30ch}
+p{margin-top:18px;font-size:23px;line-height:1.4;color:#dbe2e5;max-width:40ch}
 .ft{margin-top:26px;font-size:18px;color:#9fb0b8;font-weight:600}
 </style>
-<div class="photo"></div><div class="panel"></div><div class="edge"></div>
+<div class="photo"></div><div class="panel"></div>
 <div class="in"><img class="logo" src="${logo}">${c.tag ? `<span class="tag">${c.tag}</span>` : ''}
 <h1 style="font-size:${size}px">${c.titulo}</h1><p>${c.sub}</p><span class="ft">alfainoxbh.com.br · WhatsApp (31) 97237-9813</span></div>`
 }

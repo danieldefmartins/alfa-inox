@@ -78,7 +78,10 @@ export const fullAddress = `${SITE.address.street} — ${SITE.address.district},
  * Cartão de compartilhamento (WhatsApp, Facebook, LinkedIn, X).
  * Os arquivos são gerados por `node --experimental-strip-types scripts/build-og.mjs`.
  */
-export const ogCard = (name: string) => `${SITE.url}/og/${name}.jpg`
+// Origem das imagens de compartilhamento. Produção: o domínio. O build do PREVIEW define OG_ORIGIN com a URL
+// do workers.dev para o dono ver os cartões novos antes de publicar. Canonicals continuam sempre em SITE.url.
+const OG_ORIGIN = (process.env.OG_ORIGIN || SITE.url).replace(/\/$/, '')
+export const ogCard = (name: string) => `${OG_ORIGIN}/og/${name}.jpg`
 
 export function socialMeta({
   card = 'default', titulo, descricao, url, tipo = 'website',

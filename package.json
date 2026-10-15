@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "preview": "next build && wrangler dev --config wrangler.preview.jsonc --port 8788",
-    "preview:deploy": "next build && wrangler deploy --config wrangler.preview.jsonc",
+    "preview:deploy": "OG_ORIGIN=https://preview-alfa-inox.danieldefmartins.workers.dev next build && wrangler deploy --config wrangler.preview.jsonc",
     "audit": "node ~/.claude/skills/premium-website/scripts/audit-site.mjs out --json docs/seo-audit.json",
     "screens": "node scripts/screens.mjs http://127.0.0.1:8788 docs/screens",
     "og": "node --experimental-strip-types scripts/build-og.mjs",

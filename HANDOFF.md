@@ -9,10 +9,13 @@
 - Cabeçalho: `public/brand/logo.svg` (horizontal colorido, viewBox recortado ao desenho). Rodapé e fundos escuros: `public/brand/logo-dark.svg` (branco). Schema/ícone: `public/brand/mark.svg` + `mark-512.png`.
 - Tudo passa por `components/Logo.tsx` (lê `public/brand/` no build via `lib/brand.ts`). Para trocar o logo: substituir esses 3 arquivos, nada mais.
 - Favicons do pacote em `public/` (ico, svg, 16/32/48, apple-touch 180, android 192/512) + `app/manifest.ts` (theme `#0B7A94`).
-- 31 cartões OG refeitos com o logo novo (`npm run og` → `public/og/*.jpg`, Playwright).
+- 31 cartões OG refeitos com o logo novo em cores sobre escuro (`public/brand/logo-on-dark.svg`), foto em tela cheia + véu carvão, sem diagonal (`npm run og` → `public/og/*.jpg`, Playwright).
+- `og:image`/`twitter:image` usam `OG_ORIGIN` no build: `npm run preview:deploy` aponta para o workers.dev (para o dono ver os cartões novos); o build de produção usa https://alfainoxbh.com.br. Canonicals sempre no domínio.
 - Paleta: petróleo `#0B7A94` só em CTAs; carvão `#2E3A40` como tinta e faixas escuras. Tokens em `docs/DESIGN.md`.
 
-**Design** — mundo próprio (não parece Prime/EDX): título Archivo semi-expandido (eco do letreiro do logo), corpo na fonte do sistema, hero com painel carvão cortado na diagonal do "A" + filete petróleo sobre foto real, índice de serviços em linhas (não cartões), passos em degraus, trilho de aço na margem que "é polido" com a rolagem.
+**Serviços na home** — grade editorial com fotos grandes (2 destaques ~480 px + 4 de 380 px no desktop; carrossel com rolagem lateral e cartões 4:5 no celular), uma foto real por serviço sem repetir o hero nem a 1ª linha de obras; as 6 imagens verificadas com rolagem real.
+
+**Design** — mundo próprio (não parece Prime/EDX): título Archivo semi-expandido (eco do letreiro do logo), corpo na fonte do sistema, hero com foto real em tela cheia e véu carvão suave (título grande à esquerda, linha + CTAs numa coluna à direita alinhada à base) — a versão com painel diagonal foi descartada pelo dono, índice de serviços em linhas (não cartões), passos em degraus, trilho de aço na margem que "é polido" com a rolagem.
 
 **Conversão** — WhatsApp é o CTA principal em todo lugar (mensagem pronta por página/serviço/cidade); barra fixa no celular (WhatsApp · Ligar · Orçamento); telefone fixo (31) 2298-1234 nos links `tel:`, NAP e schema.
 - Formulário `/orcamento/` (e embutido em cada serviço): integração 360 CRM completa (`lib/crm.ts`, portado do Prime: token `GET /forms/:slug`, `/direct-submit` ≥ 2 s após o token, `/direct-uploads` para fotos, atribuição UTM/gclid, consentimento LGPD opcional e desmarcado). `crm.formSlug` está **vazio** → o formulário entrega o pedido pronto no WhatsApp. Se o CRM falhar depois de ligado, o erro oferece o mesmo pedido no WhatsApp e o telefone (nunca falha em silêncio). Testes: `npm test` (14 passando, fetch simulado, nenhum lead real).
@@ -39,7 +42,7 @@
 | Modo | Página | Perf | A11y | BP | SEO | LCP |
 |---|---|---|---|---|---|---|
 | mobile | / | 91 | 100 | 100 | 100 | 3,5 s |
-| desktop | / | 99 | 100 | 100 | 100 | 0,9 s |
+| desktop | / | 100 | 100 | 100 | 100 | 0,7 s |
 | mobile | serviço (vidro) | 96 | 100 | 100 | 100 | 2,9 s |
 | mobile | cidade (Nova Lima) | 92 | 100 | 100 | 100 | 3,3 s |
 | mobile | galeria | 91 | 100 | 100 | 100 | 3,5 s |

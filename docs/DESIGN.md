@@ -4,7 +4,7 @@ A página é uma escada com o seu corrimão: um trilho de aço escovado desce pe
 
 ## Marca (Logo/2026)
 
-- Logo horizontal: `public/brand/logo.svg` (cores, fundo claro) · `public/brand/logo-dark.svg` (branco, fundos escuros) · símbolo `public/brand/mark.svg` / `mark-512.png` (schema).
+- Logo horizontal: `public/brand/logo.svg` (cores, fundo claro) · `public/brand/logo-dark.svg` (branco, rodapé) · `public/brand/logo-on-dark.svg` (cores sobre escuro: A petróleo, cartões OG) · símbolo `public/brand/mark.svg` / `mark-512.png` (schema).
 - Componente único: `components/Logo.tsx` (lê `public/brand/` via `lib/brand.ts`). Nenhuma página referencia o arquivo do logo direto.
 - Favicons em `public/`: `favicon.ico`, `favicon.svg`, `favicon-16x16/32x32/48x48.png`, `apple-touch-icon.png` (180), `android-chrome-192x192/512x512.png`; manifest em `app/manifest.ts`.
 - Pacote completo (vertical, wordmark, PNG 3200 px, variações) em `Logo/2026/`. O logo antigo continua em `Logo/*.PNG` só como histórico.
@@ -13,7 +13,7 @@ A página é uma escada com o seu corrimão: um trilho de aço escovado desce pe
 
 | Token | Valor | Uso |
 |---|---|---|
-| `--accent` | `#0B7A94` petróleo (marca) | **Só** CTAs (WhatsApp, orçamento), estado selecionado do configurador, filete do hero |
+| `--accent` | `#0B7A94` petróleo (marca) | **Só** CTAs (WhatsApp, orçamento) e estado selecionado do configurador |
 | `--accent-press` | `#086579` | hover/pressionado do CTA |
 | `--accent-on-dark` | `#7FCADB` | links sobre carvão |
 | `--ink` / `--graphite` | `#2E3A40` carvão (marca) | texto principal, faixas escuras, hero |
@@ -49,7 +49,7 @@ Contraste verificado: branco sobre `--accent` 4,97:1 · `--ink` sobre `--ground`
 
 ## Componentes
 
-- **Hero da home** (`.hero2`): painel carvão cortado na diagonal do "A", filete petróleo de 6 px, foto real à direita (no celular: foto em cima, painel embaixo). H1 com a cidade do visitante (`<CityName>`).
+- **Hero da home** (`.hero3`): foto real em tela cheia (até 88svh no desktop; no celular ocupa a primeira tela acima da barra fixa), véu carvão suave embaixo/à esquerda (sem diagonal, sem formas). Título grande à esquerda; no desktop a linha de apoio + CTAs ficam numa coluna estreita à direita, alinhada à base, com um filete fino em cima. Pôster LCP em AVIF/WebP com prioridade alta. H1 com a cidade do visitante (`<CityName>`).
 - **Linhas de serviço** (`.rows/.row`): miniatura + título + resumo + seta — índice, não parede de cartões.
 - **Galeria** (`components/portfolio/`): alvenaria em colunas, filtros com estado na URL (`?tipo=`), visualizador com teclado e gesto.
 - **Passos** (`.steps`): cinco degraus que sobem da esquerda para a direita no desktop, com o perfil de aço embaixo de cada degrau.
