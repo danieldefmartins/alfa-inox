@@ -1,91 +1,68 @@
 import type { Metadata } from 'next'
-import { SITE, waLink, WA_DEFAULT, fullAddress, socialMeta } from '@/lib/site'
+import Link from 'next/link'
+import { SITE, waLink, WA_DEFAULT, telHref, fullAddress, socialMeta } from '@/lib/site'
 import OrcamentoForm from '@/components/OrcamentoForm'
 import Crumbs from '@/components/Crumbs'
 import Jsonld from '@/components/Jsonld'
-import { WhatsAppIcon, Phone, Pin, Clock, Mail, Check } from '@/components/Icons'
+import { ComoFunciona } from '@/components/Sections'
+import { WhatsAppIcon, Phone, Pin, Clock, Mail } from '@/components/Icons'
+
+const TITLE = 'Orçamento de Corrimão e Guarda-Corpo em Inox'
+const DESC = 'Peça o orçamento de corrimão, guarda-corpo ou acessibilidade em inox em BH e região. Mande fotos pelo WhatsApp ou preencha o pedido. Sem compromisso.'
 
 export const metadata: Metadata = {
-  title: 'Pedir Orçamento de Corrimão e Guarda-Corpo em Inox',
-  description:
-    'Peça seu orçamento de corrimão, guarda-corpo ou acessibilidade em aço inox em Belo Horizonte e região. Resposta rápida no WhatsApp e medição no local sem custo.',
+  title: TITLE,
+  description: DESC,
   alternates: { canonical: '/orcamento/' },
-  ...socialMeta({ card: 'orcamento', titulo: 'Pedir Orçamento de Corrimão e Guarda-Corpo em Inox', descricao: 'Peça seu orçamento de corrimão, guarda-corpo ou acessibilidade em aço inox em Belo Horizonte e região. Resposta rápida no WhatsApp e medição no local sem custo.', url: '/orcamento/' }),
+  ...socialMeta({ card: 'orcamento', titulo: TITLE, descricao: DESC, url: '/orcamento/' }),
 }
-
-const PASSOS = [
-  'Você preenche o formulário ou chama direto no WhatsApp com fotos do lance',
-  'Devolvemos uma faixa de valor realista, normalmente no mesmo dia útil',
-  'Agendamos a medição no local, sem custo em BH e região',
-  'Você recebe a proposta fechada, com quantitativo, especificação e prazo',
-]
 
 export default function OrcamentoPage() {
   return (
     <>
-      <section style={{ background: 'var(--ink)', color: '#fff' }}>
-        <div className="wrap" style={{ paddingBottom: 'clamp(44px, 6vw, 68px)' }}>
-          <Crumbs itens={[{ nome: 'Orçamento' }]} dark />
-          <div style={{ maxWidth: 720, paddingTop: 'clamp(28px, 4vw, 44px)' }}>
-            <h1>Peça seu orçamento</h1>
-            <p className="lede" style={{ marginTop: 20 }}>
-              Sem compromisso e sem custo de visita. Quanto mais detalhes você mandar,
-              mais preciso é o número que devolvemos — e o WhatsApp costuma ser o caminho
-              mais rápido, porque permite mandar fotos.
-            </p>
-          </div>
+      <section className="phead" style={{ paddingBottom: 32 }}>
+        <div className="wrap">
+          <Crumbs itens={[{ nome: 'Orçamento' }]} />
+          <h1>Peça seu orçamento</h1>
+          <p className="lede">
+            O caminho mais rápido é o WhatsApp, porque você já manda as fotos do local. Se preferir, preencha o pedido
+            abaixo. Quer escolher o modelo antes? Use o <Link href="/monte-seu-guarda-corpo/">configurador</Link>.
+          </p>
         </div>
       </section>
-
-      <section className="section">
-        <div className="wrap" style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1.6fr) minmax(260px, 1fr)', gap: 'clamp(32px, 5vw, 64px)', alignItems: 'start' }}>
-          <div>
-            <h2 style={{ fontSize: '1.45rem', marginBottom: 8 }}>Formulário de orçamento</h2>
-            <p style={{ color: '#4a5566', marginBottom: 28 }}>
-              Preencha os campos e escolha como prefere enviar. Nada é armazenado neste site —
-              os dados vão direto para o nosso WhatsApp ou e-mail.
-            </p>
-            <OrcamentoForm />
-          </div>
-
-          <aside style={{ position: 'sticky', top: 120, display: 'grid', gap: 22 }}>
-            <div style={{ padding: 26, background: 'var(--paper-2)', borderRadius: 'var(--r-lg)' }}>
-              <h3 style={{ fontSize: '1.05rem', marginBottom: 16 }}>Prefere falar direto?</h3>
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap two wide-left" style={{ alignItems: 'start' }}>
+          <OrcamentoForm />
+          <aside style={{ display: 'grid', gap: 20 }}>
+            <div className="form-card">
+              <h2 style={{ fontSize: '1.3rem', marginBottom: 14 }}>Prefere falar direto?</h2>
               <div style={{ display: 'grid', gap: 10 }}>
-                <a className="btn btn-wa" href={waLink(WA_DEFAULT)} target="_blank" rel="noopener">
-                  <WhatsAppIcon size={18} /> WhatsApp
-                </a>
-                <a className="btn btn-ghost" href={`tel:${SITE.phoneRaw}`}>
-                  <Phone size={17} /> {SITE.phoneDisplay}
-                </a>
+                <a className="btn btn-cta btn-lg" href={waLink(WA_DEFAULT)} target="_blank" rel="noopener"><WhatsAppIcon size={20} /> WhatsApp {SITE.whatsappDisplay}</a>
+                <a className="btn btn-line btn-lg" href={telHref}><Phone size={18} /> {SITE.phoneDisplay}</a>
               </div>
-              <div style={{ marginTop: 22, display: 'grid', gap: 12, fontSize: '.9rem', color: '#4a5566' }}>
-                <span style={{ display: 'flex', gap: 10 }}><Mail size={16} /> {SITE.email}</span>
-                <span style={{ display: 'flex', gap: 10 }}><Clock size={16} /> {SITE.hours}</span>
-                <span style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                  <span style={{ marginTop: 3 }}><Pin size={16} /></span>{fullAddress}
-                </span>
-              </div>
+              <ul className="checks" style={{ marginTop: 20, fontSize: '.94rem' }}>
+                <li><Mail size={16} /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+                <li><Clock size={16} />{SITE.hours}</li>
+                <li><Pin size={16} />{fullAddress}</li>
+              </ul>
             </div>
-
-            <div style={{ padding: 26, border: '1px solid var(--line)', borderRadius: 'var(--r-lg)' }}>
-              <h3 style={{ fontSize: '1.05rem', marginBottom: 16 }}>Como funciona</h3>
-              <ol style={{ margin: 0, paddingLeft: 0, listStyle: 'none', display: 'grid', gap: 14 }}>
-                {PASSOS.map((p, i) => (
-                  <li key={i} style={{ display: 'flex', gap: 12, fontSize: '.92rem', color: '#4a5566' }}>
-                    <span style={{ color: 'var(--accent)', flex: 'none', marginTop: 2 }}><Check size={16} /></span>{p}
-                  </li>
-                ))}
-              </ol>
+            <div className="form-card">
+              <h2 style={{ fontSize: '1.3rem', marginBottom: 10 }}>O que ajuda a orçar rápido</h2>
+              <ul className="checks" style={{ fontSize: '.94rem' }}>
+                <li>Fotos do local de frente e de lado</li>
+                <li>Medida aproximada em metros lineares</li>
+                <li>Quantos lances, curvas e patamares</li>
+                <li>Se há crianças pequenas no local</li>
+              </ul>
             </div>
           </aside>
         </div>
       </section>
-
+      <ComoFunciona white />
       <Jsonld data={{
         '@context': 'https://schema.org',
         '@type': 'ContactPage',
-        name: 'Pedir orçamento',
+        name: TITLE,
         url: `${SITE.url}/orcamento/`,
         about: { '@id': `${SITE.url}/#business` },
       }} />

@@ -5,15 +5,11 @@ export const SITE = {
   tagline: 'Corrimão e guarda-corpo em aço inox em Belo Horizonte',
   foundedYear: 2010,
   yearsInBusiness: 15,
-  /**
-   * Telefone principal = WhatsApp (canal número 1 no Brasil). Ele vai no schema, no rodapé e no "Ligar".
-   * O fixo abaixo veio de um commit sem confirmação do dono e parece placeholder — não aparece no site
-   * enquanto não for confirmado (ver docs/OWNER-INPUT.md).
-   */
-  phone: '+55 31 97237-9813',
-  phoneRaw: '+5531972379813',
-  phoneDisplay: '(31) 97237-9813',
-  landline: { raw: '+553122981234', display: '(31) 2298-1234', confirmed: false },
+  /** Telefone fixo (confirmado pelo dono em 14/10/2026): links tel:, NAP e schema. */
+  phone: '+55 31 2298-1234',
+  phoneRaw: '+553122981234',
+  phoneDisplay: '(31) 2298-1234',
+  /** WhatsApp = canal principal de orçamento (CTA primário em todo o site). */
   whatsapp: '5531972379813',
   whatsappDisplay: '(31) 97237-9813',
   email: 'vendas@alfainoxbh.com.br',
@@ -62,7 +58,7 @@ export const SITE = {
 
 /** Texto do consentimento de mensagens (opcional, desmarcado). Precisa bater com o publicado no formulário do 360. */
 export const CONSENT_TEXT =
-  'Aceito receber mensagens da Alfa Inox por WhatsApp, SMS ou e-mail sobre o meu orçamento, a medição e o andamento da obra. Posso cancelar quando quiser respondendo SAIR. Veja a Política de Privacidade.'
+  'Opcional: aceito receber mensagens da Alfa Inox por WhatsApp ou SMS sobre este orçamento, a medição e a obra. Posso cancelar a qualquer momento respondendo SAIR. Meus dados são tratados conforme a LGPD. Veja a Política de Privacidade.'
 
 export const waLink = (msg?: string) =>
   `https://wa.me/${SITE.whatsapp}${msg ? `?text=${encodeURIComponent(msg)}` : ''}`
@@ -71,6 +67,10 @@ export const WA_DEFAULT =
   'Olá! Vim pelo site da Alfa Inox e gostaria de um orçamento de corrimão / guarda-corpo em aço inox.'
 
 export const telHref = `tel:${SITE.phoneRaw}`
+export const waTelHref = `tel:+${SITE.whatsapp}`
+
+/** Formas de pagamento do sinal (confirmado pelo dono em 14/10/2026). Percentual e parcelamento: ver OWNER-INPUT. */
+export const PAGAMENTO = ['Dinheiro', 'Pix', 'Cartão'] as const
 
 export const fullAddress = `${SITE.address.street} — ${SITE.address.district}, ${SITE.address.city}/${SITE.address.state}`
 

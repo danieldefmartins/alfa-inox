@@ -1,60 +1,59 @@
 import type { Metadata } from 'next'
-import { PHOTOS, CATEGORIAS, src } from '@/lib/photos'
+import { PHOTOS, CATEGORIAS, src, legenda } from '@/lib/photos'
 import { SITE, socialMeta } from '@/lib/site'
-import Gallery from '@/components/Gallery'
+import Portfolio from '@/components/portfolio/Portfolio'
 import Crumbs from '@/components/Crumbs'
-import CTA from '@/components/CTA'
 import Jsonld from '@/components/Jsonld'
+import { CloseCTA } from '@/components/Sections'
+
+const TITLE = 'Obras de Corrimão e Guarda-Corpo em Inox'
+const DESC = `${PHOTOS.length} fotos reais de corrimão, guarda-corpo de inox e de vidro, rampas e barras de apoio que a Alfa Inox fabricou e instalou em BH e região.`
 
 export const metadata: Metadata = {
-  title: 'Galeria de Projetos em Aço Inox',
-  description:
-    'Fotos reais de corrimão, guarda-corpo, guarda-corpo de vidro e acessibilidade em aço inox executados pela Alfa Inox em Belo Horizonte e região metropolitana.',
+  title: TITLE,
+  description: DESC,
   alternates: { canonical: '/galeria/' },
-  ...socialMeta({ card: 'galeria', titulo: 'Galeria de Projetos em Aço Inox', descricao: 'Fotos reais de corrimão, guarda-corpo, guarda-corpo de vidro e acessibilidade em aço inox executados pela Alfa Inox em Belo Horizonte e região metropolitana.', url: '/galeria/' }),
+  ...socialMeta({ card: 'galeria', titulo: TITLE, descricao: DESC, url: '/galeria/' }),
 }
 
 export default function GaleriaPage() {
   return (
     <>
-      <section style={{ background: 'var(--ink)', color: '#fff' }}>
-        <div className="wrap" style={{ paddingBottom: 'clamp(44px, 6vw, 68px)' }}>
-          <Crumbs itens={[{ nome: 'Galeria' }]} dark />
-          <div style={{ maxWidth: 720, paddingTop: 'clamp(28px, 4vw, 44px)' }}>
-            <h1>Galeria de projetos</h1>
-            <p className="lede" style={{ marginTop: 20 }}>
-              {PHOTOS.length} fotos de obras que fabricamos e instalamos — escadas residenciais,
-              sacadas, mezaninos, rampas de acessibilidade, áreas de piscina e projetos comerciais
-              em Belo Horizonte e região. Sem render, sem banco de imagens.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
+      <section className="phead">
         <div className="wrap">
-          <Gallery fotos={PHOTOS} />
+          <Crumbs itens={[{ nome: 'Obras' }]} />
+          <h1>Obras de corrimão e guarda-corpo em inox</h1>
+          <p className="lede">
+            {PHOTOS.length} fotos de obras que fabricamos e instalamos — escadas de casa, varandas, mezaninos, rampas,
+            banheiros acessíveis, áreas de piscina e comércio na Grande BH. Toque numa foto para ampliar e filtre pelo
+            tipo de serviço.
+          </p>
         </div>
       </section>
-
-      <CTA
-        titulo="Viu um modelo parecido com o que você precisa?"
-        texto="Mande a foto do projeto que você gostou junto com fotos do seu lance. Fica muito mais fácil orçar — e você recebe uma estimativa na hora."
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <Portfolio />
+        </div>
+      </section>
+      <CloseCTA
+        titulo="Viu um modelo parecido com o que você quer?"
+        texto="Mande o print da foto junto com fotos do seu local pelo WhatsApp. Fica muito mais fácil orçar."
+        msg="Olá! Vi uma obra na galeria do site e quero algo parecido. Vou mandar o print e fotos do meu local."
       />
-
       <Jsonld data={{
         '@context': 'https://schema.org',
         '@type': 'ImageGallery',
-        name: 'Galeria de projetos em aço inox',
+        name: TITLE,
         url: `${SITE.url}/galeria/`,
         about: CATEGORIAS.map((c) => c.nome),
         image: PHOTOS.map((p) => ({
           '@type': 'ImageObject',
           contentUrl: `${SITE.url}${src(p.slug, 1600)}`,
-          caption: p.alt,
+          caption: legenda(p),
           width: p.width,
           height: p.height,
           creditText: SITE.name,
+          copyrightHolder: { '@id': `${SITE.url}/#business` },
         })),
       }} />
     </>
