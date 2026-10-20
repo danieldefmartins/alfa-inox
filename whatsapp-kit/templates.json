@@ -160,5 +160,18 @@
    "Quero uma revisão",
    "Está tudo certo"
   ]
+ },
+ {
+  "name": "indicacao_pix",
+  "category": "MARKETING",
+  "body": "Olá, {{1}}! Que bom que gostou do seu projeto. Conhece alguém em BH precisando de corrimão ou guarda-corpo em inox?\n\nPara cada indicação que fechar projeto com a Alfa Inox, você ganha {{2}} como agradecimento.",
+  "ex": [
+   "Ana",
+   "R$ 150 no Pix"
+  ],
+  "buttons": [
+   "Quero indicar",
+   "Agora não"
+  ]
  }
 ]
