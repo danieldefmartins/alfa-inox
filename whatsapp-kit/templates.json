@@ -1,0 +1,164 @@
+[
+ {
+  "name": "novo_pedido_site",
+  "category": "UTILITY",
+  "body": "Olá, {{1}}! Aqui é a Alfa Inox. Recebemos seu pedido de orçamento de {{2}} pelo site.\n\nPara adiantar, pode mandar fotos do local e a medida aproximada por aqui?",
+  "ex": [
+   "Ana",
+   "corrimão de escada"
+  ],
+  "buttons": [
+   "Mandar fotos agora",
+   "Prefiro uma visita",
+   "Me liguem"
+  ]
+ },
+ {
+  "name": "ligacao_perdida",
+  "category": "UTILITY",
+  "body": "Olá, {{1}}! Vimos sua ligação para a Alfa Inox e não conseguimos atender. Como podemos ajudar?",
+  "ex": [
+   "Ana"
+  ],
+  "buttons": [
+   "Quero um orçamento",
+   "Me liguem de volta",
+   "Já resolvi"
+  ]
+ },
+ {
+  "name": "orcamento_enviado",
+  "category": "UTILITY",
+  "body": "Olá, {{1}}! Seu orçamento de {{2}} está pronto: {{3}}\n\nQualquer dúvida sobre medidas, acabamento ou prazo, é só responder aqui.",
+  "ex": [
+   "Ana",
+   "corrimão de escada",
+   "https://alfainoxbh.com.br/orcamento"
+  ],
+  "buttons": [
+   "Aprovar orçamento",
+   "Tenho dúvidas",
+   "Quero ajustar"
+  ]
+ },
+ {
+  "name": "retomada_orcamento",
+  "category": "UTILITY",
+  "body": "Oi, {{1}}! Conseguiu ver o orçamento de {{2}} que enviamos?\n\nSe quiser, ajustamos acabamento ou medida para caber melhor no seu projeto.",
+  "ex": [
+   "Ana",
+   "corrimão de escada"
+  ],
+  "buttons": [
+   "Quero fechar",
+   "Ajustar orçamento",
+   "Ainda estou decidindo"
+  ]
+ },
+ {
+  "name": "confirmar_visita",
+  "category": "UTILITY",
+  "body": "Olá, {{1}}! Sua visita técnica da Alfa Inox está marcada para {{2}}, às {{3}}, em {{4}}. Até lá!",
+  "ex": [
+   "Ana",
+   "22/10",
+   "10h",
+   "Rua Exemplo, 100 - Savassi"
+  ],
+  "buttons": [
+   "Confirmo",
+   "Preciso remarcar"
+  ]
+ },
+ {
+  "name": "lembrete_visita",
+  "category": "UTILITY",
+  "body": "Lembrete: amanhã, às {{2}}, vamos medir seu projeto, {{1}}. Alguém estará no local?",
+  "ex": [
+   "Ana",
+   "10h"
+  ],
+  "buttons": [
+   "Sim, confirmado",
+   "Remarcar"
+  ]
+ },
+ {
+  "name": "andamento_obra",
+  "category": "UTILITY",
+  "body": "Boa notícia, {{1}}! Seu {{2}} está pronto e a instalação pode ser em {{3}}. Essa data funciona para você?",
+  "ex": [
+   "Ana",
+   "corrimão de escada",
+   "24/10"
+  ],
+  "buttons": [
+   "Confirmo a data",
+   "Escolher outra data"
+  ]
+ },
+ {
+  "name": "obra_concluida",
+  "category": "UTILITY",
+  "body": "Olá, {{1}}! Obrigado por escolher a Alfa Inox. Ficou tudo como você esperava?",
+  "ex": [
+   "Ana"
+  ],
+  "buttons": [
+   "Ficou ótimo",
+   "Preciso de um ajuste"
+  ]
+ },
+ {
+  "name": "reativar_cliente",
+  "category": "MARKETING",
+  "body": "Olá, {{1}}! Aqui é a Alfa Inox. Faz um tempo que fizemos seu {{2}}.\n\nEstá precisando de algo novo — corrimão, guarda-corpo, portão ou um ajuste no que já tem?",
+  "ex": [
+   "Ana",
+   "corrimão de escada"
+  ],
+  "buttons": [
+   "Tenho um projeto novo",
+   "Revisão ou ajuste",
+   "Agora não"
+  ]
+ },
+ {
+  "name": "indicacao",
+  "category": "MARKETING",
+  "body": "Olá, {{1}}! Que bom que gostou do seu projeto. Conhece alguém em BH precisando de corrimão ou guarda-corpo em inox?\n\nQuem você indicar ganha {{2}} como agradecimento.",
+  "ex": [
+   "Ana",
+   "uma limpeza e revisão do inox"
+  ],
+  "buttons": [
+   "Quero indicar",
+   "Agora não"
+  ]
+ },
+ {
+  "name": "condominios",
+  "category": "MARKETING",
+  "body": "Olá, {{1}}! A Alfa Inox atende condomínios na Grande BH com corrimão e guarda-corpo em inox, adequação à NBR 9050 e rampas de acessibilidade.\n\nPodemos fazer uma visita técnica sem compromisso?",
+  "ex": [
+   "Ana"
+  ],
+  "buttons": [
+   "Agendar visita",
+   "Mandar informações",
+   "Agora não"
+  ]
+ },
+ {
+  "name": "inox_manutencao",
+  "category": "MARKETING",
+  "body": "Olá, {{1}}! Uma dica rápida: inox se limpa com pano macio, água e detergente neutro — nunca palha de aço ou cloro.\n\nNotou alguma mancha ou parafuso solto no seu? Fazemos revisão.",
+  "ex": [
+   "Ana"
+  ],
+  "buttons": [
+   "Quero uma revisão",
+   "Está tudo certo"
+  ]
+ }
+]

@@ -81,3 +81,81 @@ Botões: **Quero uma revisão** · **Está tudo certo**
 - Sem **preço** nos modelos (pedido do dono).
 - Variáveis precisam de exemplo ao enviar para aprovação da Meta (ex.: {{1}} = "Ana", {{2}} = "corrimão de escada").
 - Os modelos 1, 2, 4, 5, 6 e 8 podem ser **automáticos** no 360 (lead do site, ligação perdida, orçamento parado 3 dias, agenda e conclusão).
+
+---
+
+## Textos enviados à Meta em 20/10 (fonte da verdade: `templates.json`)
+
+**`novo_pedido_site`** · utility · pt_BR
+> Olá, {{1}}! Aqui é a Alfa Inox. Recebemos seu pedido de orçamento de {{2}} pelo site.
+> 
+> Para adiantar, pode mandar fotos do local e a medida aproximada por aqui?
+
+Botões: Mandar fotos agora · Prefiro uma visita · Me liguem
+
+**`ligacao_perdida`** · utility · pt_BR
+> Olá, {{1}}! Vimos sua ligação para a Alfa Inox e não conseguimos atender. Como podemos ajudar?
+
+Botões: Quero um orçamento · Me liguem de volta · Já resolvi
+
+**`orcamento_enviado`** · utility · pt_BR
+> Olá, {{1}}! Seu orçamento de {{2}} está pronto: {{3}}
+> 
+> Qualquer dúvida sobre medidas, acabamento ou prazo, é só responder aqui.
+
+Botões: Aprovar orçamento · Tenho dúvidas · Quero ajustar
+
+**`retomada_orcamento`** · utility · pt_BR
+> Oi, {{1}}! Conseguiu ver o orçamento de {{2}} que enviamos?
+> 
+> Se quiser, ajustamos acabamento ou medida para caber melhor no seu projeto.
+
+Botões: Quero fechar · Ajustar orçamento · Ainda estou decidindo
+
+**`confirmar_visita`** · utility · pt_BR
+> Olá, {{1}}! Sua visita técnica da Alfa Inox está marcada para {{2}}, às {{3}}, em {{4}}. Até lá!
+
+Botões: Confirmo · Preciso remarcar
+
+**`lembrete_visita`** · utility · pt_BR
+> Lembrete: amanhã, às {{2}}, vamos medir seu projeto, {{1}}. Alguém estará no local?
+
+Botões: Sim, confirmado · Remarcar
+
+**`andamento_obra`** · utility · pt_BR
+> Boa notícia, {{1}}! Seu {{2}} está pronto e a instalação pode ser em {{3}}. Essa data funciona para você?
+
+Botões: Confirmo a data · Escolher outra data
+
+**`obra_concluida`** · utility · pt_BR
+> Olá, {{1}}! Obrigado por escolher a Alfa Inox. Ficou tudo como você esperava?
+
+Botões: Ficou ótimo · Preciso de um ajuste
+
+**`reativar_cliente`** · marketing · pt_BR
+> Olá, {{1}}! Aqui é a Alfa Inox. Faz um tempo que fizemos seu {{2}}.
+> 
+> Está precisando de algo novo — corrimão, guarda-corpo, portão ou um ajuste no que já tem?
+
+Botões: Tenho um projeto novo · Revisão ou ajuste · Agora não
+
+**`indicacao`** · marketing · pt_BR
+> Olá, {{1}}! Que bom que gostou do seu projeto. Conhece alguém em BH precisando de corrimão ou guarda-corpo em inox?
+> 
+> Quem você indicar ganha {{2}} como agradecimento.
+
+Botões: Quero indicar · Agora não
+
+**`condominios`** · marketing · pt_BR
+> Olá, {{1}}! A Alfa Inox atende condomínios na Grande BH com corrimão e guarda-corpo em inox, adequação à NBR 9050 e rampas de acessibilidade.
+> 
+> Podemos fazer uma visita técnica sem compromisso?
+
+Botões: Agendar visita · Mandar informações · Agora não
+
+**`inox_manutencao`** · marketing · pt_BR
+> Olá, {{1}}! Uma dica rápida: inox se limpa com pano macio, água e detergente neutro — nunca palha de aço ou cloro.
+> 
+> Notou alguma mancha ou parafuso solto no seu? Fazemos revisão.
+
+Botões: Quero uma revisão · Está tudo certo
