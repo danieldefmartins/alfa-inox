@@ -1,0 +1,85 @@
+{
+  "_note": "Snapshot of GET https://api.get360crm.com/public/website/forms/alfa-inox-orcamento (token removed). Refresh after editing the form in 360.",
+  "workspaceId": "2f3b34b0-eca1-4794-8830-eea24bd7b94a",
+  "config": {
+    "consentRequired": false,
+    "consentText": "Opcional: aceito receber mensagens da Alfa Inox por WhatsApp ou SMS sobre este orçamento, a medição e a obra. Posso cancelar a qualquer momento respondendo SAIR. Meus dados são tratados conforme a LGPD. Veja a Política de Privacidade.",
+    "requireCaptcha": false,
+    "fields": [
+      {
+        "id": "first_name",
+        "type": "text",
+        "required": true,
+        "options": []
+      },
+      {
+        "id": "last_name",
+        "type": "text",
+        "required": false,
+        "options": []
+      },
+      {
+        "id": "phone",
+        "type": "phone",
+        "required": true,
+        "options": []
+      },
+      {
+        "id": "email",
+        "type": "email",
+        "required": false,
+        "options": []
+      },
+      {
+        "id": "address",
+        "type": "text",
+        "required": false,
+        "options": []
+      },
+      {
+        "id": "service",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Corrimão de Inox",
+          "Guarda-Corpo de Inox",
+          "Guarda-Corpo de Vidro",
+          "Acessibilidade",
+          "Portões e Gradis",
+          "Condomínios e Empresas",
+          "Outro / não sei ainda"
+        ]
+      },
+      {
+        "id": "message",
+        "type": "textarea",
+        "required": false,
+        "options": []
+      },
+      {
+        "id": "source_page",
+        "type": "text",
+        "required": false,
+        "options": []
+      },
+      {
+        "id": "photo_1",
+        "type": "file",
+        "required": false,
+        "options": []
+      },
+      {
+        "id": "photo_2",
+        "type": "file",
+        "required": false,
+        "options": []
+      },
+      {
+        "id": "photo_3",
+        "type": "file",
+        "required": false,
+        "options": []
+      }
+    ]
+  }
+}

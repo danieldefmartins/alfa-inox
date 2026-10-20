@@ -2,7 +2,7 @@
 // Pedido de orçamento. Dois caminhos, nunca um formulário morto:
 // 1) SITE.crm.formSlug preenchido → envia ao 360 CRM (lib/crm.ts: /direct-submit + /direct-uploads, regra dos 2 s).
 //    Se o CRM falhar, a mensagem de erro oferece o MESMO pedido pronto no WhatsApp (nada se perde).
-// 2) formSlug vazio (hoje) → o botão abre o WhatsApp com o pedido já escrito.
+// 2) formSlug vazio → o botão abre o WhatsApp com o pedido já escrito.
 import { useEffect, useId, useRef, useState } from 'react'
 import { SITE, CONSENT_TEXT, telHref, waLink } from '@/lib/site'
 import { SERVICOS } from '@/lib/servicos'

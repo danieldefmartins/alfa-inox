@@ -1,11 +1,13 @@
 // Testes de contrato do cliente 360 CRM (lib/crm.ts). fetch é simulado: nenhum lead real é enviado.
-// A definição do formulário abaixo é SINTÉTICA, no formato do formulário público do 360 (mesmo formato do
-// fixture do site Prime). Quando a Alfa Inox publicar o formulário dela, troque FORM pelo JSON real
-// (GET https://api.get360crm.com/public/website/forms/<slug>, sem enviar nada) e rode `npm test`.
+// FORM_CONFIG abaixo é sintético (contrato do cliente). O formulário REAL publicado no 360 está em
+// scripts/fixtures/360-form.json (GET .../public/website/forms/alfa-inox-orcamento, sem token): o último teste
+// prova que SITE.crm + CONSENT_TEXT + a lista de serviços batem com ele. Atualize o snapshot ao editar o formulário.
 import { test, afterEach } from 'node:test'
 import assert from 'node:assert/strict'
 import { loadForm, freshForm, sendLead, buildAnswers, normalizePhone, photoFields, photoType, newAttempt, directUploadsLive, resetDirectUploadsProbe } from '../lib/crm.ts'
-import { CONSENT_TEXT } from '../lib/site.ts'
+import { CONSENT_TEXT, SITE } from '../lib/site.ts'
+import { SERVICOS } from '../lib/servicos.ts'
+import { readFileSync } from 'node:fs'
 
 const nativeFetch = globalThis.fetch
 afterEach(() => { globalThis.fetch = nativeFetch; resetDirectUploadsProbe() })
@@ -182,4 +184,22 @@ test('sonda de /direct-uploads: 404 esconde o seletor de fotos', async () => {
   assert.equal(await directUploadsLive(config), false)
   const l = await loadForm(config, CONSENT_TEXT, REQUIRED)
   assert.deepEqual(photoFields(config, l.form), [])
+})
+
+test('SITE.crm aponta para o formulário real publicado no 360 (slug, workspace, campos, consentimento, serviços)', async () => {
+  const live = JSON.parse(readFileSync(new URL('./fixtures/360-form.json', import.meta.url), 'utf8'))
+  assert.equal(SITE.crm.apiBase, 'https://api.get360crm.com')
+  assert.equal(SITE.crm.formSlug, 'alfa-inox-orcamento')
+  assert.equal(SITE.crm.workspaceId, live.workspaceId)
+  const ids = live.config.fields.map((f) => f.id)
+  for (const id of Object.values(SITE.crm.fields).flat()) assert.ok(ids.includes(id), `campo ${id} existe no 360`)
+  const service = live.config.fields.find((f) => f.id === SITE.crm.fields.service)
+  for (const nome of [...SERVICOS.map((s) => s.navNome), 'Outro / não sei ainda']) assert.ok(service.options.includes(nome), `serviço "${nome}" é opção no 360`)
+  const realToken = Buffer.from(JSON.stringify({ kind: 'form', ws: live.workspaceId, exp: Date.now() + 7200000 })).toString('base64url') + '.sig'
+  globalThis.fetch = async (url) => {
+    assert.equal(url, 'https://api.get360crm.com/public/website/forms/alfa-inox-orcamento')
+    return response({ token: realToken, siteKey: null, config: live.config })
+  }
+  const loaded = await loadForm(SITE.crm, CONSENT_TEXT, [SITE.crm.fields.firstName, SITE.crm.fields.phone, SITE.crm.fields.service])
+  assert.equal(loaded.form.config.consentText, CONSENT_TEXT)
 })

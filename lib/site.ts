@@ -55,14 +55,14 @@ export const SITE = {
   },
   /**
    * Formulário nativo do 360 CRM (mesmo cliente do site Prime: app/lib/crm.ts lá, lib/crm.ts aqui).
-   * `formSlug` vazio = o formulário de orçamento entrega tudo no WhatsApp (nunca um formulário morto).
-   * Quando a Alfa Inox tiver um workspace + formulário publicado no 360, preencha slug, workspaceId e os ids
-   * dos campos abaixo exatamente como estão no formulário publicado.
+   * Publicado no 360: workspace Alfa Inox, formulário "Site — Pedido de orçamento" (slug alfa-inox-orcamento).
+   * Os ids dos campos abaixo são exatamente os do formulário publicado; CONSENT_TEXT é o texto de consentimento dele.
+   * `formSlug` vazio = o formulário entrega tudo no WhatsApp (nunca um formulário morto).
    */
   crm: {
     apiBase: 'https://api.get360crm.com',
-    formSlug: '' as string,
-    workspaceId: '' as string,
+    formSlug: 'alfa-inox-orcamento' as string,
+    workspaceId: '2f3b34b0-eca1-4794-8830-eea24bd7b94a' as string,
     fields: {
       firstName: 'first_name',
       lastName: 'last_name',
