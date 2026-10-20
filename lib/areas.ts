@@ -39,7 +39,7 @@ export const AREAS: Area[] = [
     ],
     fotos: ['corrimao-inox-escada-entrada-externa', 'guarda-corpo-vidro-cobertura-piscina-deck', 'corrimao-parede-inox-escada-condominio', 'guarda-corpo-inox-escada-interna-sala', 'corrimao-inox-curvo-area-externa-condominio', 'guarda-corpo-inox-academia-comercial'],
     faq: [
-      { q: 'Onde fica a oficina da Alfa Inox em BH?', a: 'Na Rua Cantagalo, 1449, bairro Aparecida, região Noroeste de Belo Horizonte (CEP 31230-770). Atendemos de segunda a sábado, das 8h às 17h.' },
+      { q: 'Onde fica a oficina da Alfa Inox em BH?', a: 'Na Rua Cantagalo, 1449, bairro Aparecida, região Noroeste de Belo Horizonte (CEP 31230-770). Atendemos de segunda a sexta, das 9h às 21h, e sábado, das 9h às 14h.' },
       { q: 'Vocês atendem prédio na região Centro-Sul?', a: 'Sim. Atendemos condomínios e prédios comerciais em toda a capital, com proposta formal por item para a assembleia.' },
     ],
   },

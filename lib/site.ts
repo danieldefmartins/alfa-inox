@@ -43,10 +43,11 @@ export const SITE = {
       { nome: 'Simone M.', texto: 'Excelente trabalho!!!' },
     ],
   },
-  hours: 'Segunda a sábado, das 8h às 17h',
-  hoursShort: 'Seg–Sáb, 8h–17h',
+  hours: 'Segunda a sexta, das 9h às 21h, e sábado, das 9h às 14h',
+  hoursShort: 'Seg–Sex 9h–21h · Sáb 9h–14h',
   hoursSchema: [
-    { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '08:00', closes: '17:00' },
+    { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '21:00' },
+    { days: ['Saturday'], opens: '09:00', closes: '14:00' },
   ],
   social: {
     instagram: 'https://www.instagram.com/alfainoxbh',

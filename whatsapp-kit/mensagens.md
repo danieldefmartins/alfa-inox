@@ -26,7 +26,7 @@ Em **Ferramentas comerciais > Mensagem de ausência**. Programação: *Fora do h
 
 ```
 Olá! Obrigado pela mensagem 😊
-Nosso horário é de segunda a sábado, das 8h às 17h. Respondemos assim que voltarmos.
+Nosso horário é de segunda a sexta, das 9h às 21h, e sábado, das 9h às 14h. Respondemos assim que voltarmos.
 
 Se quiser adiantar, mande fotos do local e a medida aproximada, que o orçamento já começa por aí.
 ```
@@ -108,7 +108,7 @@ Se quiser, mando fotos de obras com cada um para você comparar.
 ```
 Vamos agendar a visita técnica! Nela medimos tudo no local e tiramos suas dúvidas.
 
-Atendemos de segunda a sábado, das 8h às 17h. Me diga:
+Atendemos de segunda a sexta, das 9h às 21h, e sábado, das 9h às 14h. Me diga:
 • O endereço completo
 • Dois ou três dias e horários que funcionam para você
 • Um nome e telefone para contato no dia

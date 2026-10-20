@@ -14,6 +14,6 @@ export const FAQ_GERAL: QA[] = [
   { q: 'Qual a altura certa do guarda-corpo e do corrimão?', a: 'Guarda-corpo de sacada, varanda e mezanino: no mínimo 1,10 m (NBR 14718). Corrimão de escada: 92 cm da quina do degrau (NBR 9050), com um segundo tubo a 70 cm em rampas.' },
   { q: 'Inox 304 ou 316?', a: 'O 304 atende escadas internas e áreas externas comuns em BH. O 316 resiste melhor a cloro e maresia e é o indicado na beira da piscina e na sauna.' },
   { q: 'Em quais cidades vocês atendem?', a: 'Belo Horizonte, Nova Lima, Contagem, Betim, Sabará, Santa Luzia, Lagoa Santa, Ribeirão das Neves, Vespasiano, Ibirité e Brumadinho.' },
-  { q: 'Onde fica a Alfa Inox?', a: `Na ${SITE.address.street}, bairro ${SITE.address.district}, em Belo Horizonte. Atendimento de segunda a sábado, das 8h às 17h, pelo WhatsApp ${SITE.whatsappDisplay} ou pelo telefone ${SITE.phoneDisplay}.` },
+  { q: 'Onde fica a Alfa Inox?', a: `Na ${SITE.address.street}, bairro ${SITE.address.district}, em Belo Horizonte. Atendimento de segunda a sexta, das 9h às 21h, e sábado, das 9h às 14h, pelo WhatsApp ${SITE.whatsappDisplay} ou pelo telefone ${SITE.phoneDisplay}.` },
   { q: 'Vocês fazem guarda-corpo de vidro?', a: 'Fazemos o conjunto completo: estrutura de inox, vidro laminado ou temperado, ferragens e instalação. Em área elevada indicamos vidro laminado.' },
 ]

@@ -38,7 +38,7 @@ R. Cantagalo, 1449 - Aparecida, Belo Horizonte - MG, 31230-770
 
 ## Horário de funcionamento
 
-Segunda a sábado, das **8h às 17h**. Domingo: fechado.
+Segunda a sexta, das **9h às 21h**; sábado, das **9h às 14h**. Domingo: fechado.
 
 ## E-mail
 

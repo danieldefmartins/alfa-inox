@@ -97,7 +97,7 @@ Os textos usam marcadores `[entre colchetes]` onde a informação ainda não foi
 | 7 | Link curto de avaliação do Google (no Perfil da Empresa no Google: **Pedir avaliações** > copiar link) → `[link de avaliação do Google]` | `/obrigado` |
 | 8 | Fecha para almoço? Se sim, ajuste o horário no perfil. | Perfil |
 
-Já confirmados e usados: desconto de **5% à vista** (Pix ou dinheiro), sinal em dinheiro, Pix ou cartão, orçamentos pela ABNT NBR 9050, endereço R. Cantagalo, 1449, horário seg–sáb 8h–17h, desde 2010.
+Já confirmados e usados: desconto de **5% à vista** (Pix ou dinheiro), sinal em dinheiro, Pix ou cartão, orçamentos pela ABNT NBR 9050, endereço R. Cantagalo, 1449, horário seg–sex 9h–21h e sáb 9h–14h, desde 2010.
 
 ---
 
