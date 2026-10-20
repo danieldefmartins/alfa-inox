@@ -62,7 +62,7 @@ test('falha fechada: workspace errado, consentimento obrigatório, texto alterad
   ]
   for (const b of bad) {
     globalThis.fetch = async () => response(b)
-    await assert.rejects(loadForm(config, CONSENT_TEXT, REQUIRED), /indisponível.*97237-9813/)
+    await assert.rejects(loadForm(config, CONSENT_TEXT, REQUIRED), /indisponível.*98777-0220/)
   }
 })
 
@@ -78,8 +78,8 @@ test('token carregado no envio espera os 2 s mínimos do CRM', async () => {
 test('telefone brasileiro vira E.164 (+55) e número ruim explica a regra', () => {
   assert.equal(normalizePhone('(31) 99999-0000'), '+5531999990000')
   assert.equal(normalizePhone('31 2298-1234'), '+553122981234')
-  assert.equal(normalizePhone('+55 31 97237-9813'), '+5531972379813')
-  assert.equal(normalizePhone('5531972379813'), '+5531972379813')
+  assert.equal(normalizePhone('+55 31 98777-0220'), '+5531987770220')
+  assert.equal(normalizePhone('5531987770220'), '+5531987770220')
   assert.throws(() => normalizePhone('9999-0000'), /DDD/)
 })
 
@@ -122,7 +122,7 @@ test('falha de rede mantém a mesma chave e diz o que fazer (WhatsApp)', async (
     if (keys.length === 1) throw Error('offline')
     return response({ thankYou: 'ok' })
   }
-  await assert.rejects(sendLead(config, form, a, values, false, [], {}), /chame no \(31\) 97237-9813/)
+  await assert.rejects(sendLead(config, form, a, values, false, [], {}), /chame no \(31\) 98777-0220/)
   await sendLead(config, form, a, values, false, [], {})
   assert.deepEqual(keys, [a.key, a.key])
 })
@@ -168,7 +168,7 @@ test('foto demais, grande demais ou inválida é recusada antes de subir, com al
   ]
   for (const [set, re] of cases) {
     await assert.rejects(sendLead(config, form, newAttempt('t'), values, false, set, {}, noSleep), re)
-    await assert.rejects(sendLead(config, form, newAttempt('t'), values, false, set, {}, noSleep), /mande as fotos pelo \(31\) 97237-9813/)
+    await assert.rejects(sendLead(config, form, newAttempt('t'), values, false, set, {}, noSleep), /mande as fotos pelo \(31\) 98777-0220/)
   }
 })
 

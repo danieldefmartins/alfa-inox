@@ -28,7 +28,7 @@ Visitante no celular, muitas vezes na própria obra, comparando 2–3 orçamento
 ## Capabilities and Constraints
 
 - Next.js 16 static export, Cloudflare Workers (`alfa-inox`), deploy via Workers Builds na `main`.
-- 100% pt-BR. WhatsApp (31) 97237-9813 é o telefone principal. Seg–Sáb 8h–17h.
+- 100% pt-BR. WhatsApp (31) 98777-0220 é o telefone principal. Seg–Sáb 8h–17h.
 - Formulário: WhatsApp hoje; 360 CRM preparado atrás de `crm.formSlug` (vazio).
 - Logo novo em produção: o logo é um componente trocável (`components/Logo.tsx` + `public/brand/`).
 

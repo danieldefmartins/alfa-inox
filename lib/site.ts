@@ -10,8 +10,8 @@ export const SITE = {
   phoneRaw: '+553122981234',
   phoneDisplay: '(31) 2298-1234',
   /** WhatsApp = canal principal de orçamento (CTA primário em todo o site). */
-  whatsapp: '5531972379813',
-  whatsappDisplay: '(31) 97237-9813',
+  whatsapp: '5531987770220',
+  whatsappDisplay: '(31) 98777-0220',
   email: 'vendas@alfainoxbh.com.br',
   address: {
     street: 'Rua Cantagalo, 1449',
