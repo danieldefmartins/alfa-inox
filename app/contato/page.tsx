@@ -8,7 +8,7 @@ import { ComoFunciona, GoogleRating } from '@/components/Sections'
 import { WhatsAppIcon, Phone, Pin, Clock, Mail } from '@/components/Icons'
 
 const TITLE = 'Contato: Alfa Inox, Corrimão e Guarda-Corpo em BH'
-const DESC = 'WhatsApp (31) 98777-0220, telefone (31) 2298-0072 e vendas@alfainoxbh.com.br. Rua Cantagalo, 1449, Aparecida, BH. Segunda a sexta, das 9h às 21h, e sábado, das 9h às 14h.'
+const DESC = 'WhatsApp e telefone (31) 2298-0072, e-mail vendas@alfainoxbh.com.br. Rua Cantagalo, 1449, Aparecida, BH. Segunda a sexta, das 9h às 21h, e sábado, das 9h às 14h.'
 
 export const metadata: Metadata = {
   title: TITLE,

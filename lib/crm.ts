@@ -62,7 +62,7 @@ export type LeadValues = {
 };
 
 // Sem import de ./site para o arquivo rodar direto no Node (npm test). Mesmo número de SITE.whatsappDisplay.
-const PHONE = "(31) 98777-0220 (WhatsApp)";
+const PHONE = "(31) 2298-0072 (WhatsApp)";
 const FALLBACK = `Não conseguimos confirmar o envio. Tente de novo ou chame no ${PHONE}. Seus dados continuam aqui.`;
 const UNAVAILABLE = `O envio pelo site está indisponível agora. Mande seu pedido pelo ${PHONE}.`;
 export const PHOTO_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif"];

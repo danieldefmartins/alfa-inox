@@ -16,17 +16,26 @@ const PHOTOS = JSON.parse(fs.readFileSync(path.join(ROOT, 'lib/photos.json'), 'u
 
 const corta = (t, n = 110) => (t.length <= n ? t : t.slice(0, t.lastIndexOf(' ', n)).replace(/[,;—-]$/, '') + '…')
 const b64 = (f) => fs.readFileSync(f).toString('base64')
+// Some photos only ship small sizes; fall back to a 1600px photo of the same category.
+const big = (slug) => path.join(ROOT, 'public', 'fotos', `${slug}-1600.webp`)
+const bigPhoto = (slug) => {
+  if (fs.existsSync(big(slug))) return big(slug)
+  const cat = PHOTOS.find((p) => p.slug === slug)?.category
+  const alt = PHOTOS.find((p) => p.category === cat && fs.existsSync(big(p.slug))) ?? PHOTOS.find((p) => fs.existsSync(big(p.slug)))
+  console.warn(`og: ${slug} has no 1600px version, using ${alt.slug}`)
+  return big(alt.slug)
+}
 // 'estoque:<nome>' = foto de banco licenciada (só atmosfera), senão foto real de obra
 const pic = (slug) => slug.startsWith('estoque:')
   ? `data:image/webp;base64,${b64(path.join(ROOT, 'public', 'estoque', `${slug.slice(8)}-1200.webp`))}`
-  : `data:image/webp;base64,${b64(path.join(ROOT, 'public', 'fotos', `${slug}-1600.webp`))}`
+  : `data:image/webp;base64,${b64(bigPhoto(slug))}`
 const logo = `data:image/svg+xml;base64,${b64(path.join(ROOT, 'public/brand/logo-on-dark.svg'))}`
 
 const cards = [
   { name: 'default', titulo: 'Corrimão e guarda-corpo em inox em Belo Horizonte', sub: 'Projetos residenciais e comerciais, com o design moderno dos projetos de alto padrão.', foto: 'estoque:escada-moderna-guarda-corpo-inox-edificio-corporativo' },
   { name: 'galeria', titulo: 'Obras de corrimão e guarda-corpo em inox', sub: `${PHOTOS.length} fotos reais de obras na Grande BH`, foto: 'guarda-corpo-inox-escada-interna-sala' },
   { name: 'sobre', titulo: 'Uma oficina de inox em BH desde 2010', sub: 'Fábrica, não revenda: quem fabrica instala', foto: 'guarda-corpo-inox-escada-moderna' },
-  { name: 'contato', titulo: 'Fale com a Alfa Inox', sub: 'WhatsApp (31) 98777-0220 · (31) 2298-0072', foto: 'corrimao-parede-inox-escada-caracol' },
+  { name: 'contato', titulo: 'Fale com a Alfa Inox', sub: 'WhatsApp e telefone (31) 2298-0072', foto: 'corrimao-parede-inox-escada-caracol' },
   { name: 'orcamento', titulo: 'Peça seu orçamento pelo WhatsApp', sub: 'Mande fotos do local e a medida aproximada', foto: 'corrimao-parede-inox-escada-condominio' },
   { name: 'servicos', titulo: 'Serviços em aço inox, sob medida', sub: 'Corrimão, guarda-corpo, vidro, acessibilidade, portões e gradis', foto: 'guarda-corpo-inox-escada-interna-vidro' },
   { name: 'blog', titulo: 'Guias de quem fabrica corrimão e guarda-corpo', sub: 'Preço, normas, liga e limpeza do inox', foto: 'corrimao-inox-escada-granito-interna' },
@@ -55,7 +64,7 @@ p{margin-top:18px;font-size:23px;line-height:1.4;color:#dbe2e5;max-width:40ch}
 </style>
 <div class="photo"></div><div class="panel"></div>
 <div class="in"><img class="logo" src="${logo}">${c.tag ? `<span class="tag">${c.tag}</span>` : ''}
-<h1 style="font-size:${size}px">${c.titulo}</h1><p>${c.sub}</p><span class="ft">alfainoxbh.com.br · WhatsApp (31) 98777-0220</span></div>`
+<h1 style="font-size:${size}px">${c.titulo}</h1><p>${c.sub}</p><span class="ft">alfainoxbh.com.br · WhatsApp (31) 2298-0072</span></div>`
 }
 
 fs.mkdirSync(OUT, { recursive: true })
