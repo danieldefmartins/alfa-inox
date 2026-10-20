@@ -173,5 +173,19 @@
    "Quero indicar",
    "Agora não"
   ]
+ },
+ {
+  "name": "contato_apos_ligacao",
+  "category": "UTILITY",
+  "body": "Olá, {{1}}! Aqui é o {{2}}, da Alfa Inox. Acabamos de nos falar por telefone e você pediu para eu te chamar aqui no WhatsApp.\n\nPode me mandar fotos do local e a medida aproximada? Assim já preparo seu orçamento.",
+  "ex": [
+   "Ana",
+   "Daniel"
+  ],
+  "buttons": [
+   "Mandar fotos agora",
+   "Prefiro uma visita",
+   "Me liga mais tarde"
+  ]
  }
 ]
