@@ -77,7 +77,7 @@ test('token carregado no envio espera os 2 s mínimos do CRM', async () => {
 
 test('telefone brasileiro vira E.164 (+55) e número ruim explica a regra', () => {
   assert.equal(normalizePhone('(31) 99999-0000'), '+5531999990000')
-  assert.equal(normalizePhone('31 2298-1234'), '+553122981234')
+  assert.equal(normalizePhone('31 2298-0072'), '+553122980072')
   assert.equal(normalizePhone('+55 31 98777-0220'), '+5531987770220')
   assert.equal(normalizePhone('5531987770220'), '+5531987770220')
   assert.throws(() => normalizePhone('9999-0000'), /DDD/)

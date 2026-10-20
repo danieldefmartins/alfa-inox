@@ -26,7 +26,7 @@ const cards = [
   { name: 'default', titulo: 'Corrimão e guarda-corpo em inox em Belo Horizonte', sub: 'Projetos residenciais e comerciais, com o design moderno dos projetos de alto padrão.', foto: 'estoque:escada-moderna-guarda-corpo-inox-edificio-corporativo' },
   { name: 'galeria', titulo: 'Obras de corrimão e guarda-corpo em inox', sub: `${PHOTOS.length} fotos reais de obras na Grande BH`, foto: 'guarda-corpo-inox-escada-interna-sala' },
   { name: 'sobre', titulo: 'Uma oficina de inox em BH desde 2010', sub: 'Fábrica, não revenda: quem fabrica instala', foto: 'guarda-corpo-inox-escada-moderna' },
-  { name: 'contato', titulo: 'Fale com a Alfa Inox', sub: 'WhatsApp (31) 98777-0220 · (31) 2298-1234', foto: 'corrimao-parede-inox-escada-caracol' },
+  { name: 'contato', titulo: 'Fale com a Alfa Inox', sub: 'WhatsApp (31) 98777-0220 · (31) 2298-0072', foto: 'corrimao-parede-inox-escada-caracol' },
   { name: 'orcamento', titulo: 'Peça seu orçamento pelo WhatsApp', sub: 'Mande fotos do local e a medida aproximada', foto: 'corrimao-parede-inox-escada-condominio' },
   { name: 'servicos', titulo: 'Serviços em aço inox, sob medida', sub: 'Corrimão, guarda-corpo, vidro, acessibilidade, portões e gradis', foto: 'guarda-corpo-inox-escada-interna-vidro' },
   { name: 'blog', titulo: 'Guias de quem fabrica corrimão e guarda-corpo', sub: 'Preço, normas, liga e limpeza do inox', foto: 'corrimao-inox-escada-granito-interna' },

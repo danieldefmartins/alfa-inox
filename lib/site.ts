@@ -6,9 +6,9 @@ export const SITE = {
   foundedYear: 2010,
   yearsInBusiness: 15,
   /** Telefone fixo (confirmado pelo dono em 14/10/2026): links tel:, NAP e schema. */
-  phone: '+55 31 2298-1234',
-  phoneRaw: '+553122981234',
-  phoneDisplay: '(31) 2298-1234',
+  phone: '+55 31 2298-0072',
+  phoneRaw: '+553122980072',
+  phoneDisplay: '(31) 2298-0072',
   /** WhatsApp = canal principal de orçamento (CTA primário em todo o site). */
   whatsapp: '5531987770220',
   whatsappDisplay: '(31) 98777-0220',
