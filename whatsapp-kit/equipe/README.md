@@ -3,10 +3,12 @@
 O número **oficial** da empresa é **(31) 2298-0072** (logo da Alfa, conectado ao 360).
 Cada pessoa da equipe usa o **próprio rosto** com o selo do "A" no canto.
 
-## Foto
-1. Foto de rosto, fundo liso, sorrindo, camiseta escura ou polo da Alfa.
-2. `python3 make_profile.py FOTO.jpg nome-perfil-640.png` (se cortar a cabeça, use 0.40 no fim; se sobrar espaço em cima, 0.50).
-3. Confira `nome-perfil-640-previa-circulo.png` e use `nome-perfil-640.png` no WhatsApp.
+## Foto (padrão premium)
+1. Foto de rosto, sorrindo, camiseta escura ou polo da Alfa (qualquer fundo — ele é removido).
+2. `swift cutout.swift FOTO.png recorte.png` (remove o fundo, usa o recurso do macOS)
+3. `python3 compose.py recorte.png ../../public/brand/mark-512.png 60 nome-perfil.png`
+   → fundo grafite com luz azul-petróleo da marca, anel fino na cor da Alfa e selo do "A" às 4h30.
+4. Confira `previa.png` (recorte redondo) e use `nome-perfil.png` (1080×1080) no WhatsApp.
 
 ## Textos (WhatsApp Business → Configurações → Ferramentas comerciais → Perfil)
 - **Nome:** `Daniel · Alfa Inox` (`Nome · Alfa Inox`)
