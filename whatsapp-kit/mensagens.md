@@ -122,7 +122,7 @@ Atendemos de segunda a sexta, das 9h às 21h, e sábado, das 9h às 14h. Me diga
 Obrigado por confiar na Alfa Inox! 🙏 Foi um prazer fazer seu projeto.
 
 Se ficou satisfeito, sua avaliação no Google ajuda muito outras famílias a nos encontrar. Leva um minutinho:
-[link de avaliação do Google]
+https://www.google.com/maps/place//data=!4m3!3m2!1s0xa691ad5790dd51:0xcc4d4d49f001d5cf!12e1
 
 Qualquer coisa que precisar, é só chamar aqui.
 ```
