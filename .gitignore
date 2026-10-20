@@ -49,3 +49,4 @@ next-env.d.ts
 
 # fotos de banco licenciadas (originais, ~100 MB) — só as versões otimizadas vão para o git
 /fotos/estoque-original
+.claude/worktrees/
