@@ -3,7 +3,7 @@
   "workspaceId": "2f3b34b0-eca1-4794-8830-eea24bd7b94a",
   "config": {
     "consentRequired": false,
-    "consentText": "Opcional: aceito receber mensagens da Alfa Inox por WhatsApp ou SMS sobre este orçamento, a medição e a obra. Posso cancelar a qualquer momento respondendo SAIR. Meus dados são tratados conforme a LGPD. Veja a Política de Privacidade.",
+    "consentText": "",
     "requireCaptcha": false,
     "fields": [
       {
@@ -80,6 +80,9 @@
         "required": false,
         "options": []
       }
-    ]
+    ],
+    "pro": {
+      "smsConsent": "Opcional: aceito receber mensagens da Alfa Inox por WhatsApp ou SMS sobre este orçamento, a medição e a obra. Posso cancelar a qualquer momento respondendo SAIR. Meus dados são tratados conforme a LGPD. Veja a Política de Privacidade."
+    }
   }
 }

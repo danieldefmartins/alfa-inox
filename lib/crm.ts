@@ -329,8 +329,8 @@ export async function sendLead(
       answers[fieldId] = attempt.uploads[sig];
     }
   }
-  // This form publishes its SMS wording as `consentText`, which the CRM records with `consent`;
-  // `smsConsent` is sent too so the choice is kept if the form later moves the text to `pro.smsConsent`.
+  // The form publishes CONSENT_TEXT as `pro.smsConsent`: 360 only lets automations message the visitor
+  // (WhatsApp "Pedido pelo site") when `smsConsent` is true. `consent` mirrors it for older form setups.
   // Native website forms submit through /direct-submit (signed token, at least 2 s after it was issued).
   try {
     return await requestJson<{ thankYou: string; redirect?: string }>(publicUrl(config, "direct-submit"), {

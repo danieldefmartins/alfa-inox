@@ -201,5 +201,6 @@ test('SITE.crm aponta para o formulário real publicado no 360 (slug, workspace,
     return response({ token: realToken, siteKey: null, config: live.config })
   }
   const loaded = await loadForm(SITE.crm, CONSENT_TEXT, [SITE.crm.fields.firstName, SITE.crm.fields.phone, SITE.crm.fields.service])
-  assert.equal(loaded.form.config.consentText, CONSENT_TEXT)
+  // 360 só libera WhatsApp/SMS automático quando o texto está em pro.smsConsent (consentText é só aviso genérico).
+  assert.equal(loaded.form.config.pro.smsConsent, CONSENT_TEXT)
 })
