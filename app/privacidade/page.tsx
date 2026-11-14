@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { SITE, fullAddress } from '@/lib/site'
+import { SITE, SMS_NOTICE, fullAddress } from '@/lib/site'
 import Crumbs from '@/components/Crumbs'
 
 export const metadata: Metadata = {
@@ -29,16 +29,16 @@ export default function PrivacidadePage() {
           <ul>
             <li>Responder o seu pedido, preparar a estimativa e agendar a medição;</li>
             <li>Enviar a proposta e acompanhar a obra;</li>
-            <li>Com o seu consentimento (caixa opcional no formulário), enviar mensagens por WhatsApp ou SMS sobre o orçamento, a medição e a obra.</li>
+            <li>Enviar mensagens de texto e WhatsApp sobre a sua solicitação (orçamentos, agendamento, atualizações do projeto). Ao enviar um formulário neste site com o seu telefone, você concorda em receber essas mensagens da Alfa Inox. O formulário mostra este aviso acima do botão Enviar: “{SMS_NOTICE}”</li>
           </ul>
           <p>Não vendemos nem compartilhamos o seu telefone ou os seus dados com terceiros para fins de marketing. Os dados ficam no nosso sistema de atendimento, usado apenas pela equipe da Alfa Inox.</p>
           <h2>Por quanto tempo guardamos</h2>
           <p>Pelo tempo necessário para atender o pedido e cumprir obrigações legais e fiscais (por exemplo, a nota fiscal de uma obra contratada). Pedidos que não viram obra podem ser excluídos quando você pedir.</p>
           <h2>Seus direitos</h2>
-          <p>Você pode pedir acesso, correção ou exclusão dos seus dados e revogar o consentimento de mensagens a qualquer momento, respondendo SAIR a uma mensagem ou escrevendo para {SITE.email}.</p>
+          <p>Você pode pedir acesso, correção ou exclusão dos seus dados e revogar o consentimento de mensagens a qualquer momento, respondendo PARAR ou SAIR a uma mensagem ou escrevendo para {SITE.email}.</p>
           <h2>Cookies e armazenamento no navegador</h2>
           <p>O site não usa cookies de publicidade. Ele guarda no seu navegador, por até 90 dias, a origem da visita (para atribuir o pedido ao canal certo) e, durante a sessão, a cidade aproximada usada para personalizar a saudação da página inicial. A cidade vem da localização aproximada do seu provedor de internet e não é enviada a ninguém.</p>
-          <p className="muted">Atualizada em outubro de 2026.</p>
+          <p className="muted">Atualizada em novembro de 2026.</p>
         </div>
       </section>
     </>

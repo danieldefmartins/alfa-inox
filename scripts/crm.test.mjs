@@ -149,6 +149,13 @@ test('o formulário não tem mais caixa de consentimento: aviso logo acima do bo
   assert.match(src.slice(botao, botao + 200), /aria-describedby/)
 })
 
+test('a política de privacidade descreve o consentimento pelo envio do formulário (sem caixa opcional)', () => {
+  const src = readFileSync(new URL('../app/privacidade/page.tsx', import.meta.url), 'utf8')
+  assert.doesNotMatch(src, /caixa opcional/)
+  assert.match(src, /acima do botão Enviar: “\{SMS_NOTICE\}”/)
+  assert.match(src, /respondendo PARAR ou SAIR/)
+})
+
 test('guarda aceita o texto antigo e o aviso novo (antes e depois da troca no 360)', async () => {
   for (const c of [
     { consentMode: undefined, consentText: '', pro: { smsConsent: LEGACY_CONSENT_TEXT } },
