@@ -31,6 +31,8 @@ export type PublicForm = {
   config: {
     consentRequired: boolean;
     consentText: string;
+    /** "notice" = the consent text is shown as a notice above Submit (no checkbox); sending the form is the agreement. */
+    consentMode?: string;
     requireCaptcha?: boolean;
     /** 360 protects the hosted /submit and /uploads endpoints with Turnstile; native sites use /direct-* instead. */
     turnstile?: boolean;
@@ -132,7 +134,7 @@ function tokenPayload(token: string) {
 }
 
 /** Loads the published form and fails closed if it no longer matches what this site sends. */
-export async function loadForm(config: CrmConfig, smsConsent: string, required: string[]): Promise<LoadedForm> {
+export async function loadForm(config: CrmConfig, acceptedConsents: readonly string[], required: string[]): Promise<LoadedForm> {
   if (!config.apiBase || !config.formSlug) throw Error(UNAVAILABLE);
   const form = await requestJson<PublicForm>(publicUrl(config, `forms/${encodeURIComponent(config.formSlug)}`));
   let payload: { ws: string; kind: string };
@@ -145,9 +147,11 @@ export async function loadForm(config: CrmConfig, smsConsent: string, required: 
   // The probe starts at the form's photo step (a 404/400 logs a console error, so never on page view);
   // loadForm copies its settled answer onto every later token.
   form.directUploads = directUploadsKnown;
-  // SMS consent must stay optional and the wording must match exactly what the visitor sees.
-  const published = form.config.pro?.smsConsent || form.config.consentText || "";
-  if (form.config.requireCaptcha || form.config.consentRequired || published !== smsConsent) throw Error(UNAVAILABLE);
+  // Consent must stay optional and every published wording must be one this site knows: the notice shown
+  // above Submit, or the old checkbox text still published until the form is switched to notice mode.
+  const published = [form.config.pro?.smsConsent, form.config.consentText].map((t) => (t || "").trim()).filter(Boolean);
+  if (form.config.requireCaptcha || form.config.consentRequired || !published.length || published.some((t) => !acceptedConsents.includes(t)))
+    throw Error(UNAVAILABLE);
   // A native form cannot pass a captcha the CRM demands; better to show call/text than fail at submit.
   if (form.config.requireCaptcha) throw Error(UNAVAILABLE);
   for (const id of required) if (!form.config.fields.some((f) => f.id === id)) throw Error(UNAVAILABLE);
@@ -258,12 +262,20 @@ export function buildAnswers(config: CrmConfig, form: PublicForm, values: LeadVa
   return answers;
 }
 
+/**
+ * `consent: true` means "the notice was on screen": only when the published form is in notice mode, its text is
+ * exactly the notice this site shows, and the visitor gave a phone number. Otherwise false (safe default).
+ */
+export const noticeConsent = (form: PublicForm, notice: string, phone: string | undefined) =>
+  form.config.consentMode === "notice" && (form.config.consentText || "").trim() === notice && Boolean(phone);
+
 export async function sendLead(
   config: CrmConfig,
   form: PublicForm,
   attempt: Attempt,
   values: LeadValues,
-  smsConsent: boolean,
+  /** The exact notice shown above the Submit button. */
+  notice: string,
   photos: File[],
   attribution: Attribution,
   hooks: PhotoHooks = {},
@@ -329,8 +341,7 @@ export async function sendLead(
       answers[fieldId] = attempt.uploads[sig];
     }
   }
-  // The form publishes CONSENT_TEXT as `pro.smsConsent`: 360 only lets automations message the visitor
-  // (WhatsApp "Pedido pelo site") when `smsConsent` is true. `consent` mirrors it for older form setups.
+  // No checkbox any more: `smsConsent` is always false and `consent` says the notice was on screen (noticeConsent).
   // Native website forms submit through /direct-submit (signed token, at least 2 s after it was issued).
   try {
     return await requestJson<{ thankYou: string; redirect?: string }>(publicUrl(config, "direct-submit"), {
@@ -339,9 +350,9 @@ export async function sendLead(
       uploadSessionId: session,
       answers,
       attribution,
-      smsConsent,
+      smsConsent: false,
       emailConsent: false,
-      consent: smsConsent,
+      consent: noticeConsent(form, notice, answers[config.fields.phone]),
       website: values.website || "",
       turnstileToken: "",
     });

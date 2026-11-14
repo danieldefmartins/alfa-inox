@@ -56,7 +56,7 @@ export const SITE = {
   /**
    * Formulário nativo do 360 CRM (mesmo cliente do site Prime: app/lib/crm.ts lá, lib/crm.ts aqui).
    * Publicado no 360: workspace Alfa Inox, formulário "Site — Pedido de orçamento" (slug alfa-inox-orcamento).
-   * Os ids dos campos abaixo são exatamente os do formulário publicado; CONSENT_TEXT é o texto de consentimento dele.
+   * Os ids dos campos abaixo são exatamente os do formulário publicado; SMS_NOTICE / LEGACY_CONSENT_TEXT são os textos de consentimento aceitos.
    * `formSlug` vazio = o formulário entrega tudo no WhatsApp (nunca um formulário morto).
    */
   crm: {
@@ -77,9 +77,20 @@ export const SITE = {
   },
 } as const
 
-/** Texto do consentimento de mensagens (opcional, desmarcado). Precisa bater com o publicado no formulário do 360. */
-export const CONSENT_TEXT =
+/**
+ * Aviso de mensagens mostrado logo acima do botão Enviar (sem caixa de seleção: enviar o formulário é o aceite).
+ * UMA string simples, sem links: o 360 guarda este texto exato como prova do consentimento e o site o compara
+ * com o texto publicado no formulário do 360.
+ */
+export const SMS_NOTICE =
+  'Ao enviar este formulário, você concorda em receber mensagens de texto e WhatsApp da Alfa Inox sobre sua solicitação (orçamentos, agendamento, atualizações do projeto). A frequência das mensagens varia. Podem ser cobradas tarifas de mensagens e dados. Responda PARAR para cancelar. Nunca venderemos nem compartilharemos suas informações.'
+
+/** Texto antigo (caixa opcional). Continua aceito para o formulário funcionar antes e depois da troca no 360. */
+export const LEGACY_CONSENT_TEXT =
   'Opcional: aceito receber mensagens da Alfa Inox por WhatsApp ou SMS sobre este orçamento, a medição e a obra. Posso cancelar a qualquer momento respondendo SAIR. Meus dados são tratados conforme a LGPD. Veja a Política de Privacidade.'
+
+/** Textos de consentimento que o formulário publicado no 360 pode ter (qualquer outro = falha fechada). */
+export const ACCEPTED_CONSENT_TEXTS = [SMS_NOTICE, LEGACY_CONSENT_TEXT]
 
 export const waLink = (msg?: string) =>
   `https://wa.me/${SITE.whatsapp}${msg ? `?text=${encodeURIComponent(msg)}` : ''}`

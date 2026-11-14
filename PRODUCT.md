@@ -29,7 +29,7 @@ Visitante no celular, muitas vezes na própria obra, comparando 2–3 orçamento
 
 - Next.js 16 static export, Cloudflare Workers (`alfa-inox`), deploy via Workers Builds na `main`.
 - 100% pt-BR. WhatsApp e telefone principal: (31) 2298-0072 (conectado ao 360). (31) 98777-0220 é o WhatsApp pessoal do Daniel. Seg–Sex 9h–21h, Sáb 9h–14h.
-- Formulário: envia ao 360 CRM (workspace Alfa Inox, formulário `alfa-inox-orcamento`); se o 360 falhar, oferece o mesmo pedido no WhatsApp. Quem marca o consentimento recebe o WhatsApp automático "Pedido pelo site".
+- Formulário: envia ao 360 CRM (workspace Alfa Inox, formulário `alfa-inox-orcamento`); se o 360 falhar, oferece o mesmo pedido no WhatsApp. Sem caixa de consentimento: um aviso fixo acima do botão Enviar (`SMS_NOTICE` em `lib/site.ts`); o WhatsApp automático "Pedido pelo site" depende de o formulário do 360 estar no modo aviso com esse mesmo texto.
 - Logo novo em produção: o logo é um componente trocável (`components/Logo.tsx` + `public/brand/`).
 
 ## Brand Commitments

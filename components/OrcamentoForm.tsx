@@ -4,14 +4,14 @@
 //    Se o CRM falhar, a mensagem de erro oferece o MESMO pedido pronto no WhatsApp (nada se perde).
 // 2) formSlug vazio → o botão abre o WhatsApp com o pedido já escrito.
 import { useEffect, useId, useRef, useState } from 'react'
-import { SITE, CONSENT_TEXT, telHref, waLink } from '@/lib/site'
+import { SITE, SMS_NOTICE, ACCEPTED_CONSENT_TEXTS, telHref, waLink } from '@/lib/site'
 import { SERVICOS } from '@/lib/servicos'
 import { AREAS } from '@/lib/areas'
 import {
   loadForm, freshForm, sendLead, newAttempt, photoFields, photoRequirements, checkPhotos, normalizePhone, directUploadsLive,
   trackFormActivity, PHOTO_ACCEPT, type Attempt, type LoadedForm, type PhotoStatus,
 } from '@/lib/crm'
-import { attributionPayload } from '@/lib/attribution'
+import { attributionPayload, submitAttribution } from '@/lib/attribution'
 import { fromParams, resumo } from './configurador/modelo'
 import { WhatsAppIcon, Camera, Close, Phone, Check } from './Icons'
 
@@ -41,7 +41,6 @@ export default function OrcamentoForm({ servicoInicial = '' }: { servicoInicial?
   const id = useId().replace(/:/g, '')
   const [servico, setServico] = useState(servicoInicial)
   const [v, setV] = useState<Values>(EMPTY)
-  const [consent, setConsent] = useState(false)
   const [errors, setErrors] = useState<Partial<Record<keyof Values | 'servico' | 'photos', string>>>({})
   const [busy, setBusy] = useState(false)
   const [status, setStatus] = useState('')
@@ -75,7 +74,7 @@ export default function OrcamentoForm({ servicoInicial = '' }: { servicoInicial?
     const io = new IntersectionObserver((es) => {
       if (!es.some((e) => e.isIntersecting)) return
       io.disconnect()
-      loadForm(SITE.crm, CONSENT_TEXT, REQUIRED).then((l) => {
+      loadForm(SITE.crm, ACCEPTED_CONSENT_TEXTS, REQUIRED).then((l) => {
         setLoaded(l)
         visit.current = crypto.randomUUID()
         trackFormActivity(SITE.crm, l.form, visit.current, 'view', 1, attributionPayload())
@@ -138,16 +137,16 @@ export default function OrcamentoForm({ servicoInicial = '' }: { servicoInicial?
     }
     if (!validate(true)) return
     setBusy(true); setStatus('')
-    const sig = JSON.stringify({ v, servico, consent })
+    const sig = JSON.stringify({ v, servico })
     if (!attempt.current || attempt.current.signature !== sig) attempt.current = newAttempt(sig)
     try {
-      const attribution = attributionPayload()
-      const live = await freshForm(loaded, () => loadForm(SITE.crm, CONSENT_TEXT, REQUIRED))
+      const attribution = submitAttribution()
+      const live = await freshForm(loaded, () => loadForm(SITE.crm, ACCEPTED_CONSENT_TEXTS, REQUIRED))
       setLoaded(live)
       const [first, ...rest] = v.nome.trim().split(/\s+/)
       const r = await sendLead(SITE.crm, live.form, attempt.current,
         { firstName: first, lastName: rest.join(' '), phone: v.telefone, email: v.email, address: v.cidade, service: servico, message: v.detalhes, sourcePage: location.pathname, website: v.website },
-        consent, photoFields(SITE.crm, live.form).length ? photos : [], attribution,
+        SMS_NOTICE, photoFields(SITE.crm, live.form).length ? photos : [], attribution,
         { onStatus: (i, st) => { setPhotoState((all) => all.map((x, j) => (j === i ? st : x))); setNote(st === 'uploading' ? `Enviando foto ${i + 1} de ${photos.length}…` : st === 'throttled' ? `Enviando foto ${i + 1} de ${photos.length}… (aguardando um instante)` : '') } })
       setNote('')
       setDone(r.thankYou || 'Recebemos o seu pedido.')
@@ -256,16 +255,16 @@ export default function OrcamentoForm({ servicoInicial = '' }: { servicoInicial?
           )}
 
           <label className="honeypot" aria-hidden="true">Site<input name="website" tabIndex={-1} autoComplete="off" value={v.website} onChange={set('website')} /></label>
-          {CRM_ON && (
-            <label className="consent" htmlFor={`${id}-ok`}>
-              <input id={`${id}-ok`} type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-              <span>{CONSENT_TEXT.replace(' Veja a Política de Privacidade.', '')} <a href="/privacidade/">Política de Privacidade</a>.</span>
-            </label>
-          )}
         </div>
 
+        {CRM_ON && (
+          <div className="consent-notice">
+            <p>Seus dados são tratados conforme a LGPD. Veja a <a href="/privacidade/">Política de Privacidade</a>.</p>
+            <p id={`${id}-aviso`}>{SMS_NOTICE}</p>
+          </div>
+        )}
         <div className="form-actions">
-          <button type="submit" className="btn btn-cta btn-lg" disabled={busy}>
+          <button type="submit" className="btn btn-cta btn-lg" disabled={busy} aria-describedby={CRM_ON ? `${id}-aviso` : undefined}>
             {CRM_ON ? (busy ? 'Enviando…' : 'Enviar pedido') : <><WhatsAppIcon size={20} /> Enviar pelo WhatsApp</>}
           </button>
         </div>

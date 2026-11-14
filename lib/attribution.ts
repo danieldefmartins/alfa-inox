@@ -3,7 +3,7 @@
 // (gbraid, wbraid, msclkid, landing page, first-touch channel) is packed into `source`.
 
 export type Attribution = Partial<
-  Record<"utm_source" | "utm_medium" | "utm_campaign" | "utm_content" | "utm_term" | "gclid" | "fbclid" | "source" | "referrer", string>
+  Record<"utm_source" | "utm_medium" | "utm_campaign" | "utm_content" | "utm_term" | "gclid" | "fbclid" | "source" | "referrer" | "landing_page", string>
 >;
 
 type Touch = Record<string, string> & { at: string; landing: string };
@@ -83,4 +83,10 @@ export function attributionPayload(): Attribution {
   ].filter(Boolean);
   out.source = extra.join(" | ").slice(0, 300);
   return out;
+}
+
+/** The submit payload: the stored touches plus the address of the page with the form (no query string). */
+export function submitAttribution(): Attribution {
+  if (typeof window === "undefined") return {};
+  return { ...attributionPayload(), landing_page: window.location.origin + window.location.pathname };
 }

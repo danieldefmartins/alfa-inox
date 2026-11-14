@@ -6,7 +6,7 @@ Respostas já recebidas: telefone fixo (31) 2298-1234 é real; a Alfa Inox tem c
 Preencher em `lib/site.ts` → `SITE.crm`:
 - `formSlug` e `workspaceId` do formulário de orçamento publicado no workspace da Alfa Inox;
 - os ids dos campos (`first_name`, `phone`, `service`, …) exatamente como no formulário publicado;
-- o texto de consentimento do formulário no 360 precisa ser **idêntico** a `CONSENT_TEXT` em `lib/site.ts` (o site recusa enviar se o texto mudar — falha fechada);
+- o texto de consentimento do formulário no 360 precisa ser **idêntico** a `SMS_NOTICE` em `lib/site.ts` (modo aviso; o texto antigo `LEGACY_CONSENT_TEXT` continua aceito) (o site recusa enviar se o texto mudar — falha fechada);
 - o campo de serviço deve aceitar estas opções (ou ser texto livre): Corrimão de Inox, Guarda-Corpo de Inox, Guarda-Corpo de Vidro, Acessibilidade, Portões e Gradis, Condomínios e Empresas, Outro / não sei ainda;
 - para fotos: campos `photo_1..3` do tipo arquivo no formulário.
 Depois: trocar o fixture sintético de `scripts/crm.test.mjs` pelo JSON real (GET do formulário), rodar `npm test` e mandar **um lead de teste** pelo preview.

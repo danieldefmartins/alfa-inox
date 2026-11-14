@@ -1,11 +1,11 @@
 // Testes de contrato do cliente 360 CRM (lib/crm.ts). fetch é simulado: nenhum lead real é enviado.
 // FORM_CONFIG abaixo é sintético (contrato do cliente). O formulário REAL publicado no 360 está em
 // scripts/fixtures/360-form.json (GET .../public/website/forms/alfa-inox-orcamento, sem token): o último teste
-// prova que SITE.crm + CONSENT_TEXT + a lista de serviços batem com ele. Atualize o snapshot ao editar o formulário.
+// prova que SITE.crm + os textos de consentimento aceitos + a lista de serviços batem com ele. Atualize o snapshot ao editar o formulário.
 import { test, afterEach } from 'node:test'
 import assert from 'node:assert/strict'
-import { loadForm, freshForm, sendLead, buildAnswers, normalizePhone, photoFields, photoType, newAttempt, directUploadsLive, resetDirectUploadsProbe } from '../lib/crm.ts'
-import { CONSENT_TEXT, SITE } from '../lib/site.ts'
+import { loadForm, freshForm, sendLead, noticeConsent, buildAnswers, normalizePhone, photoFields, photoType, newAttempt, directUploadsLive, resetDirectUploadsProbe } from '../lib/crm.ts'
+import { SMS_NOTICE, LEGACY_CONSENT_TEXT, ACCEPTED_CONSENT_TEXTS, SITE } from '../lib/site.ts'
 import { SERVICOS } from '../lib/servicos.ts'
 import { readFileSync } from 'node:fs'
 
@@ -15,7 +15,8 @@ afterEach(() => { globalThis.fetch = nativeFetch; resetDirectUploadsProbe() })
 const WS = '00000000-0000-4000-8000-000000000000'
 const FORM_CONFIG = {
   consentRequired: false,
-  consentText: CONSENT_TEXT,
+  consentMode: 'notice',
+  consentText: SMS_NOTICE,
   fields: [
     { id: 'first_name', type: 'text', required: true },
     { id: 'last_name', type: 'text' },
@@ -46,11 +47,11 @@ test('carrega o formulário publicado pelo slug, sem credenciais', async () => {
     assert.equal(opts.credentials, 'omit')
     return response(form)
   }
-  assert.equal((await loadForm(config, CONSENT_TEXT, REQUIRED)).form.token, token)
+  assert.equal((await loadForm(config, ACCEPTED_CONSENT_TEXTS, REQUIRED)).form.token, token)
 })
 
 test('sem slug configurado = indisponível (o site cai no WhatsApp)', async () => {
-  await assert.rejects(loadForm({ ...config, formSlug: '' }, CONSENT_TEXT, REQUIRED), /indisponível.*WhatsApp/)
+  await assert.rejects(loadForm({ ...config, formSlug: '' }, ACCEPTED_CONSENT_TEXTS, REQUIRED), /indisponível.*WhatsApp/)
 })
 
 test('falha fechada: workspace errado, consentimento obrigatório, texto alterado, captcha, campo faltando ou novo obrigatório', async () => {
@@ -64,7 +65,7 @@ test('falha fechada: workspace errado, consentimento obrigatório, texto alterad
   ]
   for (const b of bad) {
     globalThis.fetch = async () => response(b)
-    await assert.rejects(loadForm(config, CONSENT_TEXT, REQUIRED), /indisponível.*2298-0072/)
+    await assert.rejects(loadForm(config, ACCEPTED_CONSENT_TEXTS, REQUIRED), /indisponível.*2298-0072/)
   }
 })
 
@@ -91,29 +92,77 @@ test('respostas usam os ids do formulário publicado', () => {
   assert.equal(a.phone, '+5531999990000')
 })
 
-test('envio usa /direct-submit com consentimento e atribuição', async () => {
+test('envio usa /direct-submit: aviso na tela = consent true, smsConsent sempre false, atribuição com landing_page', async () => {
   globalThis.fetch = async (url, opts) => {
     assert.equal(url, 'https://crm.example.test/public/website/direct-submit')
     const body = JSON.parse(opts.body)
     assert.equal(body.consent, true)
-    assert.equal(body.smsConsent, true)
+    assert.equal(body.smsConsent, false)
     assert.equal(body.website, '')
     assert.ok(body.uploadSessionId)
-    assert.deepEqual(Object.keys(body.attribution).sort(), ['source', 'utm_source'])
+    // 360 recusa chaves desconhecidas: o corpo tem exatamente estas.
+    assert.deepEqual(Object.keys(body).sort(), ['answers', 'attribution', 'consent', 'emailConsent', 'key', 'smsConsent', 'token', 'turnstileToken', 'uploadSessionId', 'website'])
+    assert.deepEqual(body.attribution, { utm_source: 'google', source: 'last:google', landing_page: 'https://www.alfainoxbh.com.br/orcamento/' })
     return response({ thankYou: 'Recebido' })
   }
-  const r = await sendLead(config, form, attempt(), values, true, [], { utm_source: 'google', source: 'last:google' })
+  const r = await sendLead(config, form, attempt(), values, SMS_NOTICE, [], { utm_source: 'google', source: 'last:google', landing_page: 'https://www.alfainoxbh.com.br/orcamento/' })
   assert.equal(r.thankYou, 'Recebido')
 })
 
-test('caixa desmarcada não envia consentimento', async () => {
-  globalThis.fetch = async (_u, opts) => {
-    const body = JSON.parse(opts.body)
+test('consent só é true em modo aviso, com o texto exato do aviso e com telefone', async () => {
+  const sent = async (f, v = values) => {
+    let body
+    globalThis.fetch = async (_u, opts) => { body = JSON.parse(opts.body); return response({ thankYou: 'ok' }) }
+    await sendLead(config, f, attempt(), v, SMS_NOTICE, [], {})
+    return body
+  }
+  const cfg = (c) => ({ ...form, config: { ...FORM_CONFIG, ...c } })
+  // Antes da troca no 360 (caixa antiga em pro.smsConsent, sem modo aviso): mostra o aviso, envia consent false.
+  for (const f of [
+    cfg({ consentMode: undefined, consentText: '', pro: { smsConsent: LEGACY_CONSENT_TEXT } }),
+    cfg({ consentMode: 'checkbox' }),
+    cfg({ consentText: SMS_NOTICE + ' Outro texto.' }),
+    cfg({ consentText: LEGACY_CONSENT_TEXT }),
+  ]) {
+    const body = await sent(f)
     assert.equal(body.consent, false)
     assert.equal(body.smsConsent, false)
-    return response({ thankYou: 'ok' })
   }
-  await sendLead(config, form, attempt(), values, false, [], {})
+  assert.equal((await sent(cfg({ consentText: `  ${SMS_NOTICE}\n` }))).consent, true)
+  assert.equal(noticeConsent(form, SMS_NOTICE, ''), false)
+  assert.equal(noticeConsent(form, SMS_NOTICE, undefined), false)
+  assert.equal(noticeConsent(form, SMS_NOTICE, '+5531999990000'), true)
+})
+
+test('o aviso é uma string simples, com o nome da empresa e sem links', () => {
+  assert.equal(SMS_NOTICE, 'Ao enviar este formulário, você concorda em receber mensagens de texto e WhatsApp da Alfa Inox sobre sua solicitação (orçamentos, agendamento, atualizações do projeto). A frequência das mensagens varia. Podem ser cobradas tarifas de mensagens e dados. Responda PARAR para cancelar. Nunca venderemos nem compartilharemos suas informações.')
+  assert.doesNotMatch(SMS_NOTICE, /<|http/)
+})
+
+test('o formulário não tem mais caixa de consentimento: aviso logo acima do botão Enviar', () => {
+  const src = readFileSync(new URL('../components/OrcamentoForm.tsx', import.meta.url), 'utf8')
+  assert.doesNotMatch(src, /type="checkbox"/)
+  assert.doesNotMatch(src, /setConsent|name="consent"/)
+  const aviso = src.indexOf('{SMS_NOTICE}</p>')
+  const botao = src.indexOf('<button type="submit"')
+  assert.ok(aviso > 0 && botao > aviso, 'aviso vem antes do botão Enviar')
+  assert.match(src.slice(botao, botao + 200), /aria-describedby/)
+})
+
+test('guarda aceita o texto antigo e o aviso novo (antes e depois da troca no 360)', async () => {
+  for (const c of [
+    { consentMode: undefined, consentText: '', pro: { smsConsent: LEGACY_CONSENT_TEXT } },
+    { consentMode: 'notice', consentText: SMS_NOTICE, pro: { smsConsent: LEGACY_CONSENT_TEXT } },
+    { consentMode: 'notice', consentText: SMS_NOTICE, pro: { smsConsent: '' } },
+    { consentMode: undefined, consentText: LEGACY_CONSENT_TEXT },
+  ]) {
+    globalThis.fetch = async () => response({ ...form, config: { ...FORM_CONFIG, ...c } })
+    assert.equal((await loadForm(config, ACCEPTED_CONSENT_TEXTS, REQUIRED)).form.token, token)
+  }
+  for (const c of [{ consentText: '', pro: { smsConsent: '' } }, { pro: { smsConsent: 'Marketing' } }]) {
+    globalThis.fetch = async () => response({ ...form, config: { ...FORM_CONFIG, ...c } })
+    await assert.rejects(loadForm(config, ACCEPTED_CONSENT_TEXTS, REQUIRED), /indisponível/)
+  }
 })
 
 test('falha de rede mantém a mesma chave e diz o que fazer (WhatsApp)', async () => {
@@ -124,8 +173,8 @@ test('falha de rede mantém a mesma chave e diz o que fazer (WhatsApp)', async (
     if (keys.length === 1) throw Error('offline')
     return response({ thankYou: 'ok' })
   }
-  await assert.rejects(sendLead(config, form, a, values, false, [], {}), /chame no \(31\) 2298-0072/)
-  await sendLead(config, form, a, values, false, [], {})
+  await assert.rejects(sendLead(config, form, a, values, SMS_NOTICE, [], {}), /chame no \(31\) 2298-0072/)
+  await sendLead(config, form, a, values, SMS_NOTICE, [], {})
   assert.deepEqual(keys, [a.key, a.key])
 })
 
@@ -149,8 +198,8 @@ test('fotos: uma por campo via /direct-uploads, mesma chave e sessão, reaprovei
     assert.ok(body.answers.photo_1 && body.answers.photo_2 && !body.answers.photo_3)
     return submits === 1 ? response({}, 503) : response({ thankYou: 'ok' })
   }
-  await assert.rejects(sendLead(config, form, a, values, false, files, {}, noSleep))
-  await sendLead(config, form, a, values, false, files, {}, noSleep)
+  await assert.rejects(sendLead(config, form, a, values, SMS_NOTICE, files, {}, noSleep))
+  await sendLead(config, form, a, values, SMS_NOTICE, files, {}, noSleep)
   assert.equal(uploads, 2)
   assert.equal(submits, 2)
 })
@@ -169,20 +218,20 @@ test('foto demais, grande demais ou inválida é recusada antes de subir, com al
     [[jpg(1), jpg(2), jpg(3), jpg(4)], /até 3 fotos/],
   ]
   for (const [set, re] of cases) {
-    await assert.rejects(sendLead(config, form, newAttempt('t'), values, false, set, {}, noSleep), re)
-    await assert.rejects(sendLead(config, form, newAttempt('t'), values, false, set, {}, noSleep), /mande as fotos pelo \(31\) 2298-0072/)
+    await assert.rejects(sendLead(config, form, newAttempt('t'), values, SMS_NOTICE, set, {}, noSleep), re)
+    await assert.rejects(sendLead(config, form, newAttempt('t'), values, SMS_NOTICE, set, {}, noSleep), /mande as fotos pelo \(31\) 2298-0072/)
   }
 })
 
 test('limite de taxa é falha acionável, nunca sucesso', async () => {
   globalThis.fetch = async () => response({}, 429)
-  await assert.rejects(sendLead(config, form, newAttempt('t'), values, false, [], {}), /Espere um minuto/)
+  await assert.rejects(sendLead(config, form, newAttempt('t'), values, SMS_NOTICE, [], {}), /Espere um minuto/)
 })
 
 test('sonda de /direct-uploads: 404 esconde o seletor de fotos', async () => {
   globalThis.fetch = async (url, opts) => (url.endsWith('/direct-uploads') && opts.body === '{}' ? response({}, 404) : response(form))
   assert.equal(await directUploadsLive(config), false)
-  const l = await loadForm(config, CONSENT_TEXT, REQUIRED)
+  const l = await loadForm(config, ACCEPTED_CONSENT_TEXTS, REQUIRED)
   assert.deepEqual(photoFields(config, l.form), [])
 })
 
@@ -200,7 +249,9 @@ test('SITE.crm aponta para o formulário real publicado no 360 (slug, workspace,
     assert.equal(url, 'https://api.get360crm.com/public/website/forms/alfa-inox-orcamento')
     return response({ token: realToken, siteKey: null, config: live.config })
   }
-  const loaded = await loadForm(SITE.crm, CONSENT_TEXT, [SITE.crm.fields.firstName, SITE.crm.fields.phone, SITE.crm.fields.service])
-  // 360 só libera WhatsApp/SMS automático quando o texto está em pro.smsConsent (consentText é só aviso genérico).
-  assert.equal(loaded.form.config.pro.smsConsent, CONSENT_TEXT)
+  const loaded = await loadForm(SITE.crm, ACCEPTED_CONSENT_TEXTS, [SITE.crm.fields.firstName, SITE.crm.fields.phone, SITE.crm.fields.service])
+  // O snapshot é o formulário de hoje (caixa antiga em pro.smsConsent, sem modo aviso): o site o aceita, mostra o
+  // aviso novo e envia consent false até o formulário do 360 passar para o modo aviso com o texto de SMS_NOTICE.
+  assert.equal(loaded.form.config.pro.smsConsent, LEGACY_CONSENT_TEXT)
+  assert.equal(noticeConsent(loaded.form, SMS_NOTICE, '+5531999990000'), false)
 })
