@@ -31,11 +31,11 @@ export async function generateMetadata({ params }: { params: Promise<{ servico: 
 }
 
 const RELACIONADOS: Record<string, string[]> = {
-  'corrimao-inox': ['quanto-custa-corrimao-de-inox', 'inox-304-ou-316', 'como-limpar-corrimao-de-inox'],
-  'guarda-corpo-inox': ['altura-guarda-corpo-nbr-14718', 'guarda-corpo-vidro-ou-inox', 'inox-304-ou-316'],
-  'guarda-corpo-de-vidro': ['guarda-corpo-vidro-ou-inox', 'altura-guarda-corpo-nbr-14718'],
+  'corrimao-inox': ['quanto-custa-corrimao-de-inox', 'corrimao-de-ferro-ou-inox', 'inox-304-ou-316'],
+  'guarda-corpo-inox': ['guarda-corpo-para-sacada', 'altura-guarda-corpo-nbr-14718', 'guarda-corpo-vidro-ou-inox'],
+  'guarda-corpo-de-vidro': ['guarda-corpo-vidro-ou-inox', 'guarda-corpo-para-sacada', 'altura-guarda-corpo-nbr-14718'],
   'acessibilidade-nbr-9050': ['corrimao-nbr-9050-acessibilidade', 'altura-guarda-corpo-nbr-14718'],
-  'portoes-e-gradis-inox': ['inox-304-ou-316', 'como-limpar-corrimao-de-inox'],
+  'portoes-e-gradis-inox': ['grade-de-inox-para-janela', 'corrimao-de-ferro-ou-inox', 'inox-304-ou-316'],
   'condominios-e-empresas': ['corrimao-nbr-9050-acessibilidade', 'altura-guarda-corpo-nbr-14718'],
 }
 

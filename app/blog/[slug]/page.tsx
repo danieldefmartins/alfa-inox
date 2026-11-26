@@ -19,7 +19,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const p = findPost((await params).slug)
   if (!p) return {}
-  const social = socialMeta({ card: `post-${p.slug}`, titulo: p.title, descricao: p.description, url: `/blog/${p.slug}/`, tipo: 'article' })
+  const social = socialMeta({ card: p.og ?? `post-${p.slug}`, titulo: p.title, descricao: p.description, url: `/blog/${p.slug}/`, tipo: 'article' })
   return {
     title: p.title,
     description: p.description,
@@ -38,6 +38,9 @@ const SERVICO_DO_POST: Record<string, string> = {
   'corrimao-nbr-9050-acessibilidade': 'acessibilidade-nbr-9050',
   'como-limpar-corrimao-de-inox': 'corrimao-inox',
   'guarda-corpo-vidro-ou-inox': 'guarda-corpo-de-vidro',
+  'corrimao-de-ferro-ou-inox': 'corrimao-inox',
+  'guarda-corpo-para-sacada': 'guarda-corpo-inox',
+  'grade-de-inox-para-janela': 'portoes-e-gradis-inox',
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -68,6 +71,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </div>
         )}
         <div className="wrap narrow section" style={{ paddingTop: 48 }}>
+          {p.resposta && (
+            <aside className="resposta-curta" aria-label="Resposta curta">
+              <p><strong>Resposta curta:</strong> {p.resposta}</p>
+            </aside>
+          )}
           <div className="prose" dangerouslySetInnerHTML={{ __html: p.html }} />
           {servico && (
             <aside className="form-card" style={{ marginTop: 48 }}>

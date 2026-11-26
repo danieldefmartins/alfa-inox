@@ -28,6 +28,12 @@ export default function OrcamentoPage() {
             O caminho mais rápido é o WhatsApp, porque você já manda as fotos do local. Se preferir, preencha o pedido
             abaixo. Quer escolher o modelo antes? Use o <Link href="/monte-seu-guarda-corpo/">configurador</Link>.
           </p>
+          {/* WhatsApp primeiro (é por onde os pedidos chegam): no celular estes botões ficam acima do formulário. */}
+          <div className="phead-ctas">
+            <a className="btn btn-cta btn-lg" href={waLink('Olá! Vim pela página de orçamento do site da Alfa Inox. Vou mandar as fotos do local.')} target="_blank" rel="noopener"><WhatsAppIcon size={20} /> Mandar fotos no WhatsApp</a>
+            <a className="btn btn-line btn-lg" href={telHref}><Phone size={18} /> Ligar {SITE.phoneDisplay}</a>
+          </div>
+          <p className="small muted" style={{ marginTop: 14 }}>{SITE.hoursShort} · Medição no local em BH e região</p>
         </div>
       </section>
       <section className="section" style={{ paddingTop: 0 }}>

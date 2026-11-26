@@ -9,6 +9,10 @@ export type Post = {
   leitura: string
   foto: string
   resumo: string
+  /** Resposta curta mostrada em destaque no topo do artigo (artigos novos). */
+  resposta?: string
+  /** Cartão de compartilhamento já existente em public/og (sem ele, usa post-<slug>). */
+  og?: string
   faq?: { q: string; a: string }[]
   html: string
 }
@@ -358,6 +362,208 @@ export const POSTS: Post[] = [
 
 <h2>Como decidir em uma pergunta</h2>
 <p>Olhe para o vão e pergunte: <em>"tem alguma coisa do outro lado que eu quero ver?"</em>. Se tem, vidro. Se não tem, inox integral resolve melhor e por menos.</p>
+`,
+  },
+  {
+    slug: 'corrimao-de-ferro-ou-inox',
+    title: 'Corrimão de Ferro ou de Inox: Qual Vale Mais',
+    h1: 'Ferro ou inox no corrimão e no guarda-corpo: o que muda na prática',
+    description:
+      'Ferro ou inox em corrimão, guarda-corpo e grade: ferrugem, pintura, custo ao longo dos anos e quando vale trocar. Explicado por quem fabrica em BH.',
+    date: '2026-11-26',
+    categoria: 'Materiais',
+    leitura: '6 min',
+    foto: 'corrimao-inox-escada-externa-residencial',
+    og: 'servico-corrimao-inox',
+    resumo:
+      'Onde o ferro começa a enferrujar, quanto ele pede de manutenção e em que situação ainda faz sentido escolher ferro.',
+    resposta:
+      'O ferro custa menos para instalar, mas pede lixa e tinta de tempos em tempos e enferruja onde a pintura abre. O inox custa mais no começo e depois só pede limpeza. Em área externa, com o sol forte e as chuvas de verão de BH, o inox costuma compensar. Em área interna e seca, ferro bem pintado ainda é uma escolha honesta.',
+    faq: [
+      { q: 'Corrimão de ferro enferruja mesmo pintado?', a: 'Enferruja onde a pintura abre: na solda, na base chumbada no piso, nos parafusos e onde a mão e o anel raspam todo dia. Com repintura em dia ele dura, mas a manutenção é parte do custo.' },
+      { q: 'Quanto tempo leva para o inox compensar o preço?', a: 'Em área externa, o ferro costuma pedir raspagem e repintura a cada 2 ou 3 anos. Somando essas manutenções, o inox costuma empatar entre o quinto e o sétimo ano e sair na frente daí em diante. Em área interna a conta é mais lenta.' },
+      { q: 'Dá para trocar o corrimão de ferro por inox sem quebrar o piso?', a: 'Na maioria dos casos, sim. Retiramos as peças antigas, cortamos rente e tapamos os pontos de fixação. O inox entra com base flangeada e chumbador, que cobrem a área ao redor do furo novo.' },
+      { q: 'Como saber se o orçamento é de inox de verdade?', a: 'Peça a liga escrita na proposta (AISI 304 ou 316), além do diâmetro e da espessura da parede do tubo. Um ímã que gruda com força indica inox 430 ou aço comum, que não servem para área externa.' },
+    ],
+    html: `
+<p>Muita gente chega até nós com um corrimão de ferro descascando e uma dúvida simples: vale pintar de novo ou já é hora de trocar por inox? A resposta depende de onde a peça está e de quanto você está disposto a cuidar dela. Abaixo, o que cada material faz ao longo dos anos, sem propaganda.</p>
+
+<h2>O que chamam de "ferro" no orçamento</h2>
+<p>O corrimão "de ferro" da serralheria comum é, na verdade, <strong>aço carbono</strong>: tubo redondo, metalon (tubo quadrado ou retangular) ou barra maciça. Ele é resistente, fácil de soldar e barato. O problema é que, em contato com água e oxigênio, enferruja. Por isso ele sempre leva fundo anticorrosivo e tinta, ou vem galvanizado (com uma camada de zinco).</p>
+<p>O <strong>aço inox</strong> é uma liga com cromo e níquel. O cromo forma na superfície uma película fina que protege o metal e se refaz sozinha quando a peça é riscada. É isso que dispensa a tinta.</p>
+
+<h2>Onde a ferrugem do ferro começa</h2>
+<p>Ferro bem pintado não enferruja de uma vez. A ferrugem entra pelos pontos fracos, e são sempre os mesmos:</p>
+<ul>
+  <li><strong>A base chumbada no piso</strong>, onde a água da limpeza e da chuva fica parada</li>
+  <li><strong>As soldas</strong>, que são a parte mais difícil de pintar por igual</li>
+  <li><strong>O tubo de cima</strong>, onde a mão, o anel e a chave raspam a tinta todo dia</li>
+  <li><strong>Parafusos e suportes</strong> de aço comum</li>
+</ul>
+<p>Em escada externa e em sacada aberta, a combinação de sol forte com as chuvas de verão de Belo Horizonte acelera esse ciclo. A tinta resseca, trinca e a água entra. Quando a ferrugem aparece por baixo da tinta, o serviço deixa de ser só repintar: é raspar até o metal, tratar e pintar de novo.</p>
+
+<h2>Manutenção ao longo dos anos</h2>
+<p>Em área externa, ferro pede raspagem e repintura a cada 2 ou 3 anos para continuar apresentável. Em área interna seca, esse intervalo é bem maior. O inox, nas duas situações, pede limpeza com pano macio e detergente neutro (temos um <a href="/blog/como-limpar-corrimao-de-inox/">guia de limpeza do inox</a> para isso).</p>
+<p>Na conta do dinheiro, o inox é mais caro na instalação. Somando as manutenções do ferro em área externa, ele costuma empatar entre o quinto e o sétimo ano e sair na frente daí em diante. Em área interna, essa virada demora mais.</p>
+
+<h2>Quando o ferro ainda faz sentido</h2>
+<p>Não vamos fingir que inox é sempre a resposta. Ferro é uma escolha razoável quando:</p>
+<ul>
+  <li>A peça fica em <strong>área interna e seca</strong> e você não se importa de pintar de tempos em tempos</li>
+  <li>O projeto pede um <strong>desenho ornamental</strong> de ferro trabalhado, que combina com a fachada da casa</li>
+  <li>A obra é <strong>provisória</strong> ou o orçamento do momento não comporta o inox</li>
+</ul>
+<p>Fora desses casos, principalmente em escada externa, sacada, beira de piscina e área de serviço molhada, o inox resolve o problema de vez.</p>
+
+<h2>Aparência e peso</h2>
+<p>O inox trabalha bem com linhas retas: tubo redondo, travessas horizontais, prumos verticais e vidro. Fica leve na fachada e combina com projeto moderno. O ferro permite peças maciças e ornamentos, mas a cor depende da tinta, que desbota no sol.</p>
+<p>Um detalhe que pouca gente percebe: o tubo de inox de boa espessura é firme na mão sem ser pesado. Tubo de parede fina, de qualquer material, vibra e amassa. Por isso a espessura da parede tem que vir escrita no orçamento.</p>
+
+<h2>Trocar ferro por inox: como é a obra</h2>
+<p>A troca é a obra mais comum que fazemos em escada com corrimão antigo. O caminho costuma ser este:</p>
+<ol>
+  <li>Medimos no local, com o corrimão velho ainda instalado</li>
+  <li>Fabricamos as peças de inox na nossa oficina</li>
+  <li>No dia da instalação, retiramos o ferro, cortamos rente as partes chumbadas e tratamos os pontos antigos</li>
+  <li>Instalamos o inox com base flangeada e chumbador de inox, que cobre a área ao redor do furo novo</li>
+</ol>
+<p>Na maioria das escadas, isso acontece sem quebrar piso nem revestimento. Se o degrau é de granito, a furação é feita com broca diamantada.</p>
+
+<h2>Cuidado com o inox que não é inox</h2>
+<p>Parte da fama de "inox que enferruja" vem de peças feitas com <strong>inox 430</strong> ou com aço comum cromado, vendidos como inox. Eles mancham em pouco tempo em área externa. Exija na proposta a liga (AISI 304 ou 316), o diâmetro e a espessura da parede do tubo. Explicamos a diferença entre as ligas no artigo <a href="/blog/inox-304-ou-316/">inox 304 ou 316</a>.</p>
+
+<h2>Quer trocar o seu?</h2>
+<p>Mande fotos do corrimão ou do guarda-corpo atual pelo WhatsApp (31) 2298-0072, de frente e de lado, com a medida aproximada. Veja também a página de <a href="/servicos/corrimao-inox/">corrimão de inox em BH</a> e a de <a href="/servicos/guarda-corpo-inox/">guarda-corpo de inox</a>, ou faça o <a href="/orcamento/">pedido de orçamento</a> pelo site.</p>
+`,
+  },
+  {
+    slug: 'guarda-corpo-para-sacada',
+    title: 'Guarda-Corpo para Sacada: Modelos e Altura',
+    h1: 'Guarda-corpo para sacada e varanda: modelo, altura e fixação',
+    description:
+      'Como escolher o guarda-corpo da sacada: inox com travessas, prumos ou vidro, altura de 1,10 m, fixação no piso ou na laje e o padrão da fachada do prédio.',
+    date: '2026-11-26',
+    categoria: 'Escolha',
+    leitura: '7 min',
+    foto: 'guarda-corpo-inox-polido-sacada-residencia',
+    og: 'servico-guarda-corpo-inox',
+    resumo:
+      'Os três modelos que mais instalamos em sacada, a altura que a norma pede e o que decide entre fixar no piso ou na lateral da laje.',
+    resposta:
+      'Em sacada e varanda o guarda-corpo precisa ter pelo menos 1,10 m a partir do piso acabado (NBR 14718) e não pode deixar vão por onde passe uma esfera de 11 cm. Os modelos mais usados são inox com travessas, inox com prumos verticais e vidro laminado com estrutura de inox. Com criança em casa, fique com prumos verticais ou vidro. Em prédio, confirme antes o padrão da fachada com o síndico.',
+    faq: [
+      { q: 'Qual a altura do guarda-corpo da sacada?', a: 'No mínimo 1,10 m, medidos do piso acabado até o topo, como pede a NBR 14718 para áreas elevadas. Se houver mureta ou floreira onde dê para subir, a altura útil deve ser conferida a partir dela.' },
+      { q: 'Guarda-corpo de sacada com travessa horizontal é seguro?', a: 'Para adultos, sim. Com criança pequena, a travessa vira degrau. Nesse caso indicamos prumos verticais com no máximo 11 cm entre si, ou vidro laminado.' },
+      { q: 'É melhor fixar no piso ou na lateral da laje?', a: 'Na lateral da laje o guarda-corpo libera o piso inteiro da sacada e não fura a impermeabilização, mas a borda precisa ter concreto firme. No piso a instalação é mais simples e cada furo é vedado. A escolha sai da visita técnica.' },
+      { q: 'Preciso de autorização do condomínio para trocar o guarda-corpo?', a: 'Em geral, sim, porque o guarda-corpo faz parte da fachada. Converse com o síndico e consulte a convenção antes de fechar o modelo. A nossa proposta descreve modelo, liga e acabamento, o que ajuda nessa conversa.' },
+      { q: 'Vidro de sacada pode ser temperado?', a: 'Em sacada indicamos vidro laminado. Se ele trincar, os pedaços ficam presos à película e o painel continua barrando a passagem. O temperado, quando quebra, se desfaz por inteiro.' },
+    ],
+    html: `
+<p>Sacada é o lugar da casa onde o guarda-corpo trabalha mais: pega sol, chuva, gente encostada olhando a vista e, às vezes, criança correndo. É também onde ele mais aparece, tanto de dentro quanto da rua. Este guia junta o que conversamos com cada cliente antes de fechar um guarda-corpo de sacada ou varanda em BH.</p>
+
+<h2>A altura: 1,10 m do piso acabado</h2>
+<p>A <strong>NBR 14718</strong> pede no mínimo <strong>1,10 m</strong> em sacadas, varandas, terraços e qualquer área elevada, medidos do piso acabado até o topo do guarda-corpo. Dois cuidados que fazem diferença na obra:</p>
+<ul>
+  <li><strong>Piso ainda por assentar:</strong> se o porcelanato entra depois, a altura tem que considerar a espessura do piso novo e da argamassa</li>
+  <li><strong>Mureta ou floreira:</strong> se há uma mureta baixa ou jardineira onde uma criança consegue subir, a altura útil deve ser conferida a partir dela</li>
+</ul>
+<p>Também não pode haver vão por onde passe uma esfera de <strong>11 cm</strong>. Os detalhes da norma estão no artigo sobre a <a href="/blog/altura-guarda-corpo-nbr-14718/">altura do guarda-corpo pela NBR 14718</a>. Em caso de dúvida sobre a exigência do seu imóvel, confirme com o responsável técnico da obra.</p>
+
+<h2>Os três modelos que mais instalamos em sacada</h2>
+<h3>Inox com travessas horizontais</h3>
+<p>Prumos de 1½" com três a cinco tubos horizontais. É o mais pedido: visual leve, deixa o vento passar e tem custo equilibrado. O ponto contra é que travessa horizontal funciona como degrau, então não é o modelo para casa com criança pequena.</p>
+<h3>Inox com prumos verticais</h3>
+<p>Barras verticais com no máximo 11 cm entre si. Não dá apoio para escalar e continua deixando o vento e a luz passarem. É a recomendação quando há crianças.</p>
+<h3>Vidro laminado com inox</h3>
+<p>Painéis de vidro presos por prumos, torres ou perfil no piso, com ou sem corrimão em cima. Preserva a vista, e em BH, com tanto prédio e casa em terreno de morro, é o modelo que mais pedem para varanda com vista da cidade. Para sacada, o vidro tem que ser <strong>laminado</strong>. Comparamos os dois materiais no artigo <a href="/blog/guarda-corpo-vidro-ou-inox/">guarda-corpo de vidro ou de inox</a>.</p>
+
+<h2>Fixação no piso ou na lateral da laje</h2>
+<p>Essa decisão muda o visual, a área útil e o risco de infiltração.</p>
+<ul>
+  <li><strong>No piso:</strong> sapata flangeada com chumbador de inox sobre o piso da sacada. É a instalação mais simples. Como o piso de sacada costuma ser impermeabilizado, cada furo precisa ser vedado com cuidado para a água não descer para o andar de baixo.</li>
+  <li><strong>Na lateral da laje:</strong> os prumos são presos na face lateral da borda. Libera o piso inteiro, deixa a sacada mais larga e não fura a impermeabilização. Exige concreto firme na borda e acesso por fora, o que pode pedir andaime ou balancim em andar alto.</li>
+</ul>
+<p>A escolha sai da visita técnica: olhamos o acabamento da borda, a espessura da laje e o acesso.</p>
+
+<h2>Sol, chuva e a liga certa</h2>
+<p>Para sacada e varanda em Belo Horizonte, o <strong>inox 304</strong> atende com folga. O <strong>316</strong> vale a diferença quando a sacada fica colada à piscina, onde o respingo de cloro ataca o metal. O acabamento <strong>escovado</strong> disfarça marca de chuva e de mão; o <strong>polido</strong> brilha mais e pede limpeza mais frequente.</p>
+<p>Em andar alto com vidro, lembre que o painel segura o vento em vez de deixá-lo passar. A fixação precisa ser dimensionada para essa carga, e isso é parte do projeto.</p>
+
+<h2>Prédio: o guarda-corpo também é fachada</h2>
+<p>Em apartamento, o guarda-corpo da sacada faz parte da fachada do prédio. Antes de trocar o modelo ou o material, converse com o síndico e consulte a convenção do condomínio. Muitos prédios exigem o mesmo desenho e a mesma cor em todas as unidades. Se o prédio inteiro vai trocar, a página de <a href="/servicos/condominios-e-empresas/">condomínios e empresas</a> explica como montamos a proposta para a assembleia.</p>
+
+<h2>O que mandar para receber o orçamento</h2>
+<ul>
+  <li>Fotos da sacada de frente e de lado, mostrando a borda e o piso</li>
+  <li>A medida do perímetro em metros lineares</li>
+  <li>A altura da mureta, se houver</li>
+  <li>O andar e como é o acesso (elevador, escada estreita)</li>
+  <li>Se há crianças ou pets na casa</li>
+</ul>
+<p>Mande pelo WhatsApp (31) 2298-0072 ou pelo <a href="/orcamento/">pedido de orçamento</a>. Se quiser testar modelos antes, use o <a href="/monte-seu-guarda-corpo/">configurador de guarda-corpo</a>. Veja também as páginas de <a href="/servicos/guarda-corpo-inox/">guarda-corpo de inox</a> e de <a href="/servicos/guarda-corpo-de-vidro/">guarda-corpo de vidro em BH</a>.</p>
+`,
+  },
+  {
+    slug: 'grade-de-inox-para-janela',
+    title: 'Grade de Inox para Janela: Vale a Pena?',
+    h1: 'Grade de inox para janela e vão: quando vale e como escolher',
+    description:
+      'Grade de inox para janela, vão e área de serviço: vantagens sobre o ferro, espaçamento entre barras, fixação na alvenaria e o que pedir no orçamento em BH.',
+    date: '2026-11-26',
+    categoria: 'Escolha',
+    leitura: '5 min',
+    foto: 'gradil-inox-fechamento-parede',
+    og: 'servico-portoes-e-gradis-inox',
+    resumo:
+      'Modelos, espaçamento entre barras, a fixação que segura de verdade e o cuidado com a saída de emergência.',
+    resposta:
+      'Vale quando a grade pega chuva ou quando você cansou de pintar. A grade de inox não enferruja, fica mais leve na fachada que a de ferro e é feita sob medida para o vão. Para proteger criança, use barras com no máximo 11 cm entre si, a mesma referência do guarda-corpo. Contra invasão, o que mais pesa é a fixação na alvenaria.',
+    faq: [
+      { q: 'Grade de inox é mais cara que a de ferro?', a: 'Na instalação, sim. A diferença volta com o tempo, porque a grade de inox não pede lixa nem tinta. Em janela que pega chuva, a conta costuma favorecer o inox depois de alguns anos.' },
+      { q: 'Qual o espaçamento entre as barras da grade?', a: 'Para impedir a passagem de criança, usamos como referência no máximo 11 cm entre barras, a mesma medida que a norma pede para guarda-corpo. Grade só decorativa pode ter outro espaçamento.' },
+      { q: 'A grade é presa na esquadria da janela?', a: 'Não recomendamos. A esquadria de alumínio não foi feita para segurar a grade. Fixamos na alvenaria, com chumbador de inox, por dentro ou por fora do vão.' },
+      { q: 'Dá para fazer grade com abertura?', a: 'Dá para prever uma folha com dobradiças e trava pelo lado de dentro. Em janela de quarto, isso ajuda na saída em caso de emergência. É um detalhe que se define no projeto.' },
+    ],
+    html: `
+<p>Grade de janela costuma ser lembrada só quando a de ferro começa a soltar ferrugem na parede ou quando chega um bebê em casa. Nessas horas, o inox aparece como opção. Abaixo, o que considerar antes de pedir uma grade de inox para janela, vão de escada, área de serviço ou cobogó aberto.</p>
+
+<h2>Onde a grade de inox compensa</h2>
+<ul>
+  <li><strong>Janela que pega chuva</strong>, onde a grade de ferro mancha o peitoril e a parede de laranja</li>
+  <li><strong>Área de serviço e varanda técnica</strong>, com umidade e produto de limpeza</li>
+  <li><strong>Apartamento com criança</strong>, em janela baixa ou vão aberto para o lado de fora</li>
+  <li><strong>Fachada nova</strong>, onde o desenho limpo do inox combina com o resto do projeto</li>
+</ul>
+<p>Em janela interna e protegida, a grade de ferro bem pintada ainda funciona. A diferença do inox aparece onde há água. Explicamos a comparação completa no artigo <a href="/blog/corrimao-de-ferro-ou-inox/">ferro ou inox</a>.</p>
+
+<h2>Modelos de grade em inox</h2>
+<ul>
+  <li><strong>Barras verticais</strong> de tubo redondo ou quadrado: o modelo mais discreto e o mais seguro para criança</li>
+  <li><strong>Barras horizontais</strong>: visual moderno, mas viram escada; servem onde não há criança</li>
+  <li><strong>Barra chata</strong>: perfil mais fino, bom para janelas pequenas</li>
+  <li><strong>Chapa perfurada</strong>: fecha mais a visão e serve como proteção e privacidade ao mesmo tempo</li>
+</ul>
+<p>Fazemos a grade no mesmo acabamento do corrimão e do guarda-corpo da obra, escovado ou polido, para que tudo combine.</p>
+
+<h2>Espaçamento entre barras</h2>
+<p>Para segurança de criança, a referência que usamos é a mesma do guarda-corpo: <strong>no máximo 11 cm</strong> entre barras, para que não passe a cabeça. Abaixo de 1,10 m do piso, barras horizontais não são indicadas, porque viram apoio para escalar. Se a grade é só para fechar um vão decorativo, o espaçamento pode ser outro, decidido pelo desenho.</p>
+
+<h2>Fixação: onde a grade segura de verdade</h2>
+<p>Uma grade é tão forte quanto a fixação dela. Alguns cuidados:</p>
+<ul>
+  <li><strong>Na alvenaria, nunca na esquadria.</strong> Janela de alumínio ou de PVC não foi feita para segurar grade.</li>
+  <li><strong>Chumbador de inox</strong> em parede maciça ou concreto. Em bloco vazado, o tipo de fixação muda e avaliamos na visita.</li>
+  <li><strong>Por dentro ou por fora do vão:</strong> por dentro é mais fácil de instalar e limpar; por fora protege a janela inteira, mas pede acesso externo.</li>
+</ul>
+
+<h2>Não esqueça da saída de emergência</h2>
+<p>Grade fixa em janela de quarto dificulta a saída numa emergência. Vale prever uma folha com dobradiças e trava pelo lado de dentro, que só se abre de dentro de casa. É um detalhe de projeto que precisa ser pensado antes da fabricação.</p>
+
+<h2>Manutenção</h2>
+<p>A grade de inox pede limpeza com pano, água e detergente neutro. Se aparecer ponto alaranjado, quase sempre é sujeira de ferro vinda da obra ou da grade antiga, e sai com limpeza adequada. Nosso <a href="/blog/como-limpar-corrimao-de-inox/">guia de limpeza</a> vale também para grades.</p>
+
+<h2>Como pedir o orçamento</h2>
+<p>Mande pelo WhatsApp (31) 2298-0072 uma foto de cada janela ou vão, de frente, com a largura e a altura aproximadas, e diga se há crianças em casa. Conheça a página de <a href="/servicos/portoes-e-gradis-inox/">portões, grades e gradis de inox</a> ou faça o <a href="/orcamento/">pedido de orçamento</a> pelo site.</p>
 `,
   },
 ]

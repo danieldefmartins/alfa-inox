@@ -15,7 +15,7 @@ import { PADRAO } from '@/components/configurador/modelo'
 import { FAQ_GERAL } from '@/lib/faq'
 
 const TITLE = 'Corrimão e Guarda-Corpo em Inox em BH | Alfa Inox'
-const DESC = 'Corrimão e guarda-corpo de inox e vidro em BH para casas, condomínios, lojas e empresas, com design moderno de alto padrão. Oficina própria desde 2010.'
+const DESC = 'Serralheria de aço inox em BH: corrimão e guarda-corpo de inox e vidro para casas, condomínios, lojas e empresas. Oficina própria desde 2010.'
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -73,7 +73,7 @@ export default function Home() {
         <div className="wrap">
           <div className="head">
             <h2>O que sai da nossa oficina</h2>
-            <p className="lede">Cada peça é cortada e soldada para o seu vão. Escolha o serviço para ver modelos, normas e obras.</p>
+            <p className="lede">Cada peça de aço inox é cortada e soldada para o seu vão, na nossa oficina em BH: <Link href="/servicos/corrimao-inox/">corrimão de inox</Link>, <Link href="/servicos/guarda-corpo-inox/">guarda-corpo</Link>, <Link href="/servicos/guarda-corpo-de-vidro/">guarda-corpo de vidro</Link> e <Link href="/servicos/portoes-e-gradis-inox/">grades e portões de inox</Link>. Escolha o serviço para ver modelos, normas e obras.</p>
             <p className="swipe-hint" aria-hidden="true">6 serviços · deslize para o lado →</p>
           </div>
           {/* Grade editorial: 2 destaques grandes + 4 médios no desktop; carrossel de cartões grandes no celular. */}

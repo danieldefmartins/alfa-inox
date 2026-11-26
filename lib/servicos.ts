@@ -42,7 +42,7 @@ export const SERVICOS: Servico[] = [
     h1: 'Corrimão de inox em BH, feito sob medida para a sua escada',
     title: 'Corrimão de Inox em BH: Escada, Parede e Rampa',
     description:
-      'Corrimão de inox 304 ou 316 em BH: de parede, de escada com prumos, curvo e duplo para rampa. Medimos no local, fabricamos e instalamos. Peça pelo WhatsApp.',
+      'Corrimão de inox em BH com fabricação própria: de parede, de escada com prumos, curvo e duplo para rampa, em inox 304 ou 316. Medimos, fabricamos e instalamos.',
     resumo: 'De parede, de escada, curvo ou duplo para rampa, em inox escovado ou polido.',
     categoriaFotos: 'corrimao-inox',
     capa: 'corrimao-inox-escada-interna-madeira',
@@ -107,6 +107,8 @@ export const SERVICOS: Servico[] = [
       { q: 'Inox 304 ou 316: qual usar?', a: 'O 304 atende ambientes internos e externos comuns em Belo Horizonte. O 316 tem molibdênio e resiste melhor a cloro e maresia, por isso é a escolha para borda de piscina e sauna.' },
       { q: 'Quanto tempo leva do orçamento à instalação?', a: 'Depois da aprovação e da medição, o prazo médio de fabricação e instalação é de 7 a 15 dias úteis, conforme o tamanho do projeto. O prazo exato vai escrito na proposta.' },
       { q: 'Dá para instalar corrimão em escada de granito?', a: 'Dá. A furação no granito é feita com broca diamantada e com cuidado para não trincar a pedra; a base flangeada do prumo cobre o furo.' },
+      { q: 'A Alfa Inox fabrica o corrimão ou revende?', a: 'Fabricamos. O corrimão é cortado, soldado e polido na nossa oficina no bairro Aparecida, em Belo Horizonte, e instalado pela nossa própria equipe.' },
+      { q: 'Vale trocar o corrimão de ferro por inox?', a: 'Em área externa, quase sempre. O ferro pede lixa e tinta de tempos em tempos e enferruja onde a pintura abre; o inox só pede limpeza. Na maioria das escadas a troca é feita sem quebrar piso.' },
     ],
   },
   {
@@ -116,9 +118,9 @@ export const SERVICOS: Servico[] = [
     navNome: 'Guarda-Corpo de Inox',
     keyword: 'guarda-corpo de inox',
     h1: 'Guarda-corpo de inox para escada, sacada e mezanino',
-    title: 'Guarda-Corpo de Inox em BH para Escada e Sacada',
+    title: 'Guarda-Corpo em BH: Inox para Escada e Sacada',
     description:
-      'Guarda-corpo de inox sob medida em BH: travessas horizontais, prumos verticais ou cabo de aço, na altura da NBR 14718. Fabricação própria e instalação.',
+      'Guarda-corpo de inox sob medida em BH para escada, sacada e mezanino: travessas, prumos verticais ou cabo de aço, na altura da NBR 14718. Fabricação própria.',
     resumo: 'Travessas, prumos verticais ou cabo de aço para escadas, sacadas e mezaninos.',
     categoriaFotos: 'guarda-corpo-inox',
     capa: 'guarda-corpo-inox-escada-interna-sala',
@@ -151,6 +153,11 @@ export const SERVICOS: Servico[] = [
         h: 'Dá para instalar em obra pronta?',
         resposta: 'Sim. A maioria dos nossos guarda-corpos é instalada em obra acabada, com sapata flangeada e chumbador no piso ou na lateral da laje, sem quebra-quebra.',
       },
+      {
+        h: 'Guarda-corpo de inox para sacada e varanda',
+        resposta: 'Na sacada o guarda-corpo precisa de 1,10 m a partir do piso acabado e pega sol e chuva o ano inteiro. O inox 304 escovado aguenta bem o tempo de BH; perto de piscina, indicamos o 316.',
+        p: ['A fixação na lateral da laje libera o piso e não fura a impermeabilização; a fixação no piso é mais simples e cada furo é vedado. Em apartamento, o guarda-corpo faz parte da fachada, então vale confirmar o padrão com o síndico antes de escolher o modelo.'],
+      },
     ],
     precoFatores: [
       'Modelo de preenchimento: travessas custam menos que prumos verticais a cada 11 cm, que custam menos que vidro.',
@@ -182,6 +189,7 @@ export const SERVICOS: Servico[] = [
       { q: 'Dá para instalar em obra já pronta?', a: 'Sim. A grande maioria dos nossos guarda-corpos é instalada em obra acabada, com fixação por chumbador e sapata, sem quebra-quebra.' },
       { q: 'Guarda-corpo de inox ou de ferro?', a: 'O ferro custa menos no começo, mas pede lixa e tinta periodicamente e, em área externa, enferruja. O inox mantém o acabamento só com limpeza. Em poucos anos a conta costuma virar a favor do inox.' },
       { q: 'Vocês fazem o projeto?', a: 'Sim. Depois da medição definimos com você modelo, altura, espaçamento e fixação, e isso tudo vai descrito na proposta.' },
+      { q: 'Fazem guarda-corpo de inox para sacada de apartamento?', a: 'Fazemos, com fixação no piso ou na lateral da laje, na altura de 1,10 m. Como o guarda-corpo faz parte da fachada, confirme com o síndico o padrão do prédio antes de fechar o modelo.' },
     ],
   },
   {
@@ -191,7 +199,7 @@ export const SERVICOS: Servico[] = [
     navNome: 'Guarda-Corpo de Vidro',
     keyword: 'guarda-corpo de vidro em BH',
     h1: 'Guarda-corpo de vidro com inox em BH',
-    title: 'Guarda-Corpo de Vidro com Inox em BH',
+    title: 'Guarda-Corpo de Vidro em BH: Laminado com Inox',
     description:
       'Guarda-corpo de vidro laminado ou temperado com estrutura de inox em BH, para sacada, escada, piscina e mezanino. Projeto, fabricação e instalação.',
     resumo: 'Vidro laminado ou temperado com prumos, torres ou botões de inox.',
@@ -334,10 +342,10 @@ export const SERVICOS: Servico[] = [
     nome: 'Portões e Gradis de Inox',
     navNome: 'Portões e Gradis',
     keyword: 'portão de inox',
-    h1: 'Portão e gradil de inox sob medida',
-    title: 'Portão e Gradil de Inox Sob Medida em BH',
+    h1: 'Portão, grade e gradil de inox sob medida',
+    title: 'Portão, Grade e Gradil de Inox Sob Medida em BH',
     description:
-      'Portão social, gradil de fechamento, grade de proteção e portão de escada em inox sob medida em BH. Não enferruja e não pede pintura. Peça no WhatsApp.',
+      'Portão social, grade de inox para janela, gradil de fechamento e portão de escada sob medida em BH. Não enferruja e não pede pintura. Peça no WhatsApp.',
     resumo: 'Portões sociais, gradis de fechamento, grades e portão de escada.',
     categoriaFotos: 'portoes-gradis',
     capa: 'gradil-inox-varanda-comercial-coberta',
@@ -358,6 +366,11 @@ export const SERVICOS: Servico[] = [
       {
         h: 'Portão de inox vale mais a pena que o de ferro?',
         resposta: 'O inox custa mais na compra, mas não pede repintura e não perde a peça para a ferrugem. Em área externa, a conta costuma virar a favor do inox depois de alguns anos.',
+      },
+      {
+        h: 'Grade de inox para janela: o que muda em relação ao ferro?',
+        resposta: 'A grade de inox não enferruja nem mancha o peitoril, e o desenho fica mais leve na fachada. Para proteger criança, usamos como referência no máximo 11 cm entre barras.',
+        p: ['A grade é fixada na alvenaria com chumbador de inox, nunca na esquadria da janela. Em janela de quarto, vale prever uma folha com abertura pelo lado de dentro.'],
       },
       {
         h: 'Dá para automatizar o portão de inox?',
@@ -389,6 +402,7 @@ export const SERVICOS: Servico[] = [
       { q: 'Dá para automatizar?', a: 'Sim. Portões de correr e de abrir em inox aceitam automatizadores convencionais, dimensionados para o peso da folha.' },
       { q: 'Vocês fazem em inox escovado igual ao corrimão?', a: 'Sim — e é o que recomendamos, para que portão, gradil, corrimão e guarda-corpo da mesma obra tenham o mesmo acabamento.' },
       { q: 'Fazem portãozinho de escada para criança e pet?', a: 'Fazemos, integrado ao guarda-corpo, com trava no lado de dentro e abertura para o lado do patamar.' },
+      { q: 'Fazem grade de inox para janela?', a: 'Fazemos, sob medida para cada vão, em barras verticais, horizontais, barra chata ou chapa perfurada. A fixação é na alvenaria, com chumbador de inox.' },
     ],
   },
   {
